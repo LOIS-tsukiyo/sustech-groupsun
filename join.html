@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验室简介 - Sun Lab, SUSTech</title>
+    <style>
+        /* ===== 全局 ===== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+        a {
+            color: #005a8c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 主视觉横幅 ===== */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), 
+                        url('sustech1.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+     .hero img.group-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);   /* 柔和投影 */
+    margin-bottom: 25px;
+    transition: transform 0.3s;
+}
+.hero img.group-photo:hover {
+    transform: scale(1.02);        /* 鼠标放上去微微放大 */
+}
+
+/* 标题优化：字间距增大，更显气质 */
+.hero h1 {
+    font-size: 2.6em;
+    font-weight: 600;
+    letter-spacing: 2px;          /* 字间距 */
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+}
+.hero h1 a { color: white; text-decoration: none; }
+.hero h1 a:hover { text-decoration: underline; }
+
+/* 副标题小字 */
+.hero p {
+    font-size: 1.1em;
+    opacity: 0.9;
+    margin: 8px 0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+        /* ===== 导航栏 ===== */
+   .nav-bar {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+        .nav-bar a {
+            color: #005a8c;
+            text-decoration: none;
+            margin: 0 8px;
+            font-weight: 500;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        .nav-sep {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        /* ===== 内容区 ===== */
+        .content {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-left: 2px solid #cbd5e1;    /* 左侧装饰线 */
+    border-top: 2px solid #cbd5e1;     /* 顶部装饰线 */
+    border-radius: 0 6px 6px 0;       /* 右侧微圆角 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+        .content h2 {
+            color: #005a8c;
+            border-left: 5px solid #005a8c;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        .placeholder {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            text-align: left;
+            color: #333;
+            margin: 20px 0;
+            background: white;
+            border-radius: 6px;
+        }
+
+        /* ===== 页脚 ===== */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #888;
+            background: #fff;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 主视觉区 ==================== -->
+    <div class="hero">
+        <a href="index.html">
+            <img class="group-photo" src="D:\360MoveData\Users\67538\Desktop\实验室网站\sustech2.webp" alt="课题组照片"
+                 onerror="this.style.display='none'">
+        </a>
+        <h1>Sun Lab, SUSTech<br>南科大孙小卫课题组</a></h1>
+        <p>Virtue,Truth, Advance<br>明德求是，日新自强</p>
+        <p style="font-size:0.9em;">Sustech 南方科技大学</p>
+    </div>
+
+   <!-- ==================== 导航栏（指向子页面） ==================== -->
+  <div class="nav-bar">
+        <a href="index.html">Homepage主页</a>
+        <span class="nav-sep">|</span>
+        <a href="lab-intro.html">Lab Intro实验室简介</a>
+        <span class="nav-sep">|</span>
+        <a href="professor.html">Professor教授介绍</a>
+        <span class="nav-sep">|</span>
+        <a href="academy product.html">Academy Product学术成果</a>
+        <span class="nav-sep">|</span>
+        <a href="publication.html">Publication论文发表</a>
+        <span class="nav-sep">|</span>
+        <a href="cooperation.html">IUR产学研</a>
+        <span class="nav-sep">|</span>
+        <a href="news.html">News最新动态</a>
+        <span class="nav-sep">|</span>
+        <a href="activity.html">Activity活动风采</a>
+        <span class="nav-sep">|</span>
+        <a href="join.html">Join Us加入我们</a>
+    </div>
+
+    <!-- ==================== 实验室简介内容 ==================== -->
+    <div class="content">
+        <h2>Join Us 加入我们</h2>
+        <div class="placeholder">The research group is recruiting research assistant professors, postdoctoral fellows, and research assistants on a long-term basis, with generous benefits.<br>课题组长期招聘研究助理教授、博士后及研究助理，待遇优厚。<br>The research team welcomes outstanding students to apply for master's and doctoral programs at our university, and also provides opportunities to jointly train master's and doctoral students with overseas universities.<br>课题组欢迎优秀学生报考本校硕博研究生，此外还提供与境外大学联合培养硕博研究生的机会。<br>E-mail：sunxw@sustech.edu.cn<br>有意愿者欢迎投递邮箱</div>
+       </div>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer>
+        <p>Sustech 南方科技大学</p>
+        <p>© 2026 sunxiaowei<br>2026 孙小卫课题组</p>
+    </footer>
+
+</body>
+</html>

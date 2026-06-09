@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实验室简介 - Sun Lab, SUSTech</title>
+    <style>
+        /* ===== 全局 ===== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+        a {
+            color: #005a8c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 主视觉横幅 ===== */
+        .hero {
+         background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+                        url('sustech1.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+      .hero img.group-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);  
+    margin-bottom: 25px;
+    transition: transform 0.3s;
+}
+.hero img.group-photo:hover {
+    transform: scale(1.02);     
+}
+
+.hero h1 {
+    font-size: 2.6em;
+    font-weight: 600;
+    letter-spacing: 2px;          /* 字间距 */
+    text-shadow: 1px 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+}
+.hero h1 a { color: white; text-decoration: none; }
+.hero h1 a:hover { text-decoration: underline; }
+
+/* 副标题小字 */
+.hero p {
+    font-size: 1.1em;
+    opacity: 0.9;
+    margin: 8px 0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.big-line {
+    font-size: 2em;           /* 大字 */
+    font-weight: 600;         /* 加粗 */
+    color: #1e293b;           /* 深灰黑 */
+    margin: 0 0 10px 0;       /* 下方留间距 */
+    text-align: center;         /* 左对齐 */
+    line-height: 1.3;
+}
+        /* ===== 导航栏 ===== */
+        .nav-bar {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+            font-size: 0.95em;
+        }
+        .nav-bar a {
+            color: #005a8c;
+            text-decoration: none;
+            margin: 0 8px;
+            font-weight: 500;
+        }
+        .nav-bar a:hover {
+            text-decoration: underline;
+        }
+        .nav-sep {
+            color: #ccc;
+            margin: 0 5px;
+        }
+
+        /* ===== 内容区 ===== */
+      .content {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 30px;
+    background: #ffffff;
+    border-left: 2px solid #cbd5e1;    /* 左侧装饰线 */
+    border-top: 2px solid #cbd5e1;     /* 顶部装饰线 */
+    border-radius: 0 6px 6px 0;       /* 右侧微圆角 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+        
+        .content h2 {
+            color: #005a8c;
+            border-left: 5px solid #005a8c;
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        .placeholder {
+            border: 2px dashed #ccc;
+            padding: 30px;
+            text-align: left;
+            color: #333;
+            margin: 20px 0;
+            background: white;
+            border-radius: 6px;
+        }
+
+        /* ===== 页脚 ===== */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #888;
+            background: #fff;
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== 主视觉区 ==================== -->
+    <div class="hero">
+        <a href="index.html">
+            <img class="group-photo" src="D:\360MoveData\Users\67538\Desktop\实验室网站\sustech2.webp" alt="课题组照片"
+                 onerror="this.style.display='none'">
+        </a>
+        <h1>Sun Lab, SUSTech<br>南科大孙小卫课题组</a></h1>
+        <p>Virtue,Truth, Advance<br>明德求是，日新自强</p>
+        <p style="font-size:0.9em;">Sustech 南方科技大学</p>
+    </div>
+
+   <!-- ==================== 导航栏（指向子页面） ==================== -->
+    <div class="nav-bar">
+        <a href="index.html">Homepage主页</a>
+        <span class="nav-sep">|</span>
+        <a href="lab-intro.html">Lab Intro实验室简介</a>
+        <span class="nav-sep">|</span>
+        <a href="professor.html">Professor教授介绍</a>
+        <span class="nav-sep">|</span>
+        <a href="academy product.html">Academy Product学术成果</a>
+        <span class="nav-sep">|</span>
+        <a href="publication.html">Publication论文发表</a>
+        <span class="nav-sep">|</span>
+        <a href="cooperation.html">IUR产学研</a>
+        <span class="nav-sep">|</span>
+        <a href="news.html">News最新动态</a>
+        <span class="nav-sep">|</span>
+        <a href="activity.html">Activity活动风采</a>
+        <span class="nav-sep">|</span>
+        <a href="join.html">Join Us加入我们</a>
+    </div>
+
+    <!-- ==================== 实验室简介内容 ==================== -->
+    <div class="content">
+        <h2>Professor 教授介绍</h2>
+        <div class="placeholder">
+       <img src="professor1.png" alt="教授照片" style="width:60%; max-width:400px; display:block; margin:20px auto; border-radius:8px;">
+       <p class="big-line">Professor Xiaowei Sun<br>孙小卫教授</p>
+        Professor Sun Xiaowei is currently a Chair Professor at Southern University of Science and Technology, an Honorary Doctorate from Belarusian State University of Information and Radio Technology, a National Distinguished Expert, a Foreign Academician of the Russian Academy of Sciences, and an Academician of the Asia Pacific Academy of Materials Science. Served as the Executive Dean of the Institute of Nanoscience and Applications at Southern University of Science and Technology, the Founding Director of the Department of Electronic and Electrical Engineering, the Director of the Key Laboratory of Energy Conversion and Storage Technology under the Ministry of Education, and the Director of the Key Laboratory of Quantum Dot Advanced Display and Lighting in Guangdong Province's ordinary universities.<br>孙小卫教授现为南方科技大学讲席教授、白俄罗斯国立信息与无线电大学荣誉博士，国家特聘专家，俄罗斯科学院外籍院士，亚太材料科学院院士。担任南方科技大学纳米科学与应用研究院执行院长、电子与电气工程系创系主任，能量转换与存储技术教育部重点实验室主任，广东省普通高校量子点先进显示与照明重点实验室主任。<br>Professor Sun Xiaowei has successively served as a professor of Nanyang Technological University in Singapore and director of the Microelectronics Center. He is a Distinguished Lecturer of the American Society of Electrical and Electronic Engineers (IEEE), the American Optical Society (OSA), the International Society of Optical Engineers (SPIE), the International Society for Information Display (SID), the British Physical Society (loP) Fellow, the CORE Academy, the American Society of Electrical and Electronic Engineers (IEEE), and the first SID Fellow of scholars in the Chinese Mainland. Professor Sun Xiaowei founded the Society for Energy Photonics and served as its chairman, and co founded the Singapore China Association for the Promotion of Science and Technology and served as its vice chairman.<br>孙小卫教授历任新加坡南洋理工大学正教授、微电子中心主任，是美国电机及电子工程师学会 (IEEE) 、美国光学学会 (OSA)、国际光学工程师学会 (SPIE)、国际信息显示学会 (SID)、英国物理学会 (loP) 会士 (Fellow)、国际核心人文与科学院(CORE Academy)会士 (Fellow)，美国电机及电子工程师学会 (IEEE) 杰出演讲人(Distinguished Lecturer)，是中国大陆学者第一个国际信息显示学会会士(SID Fellow)。孙小卫教授创立了国际能源光子学学会 (Society for Energy Photonics) 并担任主席，共同创立了新加坡–中国科学技术促进协会并任职副主席。<br>Professor Sun Xiaowei has won honors such as the SPIE DCS 2024 Fumio Okano Best 3D Paper Prize, the 2023 SID Slottow Owaki Award, the National Invention and Entrepreneurship Award Innovation Award First Prize, and the Guangdong Provincial Science and Technology Award Natural Science Second Prize. At present, the main research directions are wide bandgap semiconductor materials and devices, high-quality displays and lighting based on nanocrystals, extended reality and 3D displays, etc. More than 600 articles have been published in academic journals, with over 45000 citations and an H-index of 106 (Google Scholar). It has been selected as a highly cited scholar by Elsevier China for seven consecutive years and is one of the top 2% scientists in the world at Stanford.<br>孙小卫教授曾获SPIE DCS 2024年度The Fumio Okano Best 3D Paper Prize、2023 SID Slottow-Owaki奖、国家发明创业奖创新奖一等奖、广东省科学技术奖自然科学二等奖等荣誉奖项。目前主要研究方向为宽禁带半导体材料和器件、基于纳⽶晶的⾼品质显⽰和照明、扩展现实与3D显⽰等，在学术期刊共发表文章600多篇，论文引用超45000次，H-指数为106 (Google Scholar)，连续7年入选Elsevier中国高被引学者，是Stanford全球Top 2% 科学家。
+         </div>
+         </div>
+
+    <!-- ==================== 页脚 ==================== -->
+    <footer>
+        <p>Sustech 南方科技大学</p>
+        <p>© 2026 sunxiaowei<br>2026 孙小卫课题组</p>
+    </footer>
+
+</body>
+</html>
