@@ -8,10 +8,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-               /* ========== Carousel Section ========== */
+        /* ========== Carousel Section ========== */
         .carousel-section {
-            padding: 40px 0 0;
-            background: linear-gradient(135deg, #0a0a12 0%, #12121f 50%, #0a0a12 100%);
+            padding: 30px 0 30px;
+            background: linear-gradient(135deg, #0d1526 0%, #152035 50%, #0d1526 100%);
             position: relative;
             overflow: hidden;
         }
@@ -21,56 +21,57 @@
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image:
-                radial-gradient(circle at 20% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(201, 169, 110, 0.04) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(180, 150, 100, 0.03) 0%, transparent 50%);
+                radial-gradient(circle at 20% 50%, rgba(180, 200, 220, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(180, 200, 220, 0.04) 0%, transparent 50%);
             pointer-events: none;
         }
 
-        /* 高级花纹边框 */
+        /* 银色装饰花纹边框 */
         .carousel-frame {
-            max-width: 928px;
+            max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
-            padding: 10px;
-            border-radius: 22px;
+            padding: 8px;
+            border-radius: 16px;
             background:
-                repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,0.06) 3px, rgba(255,255,255,0.06) 4px),
-                repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255,255,255,0.06) 3px, rgba(255,255,255,0.06) 4px),
-                linear-gradient(135deg, #8b6914 0%, #c9a96e 15%, #f5e6a3 30%, #daa520 50%, #f5e6a3 70%, #c9a96e 85%, #8b6914 100%);
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.05) 2px, rgba(255,255,255,0.05) 3px),
+                repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(255,255,255,0.05) 2px, rgba(255,255,255,0.05) 3px),
+                linear-gradient(135deg, #5a6a7a 0%, #8fa4b8 15%, #c8d6e0 30%, #9ab0c4 50%, #c8d6e0 70%, #8fa4b8 85%, #5a6a7a 100%);
             box-shadow:
-                0 0 0 1px rgba(139, 105, 20, 0.5),
-                0 0 0 4px rgba(201, 169, 110, 0.15),
-                0 0 0 6px rgba(139, 105, 20, 0.08),
-                0 20px 60px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+                0 0 0 1px rgba(140, 170, 200, 0.4),
+                0 0 0 4px rgba(140, 170, 200, 0.12),
+                0 0 0 6px rgba(100, 130, 160, 0.06),
+                0 12px 40px rgba(0, 0, 0, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
+        /* 内层细线 */
         .carousel-frame::before {
             content: '';
             position: absolute;
-            top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 18px;
+            top: 3px; left: 3px; right: 3px; bottom: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 13px;
             pointer-events: none;
             z-index: 2;
         }
 
+        /* 外层暗线 */
         .carousel-frame::after {
             content: '';
             position: absolute;
-            top: -6px; left: -6px; right: -6px; bottom: -6px;
-            border: 1px solid rgba(201, 169, 110, 0.15);
-            border-radius: 26px;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border: 1px solid rgba(140, 170, 200, 0.12);
+            border-radius: 20px;
             pointer-events: none;
         }
 
         .carousel-container {
-            border-radius: 14px;
+            border-radius: 10px;
             overflow: hidden;
-            background: #000;
-            box-shadow: inset 0 0 0 1px rgba(201, 169, 110, 0.2);
+            background: #0d1526;
+            box-shadow: inset 0 0 0 1px rgba(140, 170, 200, 0.15);
             position: relative;
         }
 
@@ -78,7 +79,7 @@
 
         .carousel-inner {
             width: 100%;
-            aspect-ratio: 3 / 2;
+            aspect-ratio: 16 / 9;
         }
 
         .carousel-item {
@@ -111,8 +112,8 @@
 
         .carousel-control-prev,
         .carousel-control-next {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             top: 50%;
             transform: translateY(-50%);
             background: rgba(0,0,0,0.35);
@@ -129,16 +130,16 @@
 
         .carousel-control-prev:hover,
         .carousel-control-next:hover {
-            background: rgba(0,0,0,0.65);
-            border-color: rgba(201, 169, 110, 0.4);
+            background: rgba(0,0,0,0.6);
+            border-color: rgba(180, 200, 220, 0.5);
         }
 
-        .carousel-control-prev { left: 15px; }
-        .carousel-control-next { right: 15px; }
+        .carousel-control-prev { left: 12px; }
+        .carousel-control-next { right: 12px; }
 
-        /* NTU 风格小圆点 */
+        /* 银色小圆点指示器 */
         .carousel-indicators {
-            bottom: 16px !important;
+            bottom: 14px !important;
             margin-bottom: 0 !important;
             gap: 10px;
             justify-content: center;
@@ -172,11 +173,11 @@
             border-color: rgba(255, 255, 255, 0.7) !important;
         }
 
-        /* 四角花纹装饰 */
+        /* 四角银色装饰 */
         .corner-ornament {
             position: absolute;
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             z-index: 3;
             pointer-events: none;
         }
@@ -185,32 +186,25 @@
         .corner-ornament::after {
             content: '';
             position: absolute;
-            background: rgba(201, 169, 110, 0.5);
+            background: rgba(180, 200, 220, 0.5);
         }
 
-        .corner-ornament::before {
-            width: 100%;
-            height: 2px;
-        }
+        .corner-ornament::before { width: 100%; height: 2px; }
+        .corner-ornament::after { width: 2px; height: 100%; }
 
-        .corner-ornament::after {
-            width: 2px;
-            height: 100%;
-        }
-
-        .corner-tl { top: 14px; left: 14px; }
+        .corner-tl { top: 10px; left: 10px; }
         .corner-tl::before { top: 0; left: 0; }
         .corner-tl::after { top: 0; left: 0; }
 
-        .corner-tr { top: 14px; right: 14px; }
+        .corner-tr { top: 10px; right: 10px; }
         .corner-tr::before { top: 0; right: 0; }
         .corner-tr::after { top: 0; right: 0; }
 
-        .corner-bl { bottom: 14px; left: 14px; }
+        .corner-bl { bottom: 10px; left: 10px; }
         .corner-bl::before { bottom: 0; left: 0; }
         .corner-bl::after { bottom: 0; left: 0; }
 
-        .corner-br { bottom: 14px; right: 14px; }
+        .corner-br { bottom: 10px; right: 10px; }
         .corner-br::before { bottom: 0; right: 0; }
         .corner-br::after { bottom: 0; right: 0; }
     </style>
@@ -241,91 +235,65 @@
     </nav>
 
     <!-- ==================== IMAGE CAROUSEL ==================== -->
-       <section class="carousel-section">
+          <!-- ==================== IMAGE CAROUSEL ==================== -->
+    <section class="carousel-section">
         <div class="carousel-frame">
-            <!-- 四角花纹装饰 -->
             <span class="corner-ornament corner-tl"></span>
             <span class="corner-ornament corner-tr"></span>
             <span class="corner-ornament corner-bl"></span>
             <span class="corner-ornament corner-br"></span>
-
             <div class="carousel-container">
                 <div id="heroCarousel" class="carousel" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
-                <div class="carousel-inner">
-                    <!-- Image 1 -->
-                    <div class="carousel-item active">
-                        <img src="1.jpg" alt="Lab Group Photo">
-                        <div class="carousel-caption">
-                            <h2>Our Research Team</h2>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="1.jpg" alt="Lab Group Photo">
+                            <div class="carousel-caption"><h2>Our Research Team</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="2.jpg" alt="Quantum Dots Laboratory">
+                            <div class="carousel-caption"><h2>Quantum Dots Research</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="3.jpg" alt="AR Waveguide Experiment">
+                            <div class="carousel-caption"><h2>AR Waveguide Development</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="4.jpg" alt="Laboratory Equipment">
+                            <div class="carousel-caption"><h2>Advanced Characterization</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="5.jpg" alt="Research Presentation">
+                            <div class="carousel-caption"><h2>International Collaborations</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="6.jpg" alt="Team Meeting">
+                            <div class="carousel-caption"><h2>Team Discussions</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="7.jpg" alt="Device Testing">
+                            <div class="carousel-caption"><h2>Device Testing & Validation</h2></div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="8.jpg" alt="Award Ceremony">
+                            <div class="carousel-caption"><h2>International Recognition</h2></div>
                         </div>
                     </div>
-                    <!-- Image 2 -->
-                    <div class="carousel-item">
-                        <img src="2.jpg" alt="Quantum Dots Laboratory">
-                        <div class="carousel-caption">
-                            <h2>Quantum Dots Research</h2>
-                        </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6"></button>
+                        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7"></button>
                     </div>
-                    <!-- Image 3 -->
-                    <div class="carousel-item">
-                        <img src="3.jpg" alt="AR Waveguide Experiment">
-                        <div class="carousel-caption">
-                            <h2>AR Waveguide Development</h2>
-                        </div>
-                    </div>
-                    <!-- Image 4 -->
-                    <div class="carousel-item">
-                        <img src="4.jpg" alt="Laboratory Equipment">
-                        <div class="carousel-caption">
-                            <h2>Advanced Characterization</h2>
-                        </div>
-                    </div>
-                    <!-- Image 5 -->
-                    <div class="carousel-item">
-                        <img src="5.jpg" alt="Research Presentation">
-                        <div class="carousel-caption">
-                            <h2>International Collaborations</h2>
-                        </div>
-                    </div>
-                    <!-- Image 6 -->
-                    <div class="carousel-item">
-                        <img src="6.jpg" alt="Team Meeting">
-                        <div class="carousel-caption">
-                            <h2>Team Discussions</h2>
-                        </div>
-                    </div>
-                    <!-- Image 7 -->
-                    <div class="carousel-item">
-                        <img src="7.jpg" alt="Device Testing">
-                        <div class="carousel-caption">
-                            <h2>Device Testing & Validation</h2>
-                        </div>
-                    </div>
-                    <!-- Image 8 -->
-                    <div class="carousel-item">
-                        <img src="8.jpg" alt="Award Ceremony">
-                        <div class="carousel-caption">
-                            <h2>International Recognition</h2>
-                        </div>
-                    </div>
-                </div>
-                <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
-                <!-- Indicators -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7"></button>
                 </div>
             </div>
         </div>
