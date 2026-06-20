@@ -32,14 +32,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .btn-primary-custom:hover{background:rgba(255,255,255,.9);color:var(--navy)}
 .btn-outline-custom{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.3)}
 .btn-outline-custom:hover{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(255,255,255,.08)}
-.hero-carousel-frame .carousel-caption{position:absolute;bottom:16px;left:16px;right:16px;background:rgba(8,18,35,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:8px;border-left:3px solid var(--accent);padding:14px 20px;text-align:left;z-index:3}
-.hero-carousel-frame .carousel-caption .caption-tag{font-size:.62rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(58,123,213,.95);margin-bottom:4px;display:block}
-.hero-carousel-frame .carousel-caption h2{font-size:1.2rem;font-weight:600;margin:0;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.3)}
+.hero-carousel-frame .carousel-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,rgba(0,0,0,.12) 60%,transparent 100%);padding:32px 20px 18px;text-align:left;z-index:3}
+.hero-carousel-frame .carousel-caption .caption-tag{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:3px;display:block}
+.hero-carousel-frame .carousel-caption h2{font-size:1.15rem;font-weight:600;margin:0;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4);letter-spacing:-.2px}
 .hero-carousel-frame .carousel-control-prev,.hero-carousel-frame .carousel-control-next{width:34px;height:34px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border-radius:50%;border:none;opacity:0;transition:opacity .3s}
 .hero-image-side:hover .carousel-control-prev,.hero-image-side:hover .carousel-control-next,.hero-image-side:hover .carousel-indicators{opacity:1}
 .hero-carousel-frame .carousel-control-prev{left:10px}
 .hero-carousel-frame .carousel-control-next{right:10px}
-.hero-carousel-frame .carousel-indicators{bottom:12px!important;margin:0!important;gap:8px;justify-content:center;opacity:0;transition:opacity .3s}
+.hero-carousel-frame .carousel-indicators{top:12px!important;bottom:auto!important;margin:0!important;gap:6px;justify-content:center;opacity:0;transition:opacity .3s}
 .hero-carousel-frame .carousel-indicators [data-bs-slide-to]{width:7px!important;height:7px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.5)!important;background:rgba(255,255,255,.2)!important;padding:0!important;margin:0!important;opacity:1!important;transition:all .3s!important}
 .hero-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.9)!important;border-color:rgba(255,255,255,.9)!important;transform:scale(1.15)}
 .section-padding{padding:80px 0}
@@ -108,7 +108,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .hero-text-side{padding:0 20px}
 .hero-text-side h1{font-size:1.5rem}
 .professor-stats{gap:20px}
-.hero-carousel-frame .carousel-caption{bottom:10px;left:10px;right:10px;padding:10px 14px}
+.hero-carousel-frame .carousel-caption{bottom:0;left:0;right:10px;padding:24px 16px 14px}
 .hero-carousel-frame .carousel-caption h2{font-size:1rem}
 }
 </style>
@@ -136,14 +136,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="hero-carousel-frame">
 <div id="heroCarousel" class="carousel" data-bs-ride="carousel" data-bs-interval="5000">
 <div class="carousel-inner">
-<div class="carousel-item active"><img src="1.jpg" alt="Lab Group Photo"><div class="carousel-caption"><span class="caption-tag">Our Team</span><h2>Research Team</h2></div></div>
-<div class="carousel-item"><img src="2.jpg" alt="Quantum Dots Laboratory"><div class="carousel-caption"><span class="caption-tag">Research</span><h2>Quantum Dots</h2></div></div>
-<div class="carousel-item"><img src="3.jpg" alt="AR Waveguide Experiment"><div class="carousel-caption"><span class="caption-tag">Research</span><h2>AR Waveguide</h2></div></div>
-<div class="carousel-item"><img src="4.jpg" alt="Laboratory Equipment"><div class="carousel-caption"><span class="caption-tag">Facility</span><h2>Advanced Characterization</h2></div></div>
-<div class="carousel-item"><img src="5.jpg" alt="Research Presentation"><div class="carousel-caption"><span class="caption-tag">Collaboration</span><h2>International Partners</h2></div></div>
-<div class="carousel-item"><img src="6.jpg" alt="Team Meeting"><div class="carousel-caption"><span class="caption-tag">Daily</span><h2>Team Discussions</h2></div></div>
-<div class="carousel-item"><img src="7.jpg" alt="Device Testing"><div class="carousel-caption"><span class="caption-tag">Facility</span><h2>Device Testing</h2></div></div>
-<div class="carousel-item"><img src="8.jpg" alt="Award Ceremony"><div class="carousel-caption"><span class="caption-tag">Recognition</span><h2>International Awards</h2></div></div>
+<div class="carousel-item active"><img src="1.jpg" alt="Lab Group Photo"><div class="carousel-caption"><span class="caption-tag">Conference</span><h2>International Academic Conference</h2></div></div>
+<div class="carousel-item"><img src="2.jpg" alt="Quantum Dots Laboratory"><div class="carousel-caption"><span class="caption-tag">Honor</span><h2>Academician Title</h2></div></div>
+<div class="carousel-item"><img src="3.jpg" alt="AR Waveguide Experiment"><div class="carousel-caption"><span class="caption-tag">Award</span><h2>Excellent Team</h2></div></div>
+<div class="carousel-item"><img src="4.jpg" alt="Award Ceremony"><div class="carousel-caption"><span class="caption-tag">Lecture</span><h2>Professional lectures</h2></div></div>
+<div class="carousel-item"><img src="5.jpg" alt="Research Presentation"><div class="carousel-caption"><span class="caption-tag">Facility</span><h2>Top Laboratories in Asia</h2></div></div>
+<div class="carousel-item"><img src="6.jpg" alt="Team Meeting"><div class="carousel-caption"><span class="caption-tag">Collaboration</span><h2>Collaboration with Prestigious Universities</h2></div></div>
+<div class="carousel-item"><img src="7.jpg" alt="Device Testing"><div class="carousel-caption"><span class="caption-tag">Industralization</span><h2>Industry-Academia-Research Collaboration</h2></div></div>
+<div class="carousel-item"><img src="8.jpg" alt="Laboratory Equipment"><div class="carousel-caption"><span class="caption-tag">Team</span><h2>Openminded and Friendly Atmosphere</h2></div></div>
 </div>
 <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
 <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
