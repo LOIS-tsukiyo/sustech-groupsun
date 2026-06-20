@@ -26,7 +26,7 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             color: var(--text-dark);
-            background: linear-gradient(135deg, #0f2037 0%, #1a3a5c 40%, #243b5e 70%, #1a2d42 100%);
+            background: var(--bg-white);
             -webkit-font-smoothing: antialiased;
         }
 
@@ -111,14 +111,14 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: rgba(58,123,213,0.9); 
+            color: var(--accent);
             margin-bottom: 16px;
         }
 
         .hero-text-side h1 {
             font-size: 2.4rem;
             font-weight: 700;
-            color: #ffffff; 
+            color: var(--navy);
             line-height: 1.2;
             margin-bottom: 16px;
             letter-spacing: -0.5px;
@@ -126,7 +126,7 @@
 
         .hero-text-side .lead {
             font-size: 1.05rem;
-            color: rgba(255,255,255,0.85);
+            color: var(--text-mid);
             line-height: 1.7;
             margin-bottom: 10px;
             font-weight: 400;
@@ -134,7 +134,7 @@
 
         .hero-text-side .subtitle {
             font-size: 0.92rem;
-            color: rgba(255,255,255,0.6);
+            color: var(--text-light);
             margin-bottom: 32px;
         }
 
@@ -146,26 +146,28 @@
             transition: all 0.2s;
         }
 
-       .btn-primary-custom {
-    background: #ffffff;
-    color: var(--navy);
-    border: none;
-}
-.btn-primary-custom:hover {
-    background: rgba(255,255,255,0.9);
-    color: var(--navy);
-}
+        .btn-primary-custom {
+            background: var(--navy);
+            color: #fff;
+            border: none;
+        }
 
-.btn-outline-custom {
-    background: transparent;
-    color: rgba(255,255,255,0.85);
-    border: 1.5px solid rgba(255,255,255,0.3);
-}
-.btn-outline-custom:hover {
-    border-color: rgba(255,255,255,0.7);
-    color: #ffffff;
-    background: rgba(255,255,255,0.08);
-}
+        .btn-primary-custom:hover {
+            background: var(--blue);
+            color: #fff;
+        }
+
+        .btn-outline-custom {
+            background: transparent;
+            color: var(--navy);
+            border: 1.5px solid var(--border);
+        }
+
+        .btn-outline-custom:hover {
+            border-color: var(--navy);
+            color: var(--navy);
+            background: var(--bg-light);
+        }
 
         /* Carousel caption on image */
         .hero-carousel-frame .carousel-caption {
