@@ -8,154 +8,211 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Carousel Styling */
+               /* ========== Carousel Section ========== */
         .carousel-section {
-            padding: 40px 0;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 50%, #ffffff 100%);
+            padding: 40px 0 0;
+            background: linear-gradient(135deg, #0a0a12 0%, #12121f 50%, #0a0a12 100%);
             position: relative;
             overflow: hidden;
         }
-        
-        /* Decorative pattern background */
+
         .carousel-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(100, 150, 200, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(150, 100, 200, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(100, 200, 180, 0.05) 0%, transparent 50%);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(201, 169, 110, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(180, 150, 100, 0.03) 0%, transparent 50%);
             pointer-events: none;
         }
-        
-        .carousel-section::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(200, 200, 220, 0.03) 35px, rgba(200, 200, 220, 0.03) 70px);
-            pointer-events: none;
-        }
-        
-        .carousel-container {
-            max-width: 900px;
+
+        /* 高级花纹边框 */
+        .carousel-frame {
+            max-width: 928px;
             margin: 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
-            background: white;
             position: relative;
             z-index: 1;
+            padding: 10px;
+            border-radius: 22px;
+            background:
+                repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(255,255,255,0.06) 3px, rgba(255,255,255,0.06) 4px),
+                repeating-linear-gradient(-45deg, transparent, transparent 3px, rgba(255,255,255,0.06) 3px, rgba(255,255,255,0.06) 4px),
+                linear-gradient(135deg, #8b6914 0%, #c9a96e 15%, #f5e6a3 30%, #daa520 50%, #f5e6a3 70%, #c9a96e 85%, #8b6914 100%);
+            box-shadow:
+                0 0 0 1px rgba(139, 105, 20, 0.5),
+                0 0 0 4px rgba(201, 169, 110, 0.15),
+                0 0 0 6px rgba(139, 105, 20, 0.08),
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
         }
-        
-        #heroCarousel {
-            width: 100%;
+
+        .carousel-frame::before {
+            content: '';
+            position: absolute;
+            top: 4px; left: 4px; right: 4px; bottom: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 18px;
+            pointer-events: none;
+            z-index: 2;
         }
-        
+
+        .carousel-frame::after {
+            content: '';
+            position: absolute;
+            top: -6px; left: -6px; right: -6px; bottom: -6px;
+            border: 1px solid rgba(201, 169, 110, 0.15);
+            border-radius: 26px;
+            pointer-events: none;
+        }
+
+        .carousel-container {
+            border-radius: 14px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: inset 0 0 0 1px rgba(201, 169, 110, 0.2);
+            position: relative;
+        }
+
+        #heroCarousel { width: 100%; }
+
         .carousel-inner {
             width: 100%;
             aspect-ratio: 3 / 2;
         }
-        
+
         .carousel-item {
             height: 100%;
             opacity: 0;
             transition: opacity 0.6s ease-in-out;
         }
-        
-        .carousel-item.active {
-            opacity: 1;
-        }
-        
+
+        .carousel-item.active { opacity: 1; }
+
         .carousel-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .carousel-caption {
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            padding: 30px 20px 20px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            top: auto;
+            background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+            padding: 40px 24px 24px;
+            bottom: 0; left: 0; right: 0; top: auto;
             text-align: left;
         }
-        
+
         .carousel-caption h2 {
             font-size: 1.5rem;
             font-weight: bold;
             margin: 0;
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         .carousel-control-prev,
         .carousel-control-next {
-            width: 50px;
-            height: 50px;
+            width: 48px;
+            height: 48px;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.35);
             border-radius: 50%;
-            border: none;
-            transition: background 0.3s;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s;
+            opacity: 0;
+            z-index: 5;
+        }
+
+        .carousel-inner:hover ~ .carousel-control-prev,
+        .carousel-inner:hover ~ .carousel-control-next,
+        .carousel-inner:hover ~ .carousel-indicators { opacity: 1; }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            background: rgba(0,0,0,0.65);
+            border-color: rgba(201, 169, 110, 0.4);
+        }
+
+        .carousel-control-prev { left: 15px; }
+        .carousel-control-next { right: 15px; }
+
+        /* NTU 风格小圆点 */
+        .carousel-indicators {
+            bottom: 16px !important;
+            margin-bottom: 0 !important;
+            gap: 10px;
+            justify-content: center;
+            z-index: 6;
             opacity: 0;
             transition: opacity 0.3s;
         }
-        
-        .carousel-inner:hover ~ .carousel-control-prev,
-        .carousel-inner:hover ~ .carousel-control-next {
-            opacity: 1;
-        }
-        
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            background: rgba(0,0,0,0.6);
-        }
-        
-        .carousel-control-prev {
-            left: 15px;
-        }
-        
-        .carousel-control-next {
-            right: 15px;
-        }
-        
-        /* NTU-style indicators */
-        .carousel-indicators {
-            bottom: 20px;
-            gap: 12px;
-            justify-content: center;
-        }
-        
-        .carousel-indicators button {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255,255,255,0.4);
-            transition: all 0.3s ease;
-            padding: 0;
-            margin: 0;
+
+        .carousel-indicators [data-bs-slide-to] {
+            width: 10px !important;
+            height: 10px !important;
+            border-radius: 50% !important;
+            border: 2px solid rgba(255, 255, 255, 0.5) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            padding: 0 !important;
+            margin: 0 !important;
             cursor: pointer;
+            transition: all 0.3s ease !important;
+            opacity: 1 !important;
         }
-        
-        .carousel-indicators button.active {
-            background: rgba(255,255,255,0.9);
-            width: 10px;
-            height: 10px;
+
+        .carousel-indicators [data-bs-slide-to].active {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border-color: rgba(255, 255, 255, 0.9) !important;
+            transform: scale(1.15);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
-        
-        .carousel-indicators button:hover {
-            background: rgba(255,255,255,0.7);
+
+        .carousel-indicators [data-bs-slide-to]:hover {
+            background: rgba(255, 255, 255, 0.6) !important;
+            border-color: rgba(255, 255, 255, 0.7) !important;
         }
+
+        /* 四角花纹装饰 */
+        .corner-ornament {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .corner-ornament::before,
+        .corner-ornament::after {
+            content: '';
+            position: absolute;
+            background: rgba(201, 169, 110, 0.5);
+        }
+
+        .corner-ornament::before {
+            width: 100%;
+            height: 2px;
+        }
+
+        .corner-ornament::after {
+            width: 2px;
+            height: 100%;
+        }
+
+        .corner-tl { top: 14px; left: 14px; }
+        .corner-tl::before { top: 0; left: 0; }
+        .corner-tl::after { top: 0; left: 0; }
+
+        .corner-tr { top: 14px; right: 14px; }
+        .corner-tr::before { top: 0; right: 0; }
+        .corner-tr::after { top: 0; right: 0; }
+
+        .corner-bl { bottom: 14px; left: 14px; }
+        .corner-bl::before { bottom: 0; left: 0; }
+        .corner-bl::after { bottom: 0; left: 0; }
+
+        .corner-br { bottom: 14px; right: 14px; }
+        .corner-br::before { bottom: 0; right: 0; }
+        .corner-br::after { bottom: 0; right: 0; }
     </style>
 </head>
 <body>
@@ -184,9 +241,16 @@
     </nav>
 
     <!-- ==================== IMAGE CAROUSEL ==================== -->
-    <section class="carousel-section">
-        <div class="carousel-container">
-            <div id="heroCarousel" class="carousel" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
+       <section class="carousel-section">
+        <div class="carousel-frame">
+            <!-- 四角花纹装饰 -->
+            <span class="corner-ornament corner-tl"></span>
+            <span class="corner-ornament corner-tr"></span>
+            <span class="corner-ornament corner-bl"></span>
+            <span class="corner-ornament corner-br"></span>
+
+            <div class="carousel-container">
+                <div id="heroCarousel" class="carousel" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="false">
                 <div class="carousel-inner">
                     <!-- Image 1 -->
                     <div class="carousel-item active">
