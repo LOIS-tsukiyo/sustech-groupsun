@@ -7,111 +7,135 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style> 
-:root{--navy:#1a3a5c;--blue:#2c5f8a;--accent:#3a7bd5;--text-dark:#1a1a2e;--text-mid:#4a5568;--text-light:#718096;--bg-white:#fff;--bg-light:#f7f8fa;--border:#e2e8f0}
+<style>
+:root{--deep:#1B3A4B;--sky:#5B8FA8;--pale:#A8C5D8;--bloom:#C4949A;--bloom-soft:#E0B8BA;--stamen:#B5A060;--text-dark:#1A2A3A;--text-mid:#4D6275;--text-light:#8A9AAD;--bg-white:#FAFBFC;--bg-light:#F2F5F8;--border:#DDE3E9;--shadow-pink:rgba(196,148,154,.06);--shadow-blue:rgba(91,143,168,.08)}
 *{box-sizing:border-box}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
-.navbar{background:var(--bg-white)!important;border-bottom:1px solid var(--border);padding:14px 0}
-.navbar-brand{font-weight:600;font-size:1.15rem;color:var(--navy)!important;letter-spacing:-.3px}
-.navbar-brand span{color:var(--accent)}
+/* ── Navbar ── */
+.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:relative;z-index:100}
+.navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
+.navbar-brand{font-weight:600;font-size:1.15rem;color:var(--deep)!important;letter-spacing:-.3px}
+.navbar-brand span{color:var(--deep)!important}
 .nav-link{font-size:.9rem;font-weight:450;color:var(--text-mid)!important;padding:8px 14px!important;transition:color .2s}
-.nav-link:hover,.nav-link.active{color:var(--navy)!important}
-.hero-split{display:flex;align-items:center;min-height:520px;background:linear-gradient(160deg,#0f2b4a 0%,#173d63 35%,#1e4d7a 65%,#1a3f65 100%);padding:60px 0}
-.hero-image-side{flex:0 0 52%;max-width:52%;display:flex;align-items:center;justify-content:center;padding:0 36px 0 24px}
-.hero-carousel-frame{width:100%;aspect-ratio:3/2;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 8px 36px rgba(0,0,0,.25)}
+.nav-link:hover,.nav-link.active{color:var(--deep)!important}
+/* ── Hero ── */
+.hero-split{display:flex;align-items:center;min-height:660px;background:linear-gradient(155deg,var(--deep) 0%,#234E5E 30%,var(--sky) 65%,var(--pale) 100%);padding:80px 0 100px;position:relative;overflow:hidden}
+.hero-split::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,rgba(168,197,216,.18) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,rgba(196,148,154,.1) 0%,transparent 50%);pointer-events:none;z-index:0}
+.hero-split::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,var(--bg-white) 0%,rgba(250,251,252,.6) 40%,transparent 100%);z-index:1;pointer-events:none}
+.hero-image-side{flex:0 0 52%;max-width:52%;display:flex;align-items:center;justify-content:center;padding:0 36px 0 24px;position:relative;z-index:2}
+.hero-carousel-frame{width:100%;aspect-ratio:3/2;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 8px 36px rgba(27,58,75,.25)}
 .hero-carousel-frame .carousel-inner,.hero-carousel-frame .carousel-item{height:100%}
 .hero-carousel-frame .carousel-item img{width:100%;height:100%;object-fit:cover;display:block}
-.hero-carousel-frame::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 58% 52% at 50% 44%,transparent 0%,rgba(4,10,22,.52) 100%),linear-gradient(to bottom,rgba(4,10,22,.12) 0%,transparent 22%,transparent 40%,rgba(4,10,22,.42) 100%);z-index:2;pointer-events:none}
-.hero-text-side{flex:0 0 48%;max-width:48%;display:flex;flex-direction:column;justify-content:center;padding:20px 48px 20px 40px}
-.hero-text-side .lab-tag{font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.hero-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,58,75,.1) 0%,transparent 20%,transparent 50%,rgba(27,58,75,.35) 100%);z-index:2;pointer-events:none}
+.hero-text-side{flex:0 0 48%;max-width:48%;display:flex;flex-direction:column;justify-content:center;padding:20px 48px 20px 40px;position:relative;z-index:2}
+.hero-text-side .lab-tag{font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
 .hero-text-side h1{font-size:2.4rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;letter-spacing:-.5px}
-.hero-text-side .lead{font-size:1.05rem;color:rgba(255,255,255,.82);line-height:1.7;margin-bottom:10px;font-weight:400}
+.hero-text-side .lead{font-size:1.05rem;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:10px;font-weight:400}
 .hero-text-side .subtitle{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:32px}
 .hero-buttons .btn{font-size:.88rem;font-weight:500;padding:10px 24px;border-radius:6px;transition:all .2s}
-.btn-primary-custom{background:#fff;color:var(--navy);border:none}
-.btn-primary-custom:hover{background:rgba(255,255,255,.9);color:var(--navy)}
-.btn-outline-custom{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.3)}
-.btn-outline-custom:hover{border-color:rgba(255,255,255,.7);color:#fff;background:rgba(255,255,255,.08)}
-.hero-carousel-frame .carousel-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.45) 0%,rgba(0,0,0,.12) 60%,transparent 100%);padding:32px 20px 18px;text-align:left;z-index:3}
-.hero-carousel-frame .carousel-caption .caption-tag{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:3px;display:block}
-.hero-carousel-frame .carousel-caption h2{font-size:1.15rem;font-weight:600;margin:0;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4);letter-spacing:-.2px}
-.hero-carousel-frame .carousel-control-prev,.hero-carousel-frame .carousel-control-next{width:34px;height:34px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border-radius:50%;border:none;opacity:0;transition:opacity .3s}
+.btn-primary-custom{background:var(--bloom);color:#fff;border:none;box-shadow:0 2px 12px rgba(196,148,154,.3)}
+.btn-primary-custom:hover{background:var(--bloom-soft);color:var(--deep);box-shadow:0 4px 20px rgba(196,148,154,.4)}
+.btn-outline-custom{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.25)}
+.btn-outline-custom:hover{border-color:var(--bloom-soft);color:var(--bloom-soft);background:rgba(196,148,154,.06)}
+.hero-carousel-frame .carousel-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(27,58,75,.5) 0%,rgba(27,58,75,.12) 60%,transparent 100%);padding:32px 20px 18px;text-align:left;z-index:3}
+.hero-carousel-frame .carousel-caption .caption-tag{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3px;display:block}
+.hero-carousel-frame .carousel-caption h2{font-size:1.15rem;font-weight:600;margin:0;color:#fff;text-shadow:0 1px 6px rgba(27,58,75,.4);letter-spacing:-.2px}
+.hero-carousel-frame .carousel-control-prev,.hero-carousel-frame .carousel-control-next{width:34px;height:34px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border-radius:50%;border:none;opacity:0;transition:opacity .3s}
 .hero-image-side:hover .carousel-control-prev,.hero-image-side:hover .carousel-control-next,.hero-image-side:hover .carousel-indicators{opacity:1}
 .hero-carousel-frame .carousel-control-prev{left:10px}
 .hero-carousel-frame .carousel-control-next{right:10px}
 .hero-carousel-frame .carousel-indicators{top:12px!important;bottom:auto!important;margin:0!important;gap:6px;justify-content:center;opacity:0;transition:opacity .3s}
-.hero-carousel-frame .carousel-indicators [data-bs-slide-to]{width:7px!important;height:7px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.5)!important;background:rgba(255,255,255,.2)!important;padding:0!important;margin:0!important;opacity:1!important;transition:all .3s!important}
-.hero-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.9)!important;border-color:rgba(255,255,255,.9)!important;transform:scale(1.15)}
-.section-padding{padding:80px 0}
-.section-title{font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
-.section-heading{font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-.3px}
+.hero-carousel-frame .carousel-indicators [data-bs-slide-to]{width:7px!important;height:7px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.4)!important;background:rgba(255,255,255,.15)!important;padding:0!important;margin:0!important;opacity:1!important;transition:all .3s!important}
+.hero-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.85)!important;border-color:rgba(255,255,255,.85)!important;transform:scale(1.15)}
+/* ── Section Common ── */
+.section-padding{padding:80px 0;position:relative}
+.section-title{font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-mid);margin-bottom:8px}
+.section-heading{font-size:1.8rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;letter-spacing:-.3px}
 .section-desc{font-size:.95rem;color:var(--text-light);max-width:560px}
+/* ── Breakthrough ── */
 .breakthrough-section{background:var(--bg-white)}
-.bt-card{background:var(--bg-white);border-radius:12px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.05);border:1px solid var(--border);transition:all .3s ease;height:100%;display:flex;flex-direction:column}
-.bt-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1);transform:translateY(-4px)}
-.bt-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#0f2b4a 0%,#1e4d7a 100%)}
+.breakthrough-section::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(ellipse 80% 50% at 15% 10%,rgba(196,148,154,.04) 0%,transparent 55%),radial-gradient(ellipse 60% 40% at 90% 95%,rgba(91,143,168,.035) 0%,transparent 50%);pointer-events:none;z-index:0}
+.breakthrough-section .container{position:relative;z-index:1}
+.bt-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.04);border:1px solid var(--border);transition:all .3s ease;height:100%;display:flex;flex-direction:column}
+.bt-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.07),0 0 0 1px rgba(196,148,154,.15);transform:translateY(-4px)}
+.bt-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--deep) 0%,var(--sky) 100%)}
 .bt-card-media img,.bt-card-media video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
 .bt-card:hover .bt-card-media img{transform:scale(1.04)}
 .bt-card-media .media-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.bt-card-media .media-placeholder i{font-size:2.2rem;color:rgba(255,255,255,.2)}
-.bt-card-media .video-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.25);cursor:pointer;transition:all .25s}
-.bt-card-media .video-btn:hover{transform:translate(-50%,-50%) scale(1.08);background:#fff;box-shadow:0 6px 28px rgba(0,0,0,.3)}
-.bt-card-media .video-btn i{color:var(--navy);font-size:1.1rem;margin-left:3px}
+.bt-card-media .media-placeholder i{font-size:2.2rem;color:rgba(168,197,216,.3)}
 .bt-card-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column}
 .bt-card-body .bt-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.bt-card-body .bt-date{font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent)}
+.bt-card-body .bt-date{font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--bloom)}
 .bt-card-body .bt-journal{font-size:.7rem;font-weight:500;color:var(--text-light);padding-left:10px;border-left:1.5px solid var(--border)}
-.bt-card-body h4{font-size:1.08rem;font-weight:650;color:var(--navy);margin-bottom:10px;line-height:1.45;letter-spacing:-.15px}
+.bt-card-body h4{font-size:1.08rem;font-weight:650;color:var(--text-dark);margin-bottom:10px;line-height:1.45;letter-spacing:-.15px}
 .bt-card-body p{font-size:.86rem;color:var(--text-light);line-height:1.65;margin-bottom:0;flex:1}
-.bt-card-body .bt-link{font-size:.8rem;font-weight:500;color:var(--accent);text-decoration:none;margin-top:14px;display:inline-flex;align-items:center;gap:5px;transition:gap .2s,color .2s}
-.bt-card-body .bt-link:hover{color:var(--navy);gap:8px}
-.research-section{background:var(--bg-light)}
-.research-card{background:var(--bg-white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .25s;height:100%;display:flex;flex-direction:column}
-.research-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.06);transform:translateY(-2px)}
+.bt-card-body .bt-link{font-size:.8rem;font-weight:500;color:var(--text-mid);text-decoration:none;margin-top:14px;display:inline-flex;align-items:center;gap:5px;transition:gap .2s,color .2s}
+.bt-card-body .bt-link:hover{color:var(--deep);gap:8px}
+/* ── Research ── */
+.research-section{background:var(--bg-white)}
+.research-section::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(ellipse 70% 50% at 85% 10%,rgba(91,143,168,.04) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 8% 90%,rgba(196,148,154,.03) 0%,transparent 45%);pointer-events:none;z-index:0}
+.research-section .container{position:relative;z-index:1}
+.research-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .25s;height:100%;display:flex;flex-direction:column;position:relative}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--bloom-soft),var(--pale));opacity:0;transition:opacity .3s}
+.research-card:hover::before{opacity:1}
+.research-card:hover{box-shadow:0 6px 24px var(--shadow-blue),0 0 0 1px rgba(91,143,168,.12);transform:translateY(-2px)}
 .research-card-image{height:160px;background-size:cover;background-position:center;background-color:var(--bg-light)}
-.research-card-image.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg-light) 0%,#eef2f7 100%)}
-.research-card-image.placeholder i{font-size:2rem;color:#c0c8d4}
+.research-card-image.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef1f5 0%,#e5eaf0 100%)}
+.research-card-image.placeholder i{font-size:2rem;color:var(--pale)}
 .research-card-body{padding:24px;display:flex;flex-direction:column;flex:1}
-.research-card-body h4{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:10px}
+.research-card-body h4{font-size:1.05rem;font-weight:600;color:var(--text-dark);margin-bottom:10px}
 .research-card-body p{font-size:.88rem;color:var(--text-light);line-height:1.65;margin-bottom:16px;flex:1}
-.research-card-body .btn-link{font-size:.82rem;font-weight:500;color:var(--accent);text-decoration:none;padding:0}
-.research-card-body .btn-link:hover{color:var(--navy)}
-.stats-section{background:var(--bg-white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stat-block{text-align:center;padding:12px 0}
-.stat-block .stat-number{font-size:1.6rem;font-weight:700;color:var(--navy);margin-bottom:2px}
-.stat-block .stat-label{font-size:.78rem;font-weight:500;color:var(--text-light);text-transform:uppercase;letter-spacing:1px}
-.professor-section{background:var(--bg-light)}
-.professor-content h3{font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.research-card-body .btn-link{font-size:.82rem;font-weight:500;color:var(--text-mid);text-decoration:none;padding:0}
+.research-card-body .btn-link:hover{color:var(--deep)}
+/* ── Stats ── */
+.stats-section{background:linear-gradient(135deg,var(--deep) 0%,#2A5A6E 40%,var(--sky) 100%);padding:36px 0;position:relative;overflow:hidden}
+.stats-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 50% 50%,rgba(168,197,216,.12) 0%,transparent 70%);pointer-events:none}
+.stats-section .container{position:relative;z-index:1}
+.stat-block{text-align:center;padding:8px 0}
+.stat-block .stat-number{font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:2px}
+.stat-block .stat-label{font-size:.78rem;font-weight:500;color:var(--pale);text-transform:uppercase;letter-spacing:1px}
+/* ── Professor ── */
+.professor-section{background:var(--bg-white);position:relative;overflow:hidden}
+.professor-section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:320px;background:linear-gradient(90deg,rgba(91,143,168,.05) 0%,rgba(91,143,168,.02) 60%,transparent 100%);pointer-events:none;z-index:0}
+.professor-section::after{content:'';position:absolute;top:0;right:0;bottom:0;width:200px;background:linear-gradient(270deg,rgba(196,148,154,.035) 0%,transparent 100%);pointer-events:none;z-index:0}
+.professor-section .container{position:relative;z-index:1}
+.professor-section .section-title{color:var(--text-mid)}
+.professor-content h3{font-size:1.4rem;font-weight:700;color:var(--text-dark);margin-bottom:8px}
 .professor-content .role{font-size:.88rem;color:var(--text-light);margin-bottom:20px}
 .professor-stats{display:flex;gap:32px;margin-bottom:24px;flex-wrap:wrap}
 .professor-stat{text-align:left}
-.professor-stat .number{font-size:1.5rem;font-weight:700;color:var(--navy)}
+.professor-stat .number{font-size:1.5rem;font-weight:700;color:var(--text-dark)}
 .professor-stat .label{font-size:.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.8px}
 .award-list{list-style:none;padding:0;margin:0}
-.award-list li{font-size:.88rem;color:var(--text-mid);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.award-list li{font-size:.88rem;color:var(--text-mid);padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
 .award-list li:last-child{border-bottom:none}
-.award-list li i{color:var(--accent);font-size:.75rem}
+.professor-section .award-list li i{color:var(--text-light);font-size:.75rem;margin-top:4px}
 .professor-image{width:100%;border-radius:10px;overflow:hidden;background:var(--bg-light);aspect-ratio:3/2;background-size:cover;background-position:center}
 .professor-image img{width:100%;height:100%;object-fit:cover}
 .professor-image.placeholder{display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
-.professor-image.placeholder i{font-size:3rem;color:#c0c8d4}
-.site-footer{background:var(--navy);color:rgba(255,255,255,.7);padding:48px 0 32px}
-.site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.9);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
-.site-footer p,.site-footer a{font-size:.85rem;color:rgba(255,255,255,.6);text-decoration:none}
-.site-footer a:hover{color:rgba(255,255,255,.9)}
+.professor-image.placeholder i{font-size:3rem;color:var(--pale)}
+/* ── Footer ── */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
+.site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.site-footer p,.site-footer a{font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none}
+.site-footer a:hover{color:var(--pale)}
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer ul li{margin-bottom:8px}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.4)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
+/* ── Responsive ── */
 @media(max-width:991px){
-.hero-split{flex-direction:column;min-height:auto;padding:40px 0}
+.hero-split{flex-direction:column;min-height:auto;padding:40px 0 60px}
 .hero-image-side{flex:none;max-width:100%;padding:0 24px;margin-bottom:32px}
 .hero-carousel-frame{max-width:560px;margin:0 auto}
 .hero-text-side{flex:none;max-width:100%;padding:0 24px;text-align:center}
 .hero-text-side h1{color:#fff;font-size:1.8rem}
 .hero-text-side .lead{color:rgba(255,255,255,.85)}
 .hero-text-side .subtitle{color:rgba(255,255,255,.6)}
-.hero-text-side .lab-tag{color:rgba(58,123,213,.9)}
+.hero-text-side .lab-tag{color:rgba(255,255,255,.7)}
 .hero-buttons{justify-content:center}
+.professor-section::before{width:100%;height:160px;background:linear-gradient(180deg,rgba(91,143,168,.05) 0%,transparent 100%)}
+.professor-section::after{display:none}
 }
 @media(max-width:767px){
 .section-padding{padding:48px 0}
@@ -121,6 +145,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .professor-stats{gap:20px}
 .hero-carousel-frame .carousel-caption{bottom:0;left:0;right:10px;padding:24px 16px 14px}
 .hero-carousel-frame .carousel-caption h2{font-size:1rem}
+.stats-section{padding:24px 0}
 }
 </style>
 </head>
@@ -196,12 +221,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <a href="publications.html" class="text-decoration-none">
 <div class="bt-card">
 <div class="bt-card-media">
-<img src="10.jpg" alt="描述">
+<img src="10.jpg" alt="Xiamen University Visit">
 </div>
 <div class="bt-card-body">
 <div class="bt-meta"><span class="bt-date">June,2026</span><span class="bt-journal">Xiamen University</span></div>
 <h4>Academician Sun Xiaowei visits Academician Hu Wenping, President of Xiamen University</h4>
-<p>Recently, Sun Xiaowei, a foreign academician of the Russian Academy of Sciences, the executive dean of the Institute of Nanoscience and Application of the SUST, and the chair professor of the Department of EEE, visited Hu Wenping, an academician of the CAS Member and the president of Xiamen University. The two sides carried out relaxed and friendly academic exchanges around discipline construction, scientific research cooperation, talent cultivation, achievement transformation, optoelectronics and nano frontier development.</p>
+<p>Recently, Sun Xiaowei, a foreign academician of the Russian Academy of Sciences, the executive dean of the Institute of Nanoscience and Application of the SUST, and the chair professor of the Department of EEE, visited Hu Wenping, an academician of the CAS Member and the president of Xiamen University.</p>
 <span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
 </div>
 </div>
@@ -209,14 +234,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 <div class="col-md-6 col-lg-4">
 <a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
+<div class="btbt-card">
 <div class="bt-card-media">
-<img src="9.jpg" alt="描述">
+<img src="9.jpg" alt="Nature Review">
 </div>
 <div class="bt-card-body">
 <div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Nature</span></div>
 <h4>Academician Sun Xiaowei's team was invited to publish a research review article in Nature</h4>
-<p>Recently, at the invitation of the top academic journal Nature, Sun Xiaowei, Chairman of MiLEDA, Foreign Academician of the Russian Academy of Sciences, Executive Dean of the Institute of Nanoscience and Applications at SUST, and Chair Professor of the Department of EEE, published a research review article titled "Glasses free display switches between 2D and 3D" in the Nature News&Views column, commenting on the latest progress made by the joint team of POSTECH in the field of switchable naked eye 2D/3D displays. </p>
+<p>Recently, at the invitation of the top academic journal Nature, Sun Xiaowei published a research review article titled "Glasses free display switches between 2D and 3D" in the Nature News&Views column.</p>
 <span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
 </div>
 </div>
@@ -230,12 +255,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 <div class="bt-card-body">
 <div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Shenzhen News</span></div>
-<h4>Exclusive interview on Huawei's"Tao Law"</h4>
-<p>Shenzhen News conducted an exclusive interview with Sun Xiaowei, Executive Dean of the Institute of Nano Science and Applications at the Southern University of Science and Technology, regarding Huawei's release of the "Tao Law".</p>
+<h4>Exclusive interview on Huawei's "Tao Law"</h4>
+<p>Shenzhen News conducted an exclusive interview with Sun Xiaowei, Executive Dean of the Institute of Nano Science and Applications at the Southern University of Science and Technology.</p>
 <span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
 </div>
 </div>
 </a>
+</div>
+</div>
 </div>
 </section>
 <section class="section-padding research-section">
@@ -291,7 +318,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-<section class="py-4 stats-section">
+<section class="stats-section">
 <div class="container">
 <div class="row">
 <div class="col-6 col-md-3"><div class="stat-block"><div class="stat-number">60+</div><div class="stat-label">Members</div></div></div>
@@ -311,7 +338,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="professor-content">
 <div class="section-title">Principal Investigator</div>
 <h3>Prof. Xiao Wei Sun</h3>
-<p class="role"> IEEE/OSA/SPIE/SID/loP Fellow · Foreign Academician of RAS · Stanford Top 2% Scientists Worldwide</p>
+<p class="role">IEEE/OSA/SPIE/SID/IoP Fellow · Foreign Academician of RAS · Stanford Top 2% Scientists Worldwide</p>
 <div class="professor-stats">
 <div class="professor-stat"><div class="number">600+</div><div class="label">Articles</div></div>
 <div class="professor-stat"><div class="number">47k+</div><div class="label">Citations</div></div>
@@ -321,7 +348,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <ul class="award-list">
 <li><i class="fas fa-star"></i>Chair Professor of SUST<br>Honorary Doctor of BSUIR<br>National Distinguished Expert<br>Executive Dean of the Institute of Nano Science and Applications at SUST<br>Founding Chair of the Department of EEE<br>Director of the Ministry of Education Key Laboratory of Energy Conversion and Storage Technology<br>Director of the Guangdong Provincial Key Laboratory of Advanced Quantum Dot Displays and Lighting in Higher Education Institutions</li>
 <li><i class="fas fa-medal"></i>The Fumio Okano Best 3D Paper Prize(2024)<br>Slottow-Owaki Award (2023)<br>National Invention and Entrepreneurship Award Innovation First Prize<br>Guangdong Provincial Science and Technology Award, Natural Science Second Prize and other honorary awards<br>Elsevier China Highly Cited Scholar for 7 consecutive years</li>
-<li><i class="fas fa-award"></i> Asia Pacific Academy of Materials Fellow<br>Fellow of the International Core Academy of Humanities and Sciences<br>Fellow of the Asia-Pacific Academy of Materials Science<br>Distinguished Lecturer of IEEE<br>First SID Fellow of Chinese mainland<br>Founder and Vice Chairman of Singapore China Association for the Promotion of Science and Technology<br>Founder and President of the International Society for Energy Photonics</li>
+<li><i class="fas fa-award"></i>Asia Pacific Academy of Materials Fellow<br>Fellow of the International Core Academy of Humanities and Sciences<br>Fellow of the Asia-Pacific Academy of Materials Science<br>Distinguished Lecturer of IEEE<br>First SID Fellow of Chinese mainland<br>Founder and Vice Chairman of Singapore China Association for the Promotion of Science and Technology<br>Founder and President of the International Society for Energy Photonics</li>
 </ul>
 </div>
 </div>
