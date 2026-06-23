@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Sun Lab, SUSTech</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#1B3A4B;--sky:#5B8FA8;--pale:#A8C5D8;--bloom:#C4949A;--bloom-soft:#E0B8BA;--stamen:#B5A060;--text-dark:#1A2A3A;--text-mid:#4D6275;--text-light:#8A9AAD;--bg-white:#FAFBFC;--bg-light:#F2F5F8;--border:#DDE3E9;--shadow-pink:rgba(196,148,154,.06);--shadow-blue:rgba(91,143,168,.08)}
+*{box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
+/* ── Navbar ── */
+.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:relative;z-index:100}
+.navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
+.navbar-brand{font-weight:600;font-size:1.15rem;color:#1a1a1a!important;letter-spacing:-.3px}
+.navbar-brand span{color:#1a1a1a;font-weight:700}
+.nav-link{font-size:.9rem;font-weight:450;color:#5a5f66!important;padding:8px 14px!important;transition:color .2s}
+.nav-link:hover,.nav-link.active{color:#1a1a1a!important}
+/* ── Page Header ── */
+.page-header{padding:116px 0 96px;text-align:center;position:relative;background:linear-gradient(160deg,var(--deep) 0%,#234E5E 35%,var(--sky) 70%,var(--pale) 100%);overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 25% 50%,rgba(168,197,216,.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(196,148,154,.1) 0%,transparent 50%);pointer-events:none;z-index:0}
+.page-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,var(--bg-white) 0%,transparent 100%);z-index:1;pointer-events:none}
+.page-header .container{position:relative;z-index:2}
+.page-header h1{font-size:2.6rem;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.4px}
+.page-header p{font-size:1rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto}
+/* ── Map ── */
+.map-section{position:relative}
+.map-section::before,.map-section::after{display:none}
+.map-frame{width:100%;height:360px;border:0}
+/* ── Contact Content ── */
+.contact-section{padding:72px 0 80px;position:relative;overflow:hidden;background:var(--bg-white)}
+.contact-section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:280px;background:linear-gradient(90deg,rgba(91,143,168,.04) 0%,rgba(91,143,168,.015) 60%,transparent 100%);pointer-events:none;z-index:0}
+.contact-section::after{content:'';position:absolute;top:0;right:0;bottom:0;width:200px;background:linear-gradient(270deg,rgba(196,148,154,.03) 0%,transparent 100%);pointer-events:none;z-index:0}
+.contact-section .container{position:relative;z-index:1}
+.contact-info{padding-right:40px}
+.contact-info h2{font-size:1.8rem;font-weight:700;color:#1a1a1a;margin-bottom:8px;letter-spacing:-.3px}
+.contact-info .sub{font-size:.92rem;color:#8a8a8a;margin-bottom:32px;line-height:1.6}
+.info-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:28px}
+.info-item .icon-box{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--bg-light),#fff);display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1px solid var(--border)}
+.info-item .icon-box i{color:#9a9a9a;font-size:.95rem}
+.info-item h6{font-size:1rem;font-weight:700;color:#2a2a2a;margin-bottom:6px;letter-spacing:.3px}
+.info-item p{font-size:1rem;font-weight:500;color:#4a4a4a;margin:0;line-height:1.7}
+.info-item a{color:#4a4a4a;text-decoration:none;transition:color .2s}
+.info-item a:hover{color:var(--deep)}
+/* ── Form ── */
+.contact-form{background:#fff;border:1px solid var(--border);border-radius:14px;padding:36px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.contact-form h3{font-size:1.1rem;font-weight:700;color:var(--deep);margin-bottom:24px;letter-spacing:-.15px}
+.form-label{font-size:.8rem;font-weight:500;color:#5a5a5a;margin-bottom:6px;letter-spacing:.2px}
+.form-control{border:1px solid var(--border);border-radius:8px;padding:11px 14px;font-size:.88rem;color:var(--text-dark);background:var(--bg-white);transition:border-color .2s,box-shadow .2s}
+.form-control:focus{border-color:var(--pale);box-shadow:0 0 0 3px rgba(168,197,216,.15);outline:none}
+.form-control::placeholder{color:var(--text-light);opacity:.7}
+textarea.form-control{resize:vertical;min-height:130px}
+.btn-submit{background:var(--bloom);color:#fff;border:none;font-size:.88rem;font-weight:500;padding:12px 36px;border-radius:8px;transition:all .2s;letter-spacing:.2px}
+.btn-submit:hover{background:var(--bloom-soft);color:var(--deep);box-shadow:0 4px 16px rgba(196,148,154,.3)}
+/* ── Footer ── */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
+.site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.site-footer p,.site-footer a{font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none}
+.site-footer a:hover{color:var(--pale)}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer ul li{margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
+/* ── Responsive ── */
+@media(max-width:991px){
+.contact-info{padding-right:0;margin-bottom:40px}
+.page-header h1{font-size:2rem}
+}
+@media(max-width:767px){
+.page-header{padding:52px 0 40px}
+.page-header h1{font-size:1.7rem}
+.map-frame{height:240px}
+.contact-form{padding:24px}
+.contact-section{padding:48px 0 56px}
+.contact-info h2{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="contact.html"><span>Sun Lab</span> . SUSTech</a>
+<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+<li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+<li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+<li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
+<li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+<li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="page-header">
+<div class="container">
+<h1>Contact Us</h1>
+<p>Get in touch with Sun Lab at the Southern University of Science and Technology.</p>
+</div>
+</section>
+<section class="map-section">
+<iframe class="map-frame" src="https://maps.google.com/maps?q=School+of+Engineering,+Southern+University+of+Science+and+Technology,+Shenzhen&hl=en&z=17&ie=UTF8&iwloc=&output=embed" loading="lazy" title="SUSTech College of Engineering" allowfullscreen></iframe>
+</section>
+<section class="contact-section">
+<div class="container">
+<div class="row g-5">
+<div class="col-lg-5">
+<div class="contact-info">
+<h2>Get in Touch</h2>
+<p class="sub">We welcome collaboration inquiries, academic discussions, and visiting scholar opportunities.</p>
+<div class="info-item">
+<div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+<div>
+<h6>Address</h6>
+<p>School of Engineering, Southern University of Science and Technology,1088 Xueyuan Blvd, Nanshan District,Shenzhen, Guangdong 518055, China</p>
+</div>
+</div>
+<div class="info-item">
+<div class="icon-box"><i class="fas fa-envelope"></i></div>
+<div>
+<h6>Email</h6>
+<p><a href="mailto:sunxiaowei@sustech.edu.cn">sunxiaowei@sustech.edu.cn</a></p>
+</div>
+</div>
+<div class="info-item">
+<div class="icon-box"><i class="fas fa-globe"></i></div>
+<div>
+<h6>University</h6>
+<p><a href="https://www.sustech.edu.cn" target="_blank" rel="noopener">www.sustech.edu.cn</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-lg-7">
+<div class="contact-form">
+<h3>Send a Message</h3>
+<form id="contactForm">
+<div class="row g-3">
+<div class="col-md-6">
+<label class="form-label">Name</label>
+<input type="text" class="form-control" id="formName" placeholder="Your name" required>
+</div>
+<div class="col-md-6">
+<label class="form-label">Email</label>
+<input type="email" class="form-control" id="formEmail" placeholder="your@email.com" required>
+</div>
+<div class="col-12">
+<label class="form-label">Subject</label>
+<input type="text" class="form-control" id="formSubject" placeholder="What is this about?">
+</div>
+<div class="col-12">
+<label class="form-label">Message</label>
+<textarea class="form-control" id="formMessage" placeholder="Write your message here..." required></textarea>
+</div>
+<div class="col-12 mt-2">
+<button type="submit" class="btn btn-submit">Send Message</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="site-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h6>Sun Lab</h6>
+<p>Southern University of Science and Technology<br>Shenzhen, China</p>
+<p class="mt-2">sunxiaowei@sustech.edu.cn</p>
+</div>
+<div class="col-md-4">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h6>Follow</h6>
+<div class="d-flex gap-3">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">&copy; 2026 Sun Lab, SUSTech. All rights reserved.</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();const name=document.getElementById('formName').value;const email=document.getElementById('formEmail').value;const subject=document.getElementById('formSubject').value||'Sun Lab Contact Form';const message=document.getElementById('formMessage').value;const body='Name: '+name+'%0A'+'Email: '+email+'%0A%0A'+message;window.location.href='mailto:sunxiaowei@sustech.edu.cn?subject='+encodeURIComponent(subject)+'&body='+body});
+</script>
+</body>
+</html>
