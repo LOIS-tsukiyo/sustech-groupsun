@@ -127,27 +127,69 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="news-data.js"></script>
 <script>
+/* NOTE: item.content/body/summary may contain trusted HTML authored in news-data.js.
+   Do not pass user-supplied strings to innerHTML in production without sanitisation. */
 (function(){
-  if(typeof NEWS_DATA==='undefined'){return}
-  var params=new URLSearchParams(window.location.search);
-  var id=parseInt(params.get('id'));
-  var item=NEWS_DATA.find(function(n){return n.id===id});
-  if(!item){
+  /* Resolve id from ?id=NN (query param) or #NN (hash), whichever is present */
+  function getNewsId(){
+    var search=window.location.search;
+    var hash=window.location.hash.replace('#','');
+    var fromSearch=new URLSearchParams(search).get('id');
+    var raw=fromSearch||hash;
+    var n=parseInt(raw,10);
+    return isNaN(n)?null:n;
+  }
+
+  /* Show a friendly inline error when data or article is unavailable */
+  function showError(title,msg){
     document.querySelector('.page-header').style.display='none';
-    document.querySelector('.article-section').innerHTML='<div class="container"><div class="not-found"><h2>News not found</h2><p>The article you are looking for does not exist.</p><a href="news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a></div></div>';
+    document.querySelector('.article-section').innerHTML=
+      '<div class="container"><div class="not-found">'+
+        '<h2>'+title+'</h2>'+
+        '<p>'+msg+'</p>'+
+        '<a href="news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a>'+
+      '</div></div>';
+  }
+
+  if(typeof NEWS_DATA==='undefined'){
+    showError('Data unavailable','News data could not be loaded. Please ensure news-data.js is present.');
+    document.title='Error - Sun Lab, SUSTech';
+    return;
+  }
+
+  var id=getNewsId();
+  if(!id){
+    showError('Invalid link','No article ID was found in the URL.');
     document.title='Not Found - Sun Lab, SUSTech';
     return;
   }
-  document.title=item.title+' - Sun Lab, SUSTech';
-  document.getElementById('detail-title').textContent=item.title;
-  document.getElementById('detail-date').textContent=item.date;
-  document.getElementById('detail-cat').textContent=item.category;
-  var mp=item.media.src;
-  var mf=item.media.type==='video'
-    ?'<video src="'+mp+'" controls preload="metadata" playsinline></video>'
-    :'<img src="'+mp+'" alt="'+item.media.alt+'">';
-  document.getElementById('detail-media').innerHTML=mf;
-  document.getElementById('detail-body').innerHTML=item.body;
+
+  var item=NEWS_DATA.find(function(n){return n.id===id});
+  if(!item){
+    showError('News not found','The article you are looking for does not exist.');
+    document.title='Not Found - Sun Lab, SUSTech';
+    return;
+  }
+
+  /* Populate meta */
+  document.title=(item.title||'News')+' - Sun Lab, SUSTech';
+  document.getElementById('detail-title').textContent=item.title||'';
+  document.getElementById('detail-date').textContent=item.date||'';
+  document.getElementById('detail-cat').textContent=item.category||'';
+
+  /* Media — gracefully degrade to a placeholder when media is absent */
+  var mediaEl=document.getElementById('detail-media');
+  if(item.media&&item.media.src){
+    mediaEl.innerHTML=item.media.type==='video'
+      ?'<video src="'+item.media.src+'" controls preload="metadata" playsinline></video>'
+      :'<img src="'+item.media.src+'" alt="'+(item.media.alt||'')+'">';
+  }else{
+    mediaEl.style.display='none';
+  }
+
+  /* Body content — prefer content, then body, then summary */
+  var content=item.content||item.body||item.summary||'<p>No content available.</p>';
+  document.getElementById('detail-body').innerHTML=content;
 })();
 </script>
 </body>
