@@ -350,19 +350,38 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
+
+  function renderMedia(media) {
+    if (!media || !media.src) {
+      return '<div class="bt-card-media d-flex align-items-center justify-content-center px-4 text-center"><span class="text-muted small">Media coming soon</span></div>';
+    }
+
+    if (media.type === 'video') {
+      return '<div class="bt-card-media"><video src="' + esc(media.src) + '" title="' + esc(media.alt || 'News video') + '" aria-label="' + esc(media.alt || 'News video') + '" controls preload="metadata" playsinline></video></div>';
+    }
+
+    return '<div class="bt-card-media"><img src="' + esc(media.src) + '" alt="' + esc(media.alt || 'News image') + '"></div>';
+  }
+
   var container = document.getElementById('breakthrough-cards');
-  if (!container || typeof NEWS_DATA === 'undefined') return;
+  if (!container) return;
+  if (typeof NEWS_DATA === 'undefined' || !Array.isArray(NEWS_DATA)) {
+    container.innerHTML = '<div class="col-12"><div class="bt-card"><div class="bt-card-body"><h4>Latest news unavailable</h4><p>We could not load the recent breakthroughs right now. Please visit the news page again later.</p></div></div></div>';
+    return;
+  }
   var items = NEWS_DATA.slice(0, 3);
+  if (!items.length) {
+    container.innerHTML = '<div class="col-12"><div class="bt-card"><div class="bt-card-body"><h4>No breakthroughs yet</h4><p>Please check back soon for the latest updates from Sun Lab.</p></div></div></div>';
+    return;
+  }
   var html = '';
   items.forEach(function (item) {
-    var media = item.media.type === 'video'
-      ? '<video src="' + esc(item.media.src) + '" title="' + esc(item.media.alt) + '" aria-label="' + esc(item.media.alt) + '" controls preload="metadata" playsinline></video>'
-      : '<img src="' + esc(item.media.src) + '" alt="' + esc(item.media.alt) + '">';
+    var media = renderMedia(item.media);
     html +=
       '<div class="col-md-6 col-lg-4">' +
         '<a href="newsdetail.html?id=' + esc(item.id) + '" class="text-decoration-none">' +
           '<div class="bt-card">' +
-            '<div class="bt-card-media">' + media + '</div>' +
+            media +
             '<div class="bt-card-body">' +
               '<div class="bt-meta"><span class="bt-date">' + esc(item.date) + '</span><span class="bt-journal">' + esc(item.category) + '</span></div>' +
               '<h4>' + esc(item.title) + '</h4>' +
