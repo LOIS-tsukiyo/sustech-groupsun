@@ -42,6 +42,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .not-found{text-align:center;padding:80px 0}
 .not-found h2{font-size:1.4rem;font-weight:600;color:var(--text-dark);margin-bottom:12px}
 .not-found p{color:var(--text-light);margin-bottom:24px}
+.media-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-light)}
 /* ���� Footer ���� */
 .site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
 .site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
@@ -190,11 +191,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       mediaHtml='<img src="'+esc(item.media.src)+'" alt="'+esc(item.media.alt||'')+'" loading="lazy">';
     }
   }else{
-    mediaHtml='<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--text-light)">No media available</div>';
+    mediaHtml='<div class="media-placeholder">No media available</div>';
   }
   document.getElementById('detail-media').innerHTML=mediaHtml;
 
-  /* NEWS_DATA is a trusted static file; innerHTML is intentional for rich HTML content */
+  /* NEWS_DATA is a trusted static file; body/content fields are expected to contain
+     pre-authored HTML for rich formatting. summary is plain text and shown as-is. */
   var content=item.content||item.body||item.summary||'<p>No content available.</p>';
   document.getElementById('detail-body').innerHTML=content;
 })();
