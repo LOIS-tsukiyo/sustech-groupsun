@@ -358,7 +358,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 
     var mediaLabel = media.alt || articleTitle || 'News media';
     if (media.type === 'video') {
-      return '<div class="bt-card-media"><video src="' + esc(media.src) + '" title="Play video" aria-label="' + esc(mediaLabel) + '" controls preload="metadata" playsinline></video></div>';
+      return '<div class="bt-card-media"><video src="' + esc(media.src) + '" aria-label="' + esc(mediaLabel) + '" controls preload="metadata" playsinline></video></div>';
     }
 
     return '<div class="bt-card-media"><img src="' + esc(media.src) + '" alt="' + esc(mediaLabel) + '"></div>';

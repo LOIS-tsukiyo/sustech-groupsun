@@ -204,7 +204,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     detailMedia.classList.remove('is-empty');
     var mediaLabel = media.alt || articleTitle || 'News media';
     if (media.type === 'video') {
-      detailMedia.innerHTML = '<video src="' + esc(media.src) + '" title="Play video" aria-label="' + esc(mediaLabel) + '" controls preload="metadata" playsinline></video>';
+      detailMedia.innerHTML = '<video src="' + esc(media.src) + '" aria-label="' + esc(mediaLabel) + '" controls preload="metadata" playsinline></video>';
       return;
     }
 
