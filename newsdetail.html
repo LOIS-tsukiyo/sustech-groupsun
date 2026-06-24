@@ -133,7 +133,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   /* Resolve id from ?id=NN (query param) or #NN (hash), whichever is present */
   function getNewsId(){
     var queryString=window.location.search;
-    var hashValue=window.location.hash.replace('#','');
+    var hashValue=window.location.hash.slice(1);
     var idFromQuery=new URLSearchParams(queryString).get('id');
     var rawId=idFromQuery||hashValue;
     var n=parseInt(rawId,10);
@@ -214,7 +214,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     mediaEl.style.display='none';
   }
 
-  /* Body content — prefer content, then body, then summary */
+  /* Body content — prefer content (future field), then body (legacy), then summary (short fallback) */
   var content=item.content||item.body||item.summary||'<p>No content available.</p>';
   document.getElementById('detail-body').innerHTML=content;
 })();
