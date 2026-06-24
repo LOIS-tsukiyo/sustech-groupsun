@@ -157,7 +157,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="collapse navbar-collapse" id="navbarNav">
 <ul class="navbar-nav ms-auto">
 <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
 <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
 <li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
@@ -216,52 +215,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <p class="section-desc">Highlighting our latest research progress and major events.</p>
 </div>
 </div>
-<div class="row g-4">
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<img src="10.jpg" alt="Xiamen University Visit">
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">June,2026</span><span class="bt-journal">Xiamen University</span></div>
-<h4>Academician Xiao Wei Sun visits Academician Hu Wenping, President of Xiamen University</h4>
-<p>Recently, Xiao Wei Sun, foreign academician of the Russian Academy of Sciences, the executive dean of the Institute of Nanoscience and Application of the SUST, and the chair professor of the Department of EEE, visited Hu Wenping, an academician of the CAS Member and the president of Xiamen University.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<img src="9.jpg" alt="Nature Review">
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Nature</span></div>
-<h4>Academician Xiao Wei Sun's team was invited to publish a research review article in Nature</h4>
-<p>Recently, at the invitation of the top academic journal Nature, Xiao Wei Sun published a research review article titled "Glasses free display switches between 2D and 3D" in the Nature News&Views column.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<video src="1.mp4" controls preload="metadata" playsinline></video>
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Shenzhen News</span></div>
-<h4>Exclusive interview on Huawei's "Tao Law"</h4>
-<p>Shenzhen News conducted an exclusive interview with Xiao Wei Sun, Executive Dean of the Institute of Nano Science and Applications at the Southern University of Science and Technology.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
+<div class="row g-4" id="breakthrough-cards">
+<!-- Dynamically populated from news-data.js -->
 </div>
 </div>
 </section>
@@ -366,9 +321,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="col-md-4">
 <h6>Quick Links</h6>
 <ul>
-<li><a href="about.html">About</a></li>
 <li><a href="research.html">Research</a></li>
 <li><a href="publications.html">Publications</a></li>
+<li><a href="news.html">News</a></li>
 <li><a href="contact.html">Contact</a></li>
 </ul>
 </div>
@@ -385,5 +340,33 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="news-data.js"></script>
+<script>
+(function(){
+  var container=document.getElementById('breakthrough-cards');
+  if(!container||typeof NEWS_DATA==='undefined') return;
+  var items=NEWS_DATA.slice(0,3);
+  var html='';
+  items.forEach(function(n){
+    var mediaHtml='';
+    if(n.media.type==='video'){
+      mediaHtml='<video src="'+n.media.src+'" preload="metadata" playsinline></video>';
+    }else{
+      mediaHtml='<img src="'+n.media.src+'" alt="'+n.media.alt+'">';
+    }
+    html+='<div class="col-md-6 col-lg-4">'
+      +'<a href="news/detail.html?id='+n.id+'" class="text-decoration-none">'
+      +'<div class="bt-card">'
+      +'<div class="bt-card-media">'+mediaHtml+'</div>'
+      +'<div class="bt-card-body">'
+      +'<div class="bt-meta"><span class="bt-date">'+n.date+'</span><span class="bt-journal">'+n.category+'</span></div>'
+      +'<h4>'+n.title+'</h4>'
+      +'<p>'+n.summary+'</p>'
+      +'<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>'
+      +'</div></div></a></div>';
+  });
+  container.innerHTML=html;
+})();
+</script>
 </body>
 </html>
