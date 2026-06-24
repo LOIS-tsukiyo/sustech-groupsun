@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Redirecting…</title>
+</head>
+<body>
+<p>Redirecting to news detail…</p>
+<script>
+(function(){
+  var q=window.location.search||'';
+  if(q){
+    window.location.replace('/newsdetail.html'+q);
+    return;
+  }
+  var h=window.location.hash||'';
+  if(h){
+    var id=h.replace('#','');
+    if(/^\d+$/.test(id)){
+      window.location.replace('/newsdetail.html?id='+id);
+      return;
+    }
+  }
+  window.location.replace('/newsdetail.html');
+})();
+</script>
+</body>
+</html>
