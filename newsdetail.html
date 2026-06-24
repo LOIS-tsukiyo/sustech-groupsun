@@ -176,10 +176,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       return null;
     }
 
-    var hashParams = new URLSearchParams(hash);
-    var hashId = hashParams.get('id');
-    if (hashId && /^\d+$/.test(hashId)) {
-      return Number(hashId);
+    if (hash.indexOf('=') !== -1) {
+      var hashParams = new URLSearchParams(hash);
+      var hashId = hashParams.get('id');
+      if (hashId && /^\d+$/.test(hashId)) {
+        return Number(hashId);
+      }
     }
     if (/^\d+$/.test(hash)) {
       return Number(hash);
@@ -201,7 +203,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 
     detailMedia.classList.remove('is-empty');
     if (media.type === 'video') {
-      detailMedia.innerHTML = '<video src="' + esc(media.src) + '" title="' + esc(media.alt || 'News video') + '" aria-label="' + esc(media.alt || 'News video') + '" controls preload="metadata" playsinline></video>';
+      detailMedia.innerHTML = '<video src="' + esc(media.src) + '" aria-label="' + esc(media.alt || 'News video') + '" controls preload="metadata" playsinline></video>';
       return;
     }
 
@@ -246,6 +248,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   detailDate.textContent = item.date || '';
   detailCat.textContent = item.category || '';
   renderMedia(item.media);
+  /* `news-data.js` is a trusted repository-owned source; untrusted HTML must be sanitized before insertion. */
   detailBody.innerHTML = getBodyHtml(item);
 })();
 </script>
