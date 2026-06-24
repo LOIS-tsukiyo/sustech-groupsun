@@ -150,7 +150,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   function sanitizeHtml(html){
     var template=document.createElement('template');
     template.innerHTML=String(html);
-    var blocked=template.content.querySelectorAll('script,iframe,object,embed,link,meta,style');
+    var blocked=template.content.querySelectorAll('script,iframe,object,embed,link,meta,style,base,form,input,button,textarea');
     for(var i=0;i<blocked.length;i++){
       blocked[i].remove();
     }
@@ -160,7 +160,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       for(var k=attrs.length-1;k>=0;k--){
         var name=attrs[k].name;
         var value=attrs[k].value;
-        if(/^on/i.test(name)||((name==='href'||name==='src'||name==='xlink:href')&&/^\s*javascript:/i.test(value))){
+        if(
+          /^on/i.test(name)||
+          ((name==='href'||name==='src'||name==='xlink:href'||name==='action'||name==='formaction'||name==='poster'||name==='background')&&/^\s*(javascript:|data:|vbscript:|file:)/i.test(value))
+        ){
           nodes[j].removeAttribute(name);
         }
       }
@@ -209,7 +212,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   var mediaHtml='<div class="d-flex align-items-center justify-content-center h-100"><p class="m-0 text-muted">Media unavailable</p></div>';
   if(media.src){
     if(media.type==='video'){
-      mediaHtml='<video src="'+esc(media.src)+'" aria-label="'+esc(media.alt||title)+'" controls preload="metadata" playsinline></video>';
+      mediaHtml='<video src="'+esc(media.src)+'" controls preload="metadata" playsinline></video>';
     }else{
       mediaHtml='<img src="'+esc(media.src)+'" alt="'+esc(media.alt||title)+'">';
     }
@@ -221,7 +224,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     document.getElementById('detail-body').innerHTML='<p>Content for this article is currently unavailable.</p>';
     return;
   }
-  if(/<[^>]+>/.test(body)){
+  if(typeof body==='string'&&/<[a-z][\s\S]*>/i.test(body)){
     document.getElementById('detail-body').innerHTML=sanitizeHtml(body);
   }else{
     document.getElementById('detail-body').innerHTML='<p>'+esc(body)+'</p>';
