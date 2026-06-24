@@ -152,7 +152,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     var a=document.createElement('a');
     a.href='news.html';
     a.className='back-link';
-    a.innerHTML='<i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News';
+    var icon=document.createElement('i');
+    icon.className='fas fa-arrow-left';
+    icon.style.fontSize='.7rem';
+    a.appendChild(icon);
+    a.appendChild(document.createTextNode(' Back to News'));
     notFound.appendChild(h);
     notFound.appendChild(p);
     notFound.appendChild(a);
@@ -161,8 +165,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     wrap.appendChild(notFound);
     document.querySelector('.page-header').style.display='none';
     var section=document.querySelector('.article-section');
-    section.innerHTML='';
-    section.appendChild(wrap);
+    section.replaceChildren(wrap);
   }
 
   if(typeof NEWS_DATA==='undefined'){
@@ -194,9 +197,19 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   /* Media — gracefully degrade to a placeholder when media is absent */
   var mediaEl=document.getElementById('detail-media');
   if(item.media&&item.media.src){
-    mediaEl.innerHTML=item.media.type==='video'
-      ?'<video src="'+item.media.src+'" controls preload="metadata" playsinline></video>'
-      :'<img src="'+item.media.src+'" alt="'+(item.media.alt||'')+'">';
+    var mediaChild;
+    if(item.media.type==='video'){
+      mediaChild=document.createElement('video');
+      mediaChild.src=item.media.src;
+      mediaChild.controls=true;
+      mediaChild.preload='metadata';
+      mediaChild.setAttribute('playsinline','');
+    }else{
+      mediaChild=document.createElement('img');
+      mediaChild.src=item.media.src;
+      mediaChild.alt=item.media.alt||'';
+    }
+    mediaEl.replaceChildren(mediaChild);
   }else{
     mediaEl.style.display='none';
   }
