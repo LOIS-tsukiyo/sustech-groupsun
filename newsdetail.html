@@ -132,23 +132,37 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 (function(){
   /* Resolve id from ?id=NN (query param) or #NN (hash), whichever is present */
   function getNewsId(){
-    var search=window.location.search;
-    var hash=window.location.hash.replace('#','');
-    var fromSearch=new URLSearchParams(search).get('id');
-    var raw=fromSearch||hash;
-    var n=parseInt(raw,10);
+    var queryString=window.location.search;
+    var hashValue=window.location.hash.replace('#','');
+    var idFromQuery=new URLSearchParams(queryString).get('id');
+    var rawId=idFromQuery||hashValue;
+    var n=parseInt(rawId,10);
     return isNaN(n)?null:n;
   }
 
-  /* Show a friendly inline error when data or article is unavailable */
+  /* Show a friendly inline error when data or article is unavailable.
+     Both parameters are always hardcoded string literals — no user input reaches here. */
   function showError(title,msg){
+    var notFound=document.createElement('div');
+    notFound.className='not-found';
+    var h=document.createElement('h2');
+    h.textContent=title;
+    var p=document.createElement('p');
+    p.textContent=msg;
+    var a=document.createElement('a');
+    a.href='news.html';
+    a.className='back-link';
+    a.innerHTML='<i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News';
+    notFound.appendChild(h);
+    notFound.appendChild(p);
+    notFound.appendChild(a);
+    var wrap=document.createElement('div');
+    wrap.className='container';
+    wrap.appendChild(notFound);
     document.querySelector('.page-header').style.display='none';
-    document.querySelector('.article-section').innerHTML=
-      '<div class="container"><div class="not-found">'+
-        '<h2>'+title+'</h2>'+
-        '<p>'+msg+'</p>'+
-        '<a href="news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a>'+
-      '</div></div>';
+    var section=document.querySelector('.article-section');
+    section.innerHTML='';
+    section.appendChild(wrap);
   }
 
   if(typeof NEWS_DATA==='undefined'){
