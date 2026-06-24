@@ -350,14 +350,23 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#39;');
   }
+
+  function stripHtml(str) {
+    return String(str).replace(/<[^>]*>/g, '');
+  }
+
   var container = document.getElementById('breakthrough-cards');
-  if (!container || typeof NEWS_DATA === 'undefined') return;
+  if (!container || typeof NEWS_DATA === 'undefined' || !Array.isArray(NEWS_DATA)) return;
   var items = NEWS_DATA.slice(0, 3);
   var html = '';
   items.forEach(function (item) {
-    var media = item.media.type === 'video'
-      ? '<video src="' + esc(item.media.src) + '" title="' + esc(item.media.alt) + '" aria-label="' + esc(item.media.alt) + '" controls preload="metadata" playsinline></video>'
-      : '<img src="' + esc(item.media.src) + '" alt="' + esc(item.media.alt) + '">';
+    var mediaInfo = item.media || {};
+    var media = !mediaInfo.src
+      ? '<div class="d-flex align-items-center justify-content-center w-100 h-100 text-muted small">No media available</div>'
+      : mediaInfo.type === 'video'
+        ? '<video src="' + esc(mediaInfo.src) + '" title="' + esc(mediaInfo.alt || item.title || 'News media') + '" aria-label="' + esc(mediaInfo.alt || item.title || 'News media') + '" controls preload="metadata" playsinline></video>'
+        : '<img src="' + esc(mediaInfo.src) + '" alt="' + esc(mediaInfo.alt || item.title || 'News image') + '">';
+    var preview = item.summary || stripHtml(item.content || item.body || '');
     html +=
       '<div class="col-md-6 col-lg-4">' +
         '<a href="newsdetail.html?id=' + esc(item.id) + '" class="text-decoration-none">' +
@@ -366,7 +375,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
             '<div class="bt-card-body">' +
               '<div class="bt-meta"><span class="bt-date">' + esc(item.date) + '</span><span class="bt-journal">' + esc(item.category) + '</span></div>' +
               '<h4>' + esc(item.title) + '</h4>' +
-              '<p>' + esc(item.summary) + '</p>' +
+              '<p>' + esc(preview) + '</p>' +
               '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>' +
             '</div>' +
           '</div>' +

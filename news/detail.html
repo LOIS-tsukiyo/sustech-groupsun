@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting…</title>
+</head>
+<body>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search || '');
+  var rawHash = (window.location.hash || '').replace(/^#/, '').trim();
+  var hashMatch = rawHash.match(/^(?:id=)?(\d+)$/i);
+  if (!params.get('id')) {
+    if (hashMatch) params.set('id', hashMatch[1]);
+  }
+  var query = params.toString();
+  var preserveHash = rawHash && !hashMatch ? ('#' + rawHash) : '';
+  var target = '/newsdetail.html' + (query ? ('?' + query) : '') + preserveHash;
+  window.location.replace(target);
+})();
+</script>
+</body>
+</html>
