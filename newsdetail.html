@@ -203,7 +203,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 
     detailMedia.classList.remove('is-empty');
     if (media.type === 'video') {
-      detailMedia.innerHTML = '<video src="' + esc(media.src) + '" aria-label="' + esc(media.alt || 'News video') + '" controls preload="metadata" playsinline></video>';
+      detailMedia.innerHTML = '<video src="' + esc(media.src) + '" title="' + esc(media.alt || 'News video') + '" controls preload="metadata" playsinline></video>';
       return;
     }
 
@@ -218,6 +218,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       return item.body;
     }
     if (item.summary) {
+      /* `summary` is plain text, while `content`/`body` may contain trusted repository-authored HTML. */
       return '<p>' + esc(item.summary) + '</p>';
     }
     return '<p>No article content is available for this news item.</p>';
