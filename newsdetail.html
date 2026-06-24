@@ -138,7 +138,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   var params=new URLSearchParams(window.location.search);
   var rawId=params.get('id')||(window.location.hash.replace(/^#/,''));
   var id=parseInt(rawId,10);
-  var item=!isNaN(id)&&NEWS_DATA.find(function(n){return n.id===id});
+  var item=isNaN(id)?null:NEWS_DATA.find(function(n){return n.id===id});
   if(!item){showNotFound('News not found');return;}
   document.title=item.title+' - Sun Lab, SUSTech';
   document.getElementById('detail-title').textContent=item.title;
@@ -152,6 +152,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       :'<img src="'+esc(media.src)+'" alt="'+esc(media.alt||'')+'">';
   }
   document.getElementById('detail-media').innerHTML=mf;
+  /* item.body / item.content are trusted HTML authored in news-data.js; item.summary is plain text so it is escaped */
   document.getElementById('detail-body').innerHTML=item.body||item.content||'<p>'+esc(item.summary||'')+'</p>';
 })();
 </script>
