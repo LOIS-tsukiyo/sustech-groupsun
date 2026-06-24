@@ -351,16 +351,17 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
       .replace(/'/g, '&#39;');
   }
 
-  function renderMedia(media) {
+  function renderMedia(media, articleTitle) {
     if (!media || !media.src) {
       return '<div class="bt-card-media d-flex align-items-center justify-content-center px-4 text-center"><span class="text-muted small">Media coming soon</span></div>';
     }
 
+    var mediaLabel = media.alt || articleTitle || 'News media';
     if (media.type === 'video') {
-      return '<div class="bt-card-media"><video src="' + esc(media.src) + '" title="' + esc(media.alt || 'News video') + '" controls preload="metadata" playsinline></video></div>';
+      return '<div class="bt-card-media"><video src="' + esc(media.src) + '" title="Play video" aria-label="' + esc(mediaLabel) + '" controls preload="metadata" playsinline></video></div>';
     }
 
-    return '<div class="bt-card-media"><img src="' + esc(media.src) + '" alt="' + esc(media.alt || 'News image') + '"></div>';
+    return '<div class="bt-card-media"><img src="' + esc(media.src) + '" alt="' + esc(mediaLabel) + '"></div>';
   }
 
   var container = document.getElementById('breakthrough-cards');
@@ -376,7 +377,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   }
   var html = '';
   items.forEach(function (item) {
-    var media = renderMedia(item.media);
+    var media = renderMedia(item.media, item.title);
     html +=
       '<div class="col-md-6 col-lg-4">' +
         '<a href="newsdetail.html?id=' + esc(item.id) + '" class="text-decoration-none">' +
