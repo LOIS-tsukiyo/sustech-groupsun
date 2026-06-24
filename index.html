@@ -341,32 +341,39 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="news-data.js"></script>
 <script>
-(function(){
-  if(typeof NEWS_DATA==='undefined'||!NEWS_DATA.length)return;
-  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-  var cards='';
-  var count=Math.min(3,NEWS_DATA.length);
-  for(var i=0;i<count;i++){
-    var n=NEWS_DATA[i];
-    var media=n.media.type==='video'
-      ?'<video src="'+esc(n.media.src)+'" controls preload="metadata" playsinline></video>'
-      :'<img src="'+esc(n.media.src)+'" alt="'+esc(n.media.alt)+'">';
-    cards+=
-      '<div class="col-md-6 col-lg-4">'+
-        '<a href="newsdetail.html?id='+esc(n.id)+'" class="text-decoration-none">'+
-          '<div class="bt-card">'+
-            '<div class="bt-card-media">'+media+'</div>'+
-            '<div class="bt-card-body">'+
-              '<div class="bt-meta"><span class="bt-date">'+esc(n.date)+'</span><span class="bt-journal">'+esc(n.category)+'</span></div>'+
-              '<h4>'+esc(n.title)+'</h4>'+
-              '<p>'+esc(n.summary)+'</p>'+
-              '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>'+
-            '</div>'+
-          '</div>'+
-        '</a>'+
-      '</div>';
+(function () {
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
   }
-  document.getElementById('breakthrough-cards').innerHTML=cards;
+  var container = document.getElementById('breakthrough-cards');
+  if (!container || typeof NEWS_DATA === 'undefined') return;
+  var items = NEWS_DATA.slice(0, 3);
+  var html = '';
+  items.forEach(function (item) {
+    var media = item.media.type === 'video'
+      ? '<video src="' + esc(item.media.src) + '" title="' + esc(item.media.alt) + '" aria-label="' + esc(item.media.alt) + '" controls preload="metadata" playsinline></video>'
+      : '<img src="' + esc(item.media.src) + '" alt="' + esc(item.media.alt) + '">';
+    html +=
+      '<div class="col-md-6 col-lg-4">' +
+        '<a href="newsdetail.html?id=' + esc(item.id) + '" class="text-decoration-none">' +
+          '<div class="bt-card">' +
+            '<div class="bt-card-media">' + media + '</div>' +
+            '<div class="bt-card-body">' +
+              '<div class="bt-meta"><span class="bt-date">' + esc(item.date) + '</span><span class="bt-journal">' + esc(item.category) + '</span></div>' +
+              '<h4>' + esc(item.title) + '</h4>' +
+              '<p>' + esc(item.summary) + '</p>' +
+              '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>' +
+            '</div>' +
+          '</div>' +
+        '</a>' +
+      '</div>';
+  });
+  container.innerHTML = html;
 })();
 </script>
 </body>
