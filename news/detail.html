@@ -6,18 +6,15 @@
 <title>Redirecting...</title>
 <script>
 (function(){
-  var target=new URL('/newsdetail.html',window.location.origin);
-  target.search=window.location.search;
-  target.hash=window.location.hash;
-  window.location.replace(target.toString());
+  var target='/newsdetail.html'+window.location.search+window.location.hash;
+  window.location.replace(target);
 })();
 </script>
 </head>
 <body>
 <p>Redirecting to <a id="target-link" href="/newsdetail.html">news detail page</a>...</p>
 <script>
-var fallbackTarget='/newsdetail.html'+window.location.search+window.location.hash;
-document.getElementById('target-link').href=fallbackTarget;
+document.getElementById('target-link').href='/newsdetail.html'+window.location.search+window.location.hash;
 </script>
 </body>
 </html>

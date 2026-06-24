@@ -162,7 +162,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
         var value=attrs[k].value;
         if(
           /^on/i.test(name)||
-          ((name==='href'||name==='src'||name==='xlink:href'||name==='action'||name==='formaction'||name==='poster'||name==='background')&&/^\s*(javascript:|data:|vbscript:|file:)/i.test(value))
+          ((name==='href'||name==='src'||name==='xlink:href'||name==='action'||name==='formaction'||name==='poster'||name==='background')&&/^\s*(javascript:|data:|vbscript:|file:|blob:)/i.test(value))
         ){
           nodes[j].removeAttribute(name);
         }
@@ -224,7 +224,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     document.getElementById('detail-body').innerHTML='<p>Content for this article is currently unavailable.</p>';
     return;
   }
-  if(typeof body==='string'&&/<[a-z][\s\S]*>/i.test(body)){
+  if(typeof body==='string'&&/<[a-z][^>]*>/i.test(body)){
     document.getElementById('detail-body').innerHTML=sanitizeHtml(body);
   }else{
     document.getElementById('detail-body').innerHTML='<p>'+esc(body)+'</p>';
