@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!-- meta refresh cannot preserve query/hash; JS redirect below handles that.
+     Without JS, users land on newsdetail.html without parameters (shows 404 prompt). -->
+<meta http-equiv="refresh" content="0;url=../newsdetail.html">
+<title>Redirecting…</title>
+<script>
+(function(){
+  var q=window.location.search;
+  var h=window.location.hash;
+  window.location.replace('../newsdetail.html'+(q||'')+(h||''));
+})();
+</script>
+</head>
+<body>
+<p>Redirecting to <a href="../newsdetail.html">news detail</a>&hellip;</p>
+</body>
+</html>
