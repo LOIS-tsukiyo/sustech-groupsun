@@ -217,51 +217,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 <div class="row g-4">
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<img src="10.jpg" alt="Xiamen University Visit">
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">June,2026</span><span class="bt-journal">Xiamen University</span></div>
-<h4>Academician Xiao Wei Sun visits Academician Hu Wenping, President of Xiamen University</h4>
-<p>Recently, Xiao Wei Sun, foreign academician of the Russian Academy of Sciences, the executive dean of the Institute of Nanoscience and Application of the SUST, and the chair professor of the Department of EEE, visited Hu Wenping, an academician of the CAS Member and the president of Xiamen University.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<img src="9.jpg" alt="Nature Review">
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Nature</span></div>
-<h4>Academician Xiao Wei Sun's team was invited to publish a research review article in Nature</h4>
-<p>Recently, at the invitation of the top academic journal Nature, Xiao Wei Sun published a research review article titled "Glasses free display switches between 2D and 3D" in the Nature News&Views column.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<video src="1.mp4" controls preload="metadata" playsinline></video>
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Shenzhen News</span></div>
-<h4>Exclusive interview on Huawei's "Tao Law"</h4>
-<p>Shenzhen News conducted an exclusive interview with Xiao Wei Sun, Executive Dean of the Institute of Nano Science and Applications at the Southern University of Science and Technology.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
+<div class="row g-4" id="breakthrough-cards"></div>
 </div>
 </div>
 </section>
@@ -385,5 +341,34 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="news-data.js"></script>
+<script>
+(function(){
+  if(typeof NEWS_DATA==='undefined'||!NEWS_DATA.length)return;
+  var cards='';
+  var count=Math.min(3,NEWS_DATA.length);
+  for(var i=0;i<count;i++){
+    var n=NEWS_DATA[i];
+    var media=n.media.type==='video'
+      ?'<video src="'+n.media.src+'" controls preload="metadata" playsinline></video>'
+      :'<img src="'+n.media.src+'" alt="'+n.media.alt+'">';
+    cards+=
+      '<div class="col-md-6 col-lg-4">'+
+        '<a href="newsdetail.html?id='+n.id+'" class="text-decoration-none">'+
+          '<div class="bt-card">'+
+            '<div class="bt-card-media">'+media+'</div>'+
+            '<div class="bt-card-body">'+
+              '<div class="bt-meta"><span class="bt-date">'+n.date+'</span><span class="bt-journal">'+n.category+'</span></div>'+
+              '<h4>'+n.title+'</h4>'+
+              '<p>'+n.summary+'</p>'+
+              '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>'+
+            '</div>'+
+          '</div>'+
+        '</a>'+
+      '</div>';
+  }
+  document.getElementById('breakthrough-cards').innerHTML=cards;
+})();
+</script>
 </body>
 </html>
