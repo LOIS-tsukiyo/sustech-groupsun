@@ -216,9 +216,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <p class="section-desc">Highlighting our latest research progress and major events.</p>
 </div>
 </div>
-<div class="row g-4">
 <div class="row g-4" id="breakthrough-cards"></div>
-</div>
 </div>
 </section>
 <section class="section-padding research-section">
@@ -345,22 +343,23 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <script>
 (function(){
   if(typeof NEWS_DATA==='undefined'||!NEWS_DATA.length)return;
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   var cards='';
   var count=Math.min(3,NEWS_DATA.length);
   for(var i=0;i<count;i++){
     var n=NEWS_DATA[i];
     var media=n.media.type==='video'
-      ?'<video src="'+n.media.src+'" controls preload="metadata" playsinline></video>'
-      :'<img src="'+n.media.src+'" alt="'+n.media.alt+'">';
+      ?'<video src="'+esc(n.media.src)+'" controls preload="metadata" playsinline></video>'
+      :'<img src="'+esc(n.media.src)+'" alt="'+esc(n.media.alt)+'">';
     cards+=
       '<div class="col-md-6 col-lg-4">'+
-        '<a href="newsdetail.html?id='+n.id+'" class="text-decoration-none">'+
+        '<a href="newsdetail.html?id='+esc(n.id)+'" class="text-decoration-none">'+
           '<div class="bt-card">'+
             '<div class="bt-card-media">'+media+'</div>'+
             '<div class="bt-card-body">'+
-              '<div class="bt-meta"><span class="bt-date">'+n.date+'</span><span class="bt-journal">'+n.category+'</span></div>'+
-              '<h4>'+n.title+'</h4>'+
-              '<p>'+n.summary+'</p>'+
+              '<div class="bt-meta"><span class="bt-date">'+esc(n.date)+'</span><span class="bt-journal">'+esc(n.category)+'</span></div>'+
+              '<h4>'+esc(n.title)+'</h4>'+
+              '<p>'+esc(n.summary)+'</p>'+
               '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>'+
             '</div>'+
           '</div>'+
