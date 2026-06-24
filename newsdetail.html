@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News - Sun Lab,SUSTech</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#1B3A4B;--sky:#5B8FA8;--pale:#A8C5D8;--bloom:#C4949A;--bloom-soft:#E0B8BA;--stamen:#B5A060;--text-dark:#1A2A3A;--text-mid:#4D6275;--text-light:#8A9AAD;--bg-white:#FAFBFC;--bg-light:#F2F5F8;--border:#DDE3E9;--shadow-pink:rgba(196,148,154,.06);--shadow-blue:rgba(91,143,168,.08)}
+*{box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
+/* ©¤©¤ Navbar ©¤©¤ */
+.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:relative;z-index:100}
+.navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
+.navbar-brand{font-weight:600;font-size:1.15rem;color:#1a1a1a!important;letter-spacing:-.3px}
+.navbar-brand span{color:#1a1a1a;font-weight:700}
+.nav-link{font-size:.9rem;font-weight:450;color:#5a5f66!important;padding:8px 14px!important;transition:color .2s}
+.nav-link:hover,.nav-link.active{color:#1a1a1a!important}
+/* ©¤©¤ Page Header ©¤©¤ */
+.page-header{padding:116px 0 96px;text-align:center;position:relative;background:linear-gradient(160deg,var(--deep) 0%,#234E5E 35%,var(--sky) 70%,var(--pale) 100%);overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 25% 50%,rgba(168,197,216,.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(196,148,154,.1) 0%,transparent 50%);pointer-events:none;z-index:0}
+.page-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,var(--bg-white) 0%,transparent 100%);z-index:1;pointer-events:none}
+.page-header .container{position:relative;z-index:2}
+.page-header h1{font-size:2rem;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.3px;line-height:1.3}
+.page-header .news-meta{display:flex;gap:12px;justify-content:center;align-items:center}
+.page-header .news-date{font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.page-header .news-cat{font-size:.75rem;font-weight:500;color:rgba(255,255,255,.5);padding-left:12px;border-left:1.5px solid rgba(255,255,255,.25)}
+/* ©¤©¤ Article ©¤©¤ */
+.article-section{padding:72px 0 80px;position:relative;overflow:hidden;background:var(--bg-white)}
+.article-section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:280px;background:linear-gradient(90deg,rgba(91,143,168,.04) 0%,rgba(91,143,168,.015) 60%,transparent 100%);pointer-events:none;z-index:0}
+.article-section::after{content:'';position:absolute;top:0;right:0;bottom:0;width:200px;background:linear-gradient(270deg,rgba(196,148,154,.03) 0%,transparent 100%);pointer-events:none;z-index:0}
+.article-section .container{position:relative;z-index:1}
+.article-body{max-width:720px;margin:0 auto}
+.article-media{border-radius:12px;overflow:hidden;margin-bottom:36px;aspect-ratio:16/9;background:var(--bg-light)}
+.article-media img,.article-media video{width:100%;height:100%;object-fit:cover;display:block}
+.article-body p{font-size:.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:16px}
+.article-body p:last-child{margin-bottom:0}
+.back-link{font-size:.85rem;font-weight:500;color:var(--text-light);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s;margin-top:32px}
+.back-link:hover{color:var(--deep)}
+.not-found{text-align:center;padding:80px 0}
+.not-found h2{font-size:1.4rem;font-weight:600;color:var(--text-dark);margin-bottom:12px}
+.not-found p{color:var(--text-light);margin-bottom:24px}
+/* ©¤©¤ Footer ©¤©¤ */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
+.site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.site-footer p,.site-footer a{font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none}
+.site-footer a:hover{color:var(--pale)}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer ul li{margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
+/* ©¤©¤ Responsive ©¤©¤ */
+@media(max-width:767px){
+.page-header{padding:52px 0 40px}
+.page-header h1{font-size:1.4rem}
+.article-section{padding:48px 0 56px}
+.article-body p{font-size:.9rem}
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="../index.html"><span>Sun Lab</span> . SUSTech</a>
+<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="../research.html">Research</a></li>
+<li class="nav-item"><a class="nav-link" href="../publications.html">Publications</a></li>
+<li class="nav-item"><a class="nav-link" href="../members.html">Members</a></li>
+<li class="nav-item"><a class="nav-link active" href="../news.html">News</a></li>
+<li class="nav-item"><a class="nav-link" href="../contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="page-header">
+<div class="container">
+<h1 id="detail-title">Loading...</h1>
+<div class="news-meta">
+<span class="news-date" id="detail-date"></span>
+<span class="news-cat" id="detail-cat"></span>
+</div>
+</div>
+</section>
+<section class="article-section">
+<div class="container">
+<div class="article-body">
+<div class="article-media" id="detail-media"></div>
+<div id="detail-body"></div>
+<a href="../news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a>
+</div>
+</div>
+</section>
+<footer class="site-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h6>Sun Lab</h6>
+<p>Southern University of Science and Technology<br>Shenzhen, China</p>
+<p class="mt-2">sunxiaowei@sustech.edu.cn</p>
+</div>
+<div class="col-md-4">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="../research.html">Research</a></li>
+<li><a href="../publications.html">Publications</a></li>
+<li><a href="../news.html">News</a></li>
+<li><a href="../contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h6>Follow</h6>
+<div class="d-flex gap-3">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">&copy; 2026 Sun Lab, SUSTech. All rights reserved.</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../news-data.js"></script>
+<script>
+(function(){
+  if(typeof NEWS_DATA==='undefined'){return}
+  var params=new URLSearchParams(window.location.search);
+  var id=parseInt(params.get('id'));
+  var item=NEWS_DATA.find(function(n){return n.id===id});
+  if(!item){
+    document.querySelector('.page-header').style.display='none';
+    document.querySelector('.article-section').innerHTML='<div class="container"><div class="not-found"><h2>News not found</h2><p>The article you are looking for does not exist.</p><a href="../news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a></div></div>';
+    document.title='Not Found - Sun Lab, SUSTech';
+    return;
+  }
+  document.title=item.title+' - Sun Lab, SUSTech';
+  document.getElementById('detail-title').textContent=item.title;
+  document.getElementById('detail-date').textContent=item.date;
+  document.getElementById('detail-cat').textContent=item.category;
+  var mp='../'+item.media.src;
+  var mf=item.media.type==='video'
+    ?'<video src="'+mp+'" controls preload="metadata" playsinline></video>'
+    :'<img src="'+mp+'" alt="'+item.media.alt+'">';
+  document.getElementById('detail-media').innerHTML=mf;
+  document.getElementById('detail-body').innerHTML=item.body;
+})();
+</script>
+</body>
+</html>

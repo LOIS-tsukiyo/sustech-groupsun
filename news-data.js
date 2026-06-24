@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sun Lab - SUSTech | Quantum Dots & AR Waveguide Display Technology</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#1B3A4B;--sky:#5B8FA8;--pale:#A8C5D8;--bloom:#C4949A;--bloom-soft:#E0B8BA;--stamen:#B5A060;--text-dark:#1A2A3A;--text-mid:#4D6275;--text-light:#8A9AAD;--bg-white:#FAFBFC;--bg-light:#F2F5F8;--border:#DDE3E9;--shadow-pink:rgba(196,148,154,.06);--shadow-blue:rgba(91,143,168,.08)}
+*{box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
+/* ©¤©¤ Navbar ©¤©¤ */
+.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:relative;z-index:100}
+.navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
+.navbar-brand{font-weight:600;font-size:1.15rem;color:#1a1a1a!important;letter-spacing:-.3px}
+.navbar-brand span{color:#1a1a1a!important;font-weight:700}
+.nav-link{font-size:.9rem;font-weight:450;color:#5a5f66!important;padding:8px 14px!important;transition:color .2s}
+.nav-link:hover,.nav-link.active{color:#1a1a1a!important}
+/* ©¤©¤ Hero ©¤©¤ */
+.hero-split{display:flex;align-items:center;min-height:660px;background:linear-gradient(155deg,var(--deep) 0%,#234E5E 30%,var(--sky) 65%,var(--pale) 100%);padding:80px 0 100px;position:relative;overflow:hidden}
+.hero-split::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 30% 40%,rgba(168,197,216,.18) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 80% 70%,rgba(196,148,154,.1) 0%,transparent 50%);pointer-events:none;z-index:0}
+.hero-split::after{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(to top,var(--bg-white) 0%,rgba(250,251,252,.6) 40%,transparent 100%);z-index:1;pointer-events:none}
+.hero-image-side{flex:0 0 52%;max-width:52%;display:flex;align-items:center;justify-content:center;padding:0 36px 0 24px;position:relative;z-index:2}
+.hero-carousel-frame{width:100%;aspect-ratio:3/2;position:relative;overflow:hidden;border-radius:10px;box-shadow:0 8px 36px rgba(27,58,75,.25)}
+.hero-carousel-frame .carousel-inner,.hero-carousel-frame .carousel-item{height:100%}
+.hero-carousel-frame .carousel-item img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,58,75,.1) 0%,transparent 20%,transparent 50%,rgba(27,58,75,.35) 100%);z-index:2;pointer-events:none}
+.hero-text-side{flex:0 0 48%;max-width:48%;display:flex;flex-direction:column;justify-content:center;padding:20px 48px 20px 40px;position:relative;z-index:2}
+.hero-text-side .lab-tag{font-size:.75rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:16px}
+.hero-text-side h1{font-size:2.4rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px;letter-spacing:-.5px}
+.hero-text-side .lead{font-size:1.05rem;color:rgba(255,255,255,.85);line-height:1.7;margin-bottom:10px;font-weight:400}
+.hero-text-side .subtitle{font-size:.92rem;color:rgba(255,255,255,.55);margin-bottom:32px}
+.hero-buttons .btn{font-size:.88rem;font-weight:500;padding:10px 24px;border-radius:6px;transition:all .2s}
+.btn-primary-custom{background:var(--bloom);color:#fff;border:none;box-shadow:0 2px 12px rgba(196,148,154,.3)}
+.btn-primary-custom:hover{background:var(--bloom-soft);color:var(--deep);box-shadow:0 4px 20px rgba(196,148,154,.4)}
+.btn-outline-custom{background:transparent;color:rgba(255,255,255,.85);border:1.5px solid rgba(255,255,255,.25)}
+.btn-outline-custom:hover{border-color:var(--bloom-soft);color:var(--bloom-soft);background:rgba(196,148,154,.06)}
+.hero-carousel-frame .carousel-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(27,58,75,.5) 0%,rgba(27,58,75,.12) 60%,transparent 100%);padding:32px 20px 18px;text-align:left;z-index:3}
+.hero-carousel-frame .carousel-caption .caption-tag{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3px;display:block}
+.hero-carousel-frame .carousel-caption h2{font-size:1.15rem;font-weight:600;margin:0;color:#fff;text-shadow:0 1px 6px rgba(27,58,75,.4);letter-spacing:-.2px}
+.hero-carousel-frame .carousel-control-prev,.hero-carousel-frame .carousel-control-next{width:34px;height:34px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border-radius:50%;border:none;opacity:0;transition:opacity .3s}
+.hero-image-side:hover .carousel-control-prev,.hero-image-side:hover .carousel-control-next,.hero-image-side:hover .carousel-indicators{opacity:1}
+.hero-carousel-frame .carousel-control-prev{left:10px}
+.hero-carousel-frame .carousel-control-next{right:10px}
+.hero-carousel-frame .carousel-indicators{top:12px!important;bottom:auto!important;margin:0!important;gap:6px;justify-content:center;opacity:0;transition:opacity .3s}
+.hero-carousel-frame .carousel-indicators [data-bs-slide-to]{width:7px!important;height:7px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.4)!important;background:rgba(255,255,255,.15)!important;padding:0!important;margin:0!important;opacity:1!important;transition:all .3s!important}
+.hero-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.85)!important;border-color:rgba(255,255,255,.85)!important;transform:scale(1.15)}
+/* ©¤©¤ Section Common ©¤©¤ */
+.section-padding{padding:80px 0;position:relative}
+.section-title{font-size:.72rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-mid);margin-bottom:8px}
+.section-heading{font-size:1.8rem;font-weight:700;color:var(--text-dark);margin-bottom:8px;letter-spacing:-.3px}
+.section-desc{font-size:.95rem;color:var(--text-light);max-width:560px}
+/* ©¤©¤ Breakthrough ©¤©¤ */
+.breakthrough-section{background:var(--bg-white)}
+.breakthrough-section::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(ellipse 80% 50% at 15% 10%,rgba(196,148,154,.04) 0%,transparent 55%),radial-gradient(ellipse 60% 40% at 90% 95%,rgba(91,143,168,.035) 0%,transparent 50%);pointer-events:none;z-index:0}
+.breakthrough-section .container{position:relative;z-index:1}
+.bt-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,.04);border:1px solid var(--border);transition:all .3s ease;height:100%;display:flex;flex-direction:column}
+.bt-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.07),0 0 0 1px rgba(196,148,154,.15);transform:translateY(-4px)}
+.bt-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,var(--deep) 0%,var(--sky) 100%)}
+.bt-card-media img,.bt-card-media video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.bt-card:hover .bt-card-media img{transform:scale(1.04)}
+.bt-card-media .media-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.bt-card-media .media-placeholder i{font-size:2.2rem;color:rgba(168,197,216,.3)}
+.bt-card-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column}
+.bt-card-body .bt-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.bt-card-body .bt-date{font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--bloom)}
+.bt-card-body .bt-journal{font-size:.7rem;font-weight:500;color:var(--text-light);padding-left:10px;border-left:1.5px solid var(--border)}
+.bt-card-body h4{font-size:1.08rem;font-weight:650;color:var(--text-dark);margin-bottom:10px;line-height:1.45;letter-spacing:-.15px}
+.bt-card-body p{font-size:.86rem;color:var(--text-light);line-height:1.65;margin-bottom:0;flex:1}
+.bt-card-body .bt-link{font-size:.8rem;font-weight:500;color:var(--text-mid);text-decoration:none;margin-top:14px;display:inline-flex;align-items:center;gap:5px;transition:gap .2s,color .2s}
+.bt-card-body .bt-link:hover{color:var(--deep);gap:8px}
+/* ©¤©¤ Research ©¤©¤ */
+.research-section{background:var(--bg-white)}
+.research-section::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(ellipse 70% 50% at 85% 10%,rgba(91,143,168,.04) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 8% 90%,rgba(196,148,154,.03) 0%,transparent 45%);pointer-events:none;z-index:0}
+.research-section .container{position:relative;z-index:1}
+.research-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .25s;height:100%;display:flex;flex-direction:column;position:relative}
+.research-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--bloom-soft),var(--pale));opacity:0;transition:opacity .3s}
+.research-card:hover::before{opacity:1}
+.research-card:hover{box-shadow:0 6px 24px var(--shadow-blue),0 0 0 1px rgba(91,143,168,.12);transform:translateY(-2px)}
+.research-card-image{height:160px;background-size:cover;background-position:center;background-color:var(--bg-light)}
+.research-card-image.placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#eef1f5 0%,#e5eaf0 100%)}
+.research-card-image.placeholder i{font-size:2rem;color:var(--pale)}
+.research-card-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.research-card-body h4{font-size:1.05rem;font-weight:600;color:var(--text-dark);margin-bottom:10px}
+.research-card-body p{font-size:.88rem;color:var(--text-light);line-height:1.65;margin-bottom:16px;flex:1}
+.research-card-body .btn-link{font-size:.82rem;font-weight:500;color:var(--text-mid);text-decoration:none;padding:0}
+.research-card-body .btn-link:hover{color:var(--deep)}
+/* ©¤©¤ Stats ©¤©¤ */
+.stats-section{background:linear-gradient(135deg,var(--deep) 0%,#2A5A6E 40%,var(--sky) 100%);padding:36px 0;position:relative;overflow:hidden}
+.stats-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 50% 50%,rgba(168,197,216,.12) 0%,transparent 70%);pointer-events:none}
+.stats-section .container{position:relative;z-index:1}
+.stat-block{text-align:center;padding:8px 0}
+.stat-block .stat-number{font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:2px}
+.stat-block .stat-label{font-size:.78rem;font-weight:500;color:var(--pale);text-transform:uppercase;letter-spacing:1px}
+/* ©¤©¤ Professor ©¤©¤ */
+.professor-section{background:var(--bg-white);position:relative;overflow:hidden}
+.professor-section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:320px;background:linear-gradient(90deg,rgba(91,143,168,.05) 0%,rgba(91,143,168,.02) 60%,transparent 100%);pointer-events:none;z-index:0}
+.professor-section::after{content:'';position:absolute;top:0;right:0;bottom:0;width:200px;background:linear-gradient(270deg,rgba(196,148,154,.035) 0%,transparent 100%);pointer-events:none;z-index:0}
+.professor-section .container{position:relative;z-index:1}
+.professor-section .section-title{color:#5a5a5a}
+.professor-content h3{font-size:1.4rem;font-weight:700;color:var(--text-dark);margin-bottom:8px}
+.professor-content .role{font-size:.88rem;color:#8a8a8a;margin-bottom:20px}
+.professor-stats{display:flex;gap:32px;margin-bottom:24px;flex-wrap:wrap}
+.professor-stat{text-align:left}
+.professor-stat .number{font-size:1.5rem;font-weight:700;color:#1a1a1a}
+.professor-stat .label{font-size:.75rem;color:#8a8a8a;text-transform:uppercase;letter-spacing:.8px}
+.award-list{list-style:none;padding:0;margin:0}
+.award-list li{font-size:.88rem;color:#5a5a5a;padding:10px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px}
+.award-list li:last-child{border-bottom:none}
+.professor-section .award-list li i{color:#9a9a9a;font-size:.75rem;margin-top:4px}
+.professor-image{width:100%;border-radius:10px;overflow:hidden;background:var(--bg-light);aspect-ratio:3/2;background-size:cover;background-position:center}
+.professor-image img{width:100%;height:100%;object-fit:cover}
+.professor-image.placeholder{display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.professor-image.placeholder i{font-size:3rem;color:var(--pale)}
+/* ©¤©¤ Footer ©¤©¤ */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
+.site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.site-footer p,.site-footer a{font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none}
+.site-footer a:hover{color:var(--pale)}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer ul li{margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
+/* ©¤©¤ Responsive ©¤©¤ */
+@media(max-width:991px){
+.hero-split{flex-direction:column;min-height:auto;padding:40px 0 60px}
+.hero-image-side{flex:none;max-width:100%;padding:0 24px;margin-bottom:32px}
+.hero-carousel-frame{max-width:560px;margin:0 auto}
+.hero-text-side{flex:none;max-width:100%;padding:0 24px;text-align:center}
+.hero-text-side h1{color:#fff;font-size:1.8rem}
+.hero-text-side .lead{color:rgba(255,255,255,.85)}
+.hero-text-side .subtitle{color:rgba(255,255,255,.6)}
+.hero-text-side .lab-tag{color:rgba(255,255,255,.7)}
+.hero-buttons{justify-content:center}
+.professor-section::before{width:100%;height:160px;background:linear-gradient(180deg,rgba(91,143,168,.05) 0%,transparent 100%)}
+.professor-section::after{display:none}
+}
+@media(max-width:767px){
+.section-padding{padding:48px 0}
+.hero-carousel-frame{max-width:100%}
+.hero-text-side{padding:0 20px}
+.hero-text-side h1{font-size:1.5rem}
+.professor-stats{gap:20px}
+.hero-carousel-frame .carousel-caption{bottom:0;left:0;right:10px;padding:24px 16px 14px}
+.hero-carousel-frame .carousel-caption h2{font-size:1rem}
+.stats-section{padding:24px 0}
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="index.html"><span>Sun Lab</span> . SUSTech</a>
+<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+<li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+<li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
+<li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="hero-split">
+<div class="hero-image-side">
+<div class="hero-carousel-frame">
+<div id="heroCarousel" class="carousel" data-bs-ride="carousel" data-bs-interval="5000">
+<div class="carousel-inner">
+<div class="carousel-item active"><img src="1.jpg" alt="Conference"><div class="carousel-caption"><span class="caption-tag">Conference</span><h2>International Academic Conference</h2></div></div>
+<div class="carousel-item"><img src="2.jpg" alt="Honor"><div class="carousel-caption"><span class="caption-tag">Honor</span><h2>Academician Title Award</h2></div></div>
+<div class="carousel-item"><img src="3.jpg" alt="Excellent Team"><div class="carousel-caption"><span class="caption-tag">Excellence</span><h2>Excellent Team</h2></div></div>
+<div class="carousel-item"><img src="4.jpg" alt="Lecture"><div class="carousel-caption"><span class="caption-tag">Lecture</span><h2>Professional Lectures</h2></div></div>
+<div class="carousel-item"><img src="5.jpg" alt="Facility"><div class="carousel-caption"><span class="caption-tag">Facility</span><h2>Top Laboratories in Asia</h2></div></div>
+<div class="carousel-item"><img src="6.jpg" alt="Collaboration"><div class="carousel-caption"><span class="caption-tag">Collaboration</span><h2>Collaboration with Prestigious Universities</h2></div></div>
+<div class="carousel-item"><img src="7.jpg" alt="Industrialization"><div class="carousel-caption"><span class="caption-tag">Industrialization</span><h2>Industry-Academia-Research Collaboration</h2></div></div>
+<div class="carousel-item"><img src="8.jpg" alt="Team"><div class="carousel-caption"><span class="caption-tag">Team</span><h2>Openminded and Friendly Atmosphere</h2></div></div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span></button>
+<button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span></button>
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6"></button>
+<button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7"></button>
+</div>
+</div>
+</div>
+</div>
+<div class="hero-text-side">
+<div class="lab-tag">SUSTech ¡¤ Shenzhen</div>
+<h1>Sun Lab</h1>
+<p class="lead">Quantum Dots & Advanced Display Technology</p>
+<p class="subtitle">Frontier research on quantum dots and augmented reality waveguide systems.</p>
+<div class="hero-buttons d-flex gap-3">
+<a href="publications.html" class="btn btn-primary-custom">Publications</a>
+<a href="research.html" class="btn btn-outline-custom">Our Research</a>
+</div>
+</div>
+</section>
+<section class="section-padding breakthrough-section">
+<div class="container">
+<div class="row mb-5">
+<div class="col-lg-8">
+<div class="section-title">Latest</div>
+<h2 class="section-heading">Recent Breakthroughs</h2>
+<p class="section-desc">Highlighting our latest research progress and major events.</p>
+</div>
+</div>
+<div class="row g-4" id="breakthrough-cards">
+<!-- Dynamically populated from news-data.js -->
+</div>
+</div>
+</section>
+<section class="section-padding research-section">
+<div class="container">
+<div class="row mb-5">
+<div class="col-lg-6">
+<div class="section-title">Research</div>
+<h2 class="section-heading">Core Research Areas</h2>
+<p class="section-desc">Innovations in nanocrystal materials, quantum dots materials and near-eye display technology.</p>
+</div>
+</div>
+<div class="row g-4">
+<div class="col-md-6 col-lg-3">
+<div class="research-card">
+<div class="research-card-image" style="background-image:url('11.jpg')"></div>
+<div class="research-card-body">
+<h4>Quantum Dot Materials</h4>
+<p>High-quality and eco-friendly quantum dot materials with enhanced luminescence and stability.</p>
+<a href="research.html" class="btn-link">Learn more ¡ú</a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="research-card">
+<div class="research-card-image" style="background-image:url('13.jpg')"></div>
+<div class="research-card-body">
+<h4>Quantum Dot Devices</h4>
+<p>QLEDs, Micro-LEDs, and quantum dot devices with superior color purity and power efficiency and superior chemistry character.</p>
+<a href="research.html" class="btn-link">Learn more ¡ú</a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="research-card">
+<div class="research-card-image" style="background-image:url('12.jpg')"></div>
+<div class="research-card-body">
+<h4>AR Waveguide</h4>
+<p>Metasurface waveguides for full-color AR displays with achromatic coupling and wide FOV.</p>
+<a href="research.html" class="btn-link">Learn more ¡ú</a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-lg-3">
+<div class="research-card">
+<div class="research-card-image" style="background-image:url('4.webp')"></div>
+<div class="research-card-body">
+<h4>QD's Optical Properties</h4>
+<p>Fluorescence, absorption, tunable bandgap, photostability and single photon property of quantum dot materials for advanced applications.</p>
+<a href="research.html" class="btn-link">Learn more ¡ú</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="stats-section">
+<div class="container">
+<div class="row">
+<div class="col-6 col-md-3"><div class="stat-block"><div class="stat-number">60+</div><div class="stat-label">Members</div></div></div>
+<div class="col-6 col-md-3"><div class="stat-block"><div class="stat-number">40+</div><div class="stat-label">Projects</div></div></div>
+<div class="col-6 col-md-3"><div class="stat-block"><div class="stat-number">10+</div><div class="stat-label">Collaborations</div></div></div>
+<div class="col-6 col-md-3"><div class="stat-block"><div class="stat-number">5</div><div class="stat-label">Research Areas</div></div></div>
+</div>
+</div>
+</section>
+<section class="section-padding professor-section">
+<div class="container">
+<div class="row align-items-center g-5">
+<div class="col-lg-4">
+<div class="professor-image" style="background-image:url('1.png')"></div>
+</div>
+<div class="col-lg-8">
+<div class="professor-content">
+<div class="section-title">Principal Investigator</div>
+<h3>Prof. Xiao Wei Sun</h3>
+<p class="role">IEEE/OSA/SPIE/SID/IoP Fellow ¡¤ Foreign Academician of RAS ¡¤ Stanford Top 2% Scientists Worldwide</p>
+<div class="professor-stats">
+<div class="professor-stat"><div class="number">600+</div><div class="label">Articles</div></div>
+<div class="professor-stat"><div class="number">47k+</div><div class="label">Citations</div></div>
+<div class="professor-stat"><div class="number">106</div><div class="label">h-index</div></div>
+<div class="professor-stat"><div class="number">690+</div><div class="label">i10-index</div></div>
+</div>
+<ul class="award-list">
+<li><i class="fas fa-star"></i>Chair Professor of SUST<br>Honorary Doctor of BSUIR<br>National Distinguished Expert<br>Executive Dean of the Institute of Nano Science and Applications at SUST<br>Founding Chair of the Department of EEE<br>Director of the Ministry of Education Key Laboratory of Energy Conversion and Storage Technology<br>Director of the Guangdong Provincial Key Laboratory of Advanced Quantum Dot Displays and Lighting in Higher Education Institutions</li>
+<li><i class="fas fa-medal"></i>The Fumio Okano Best 3D Paper Prize(2024)<br>Slottow-Owaki Award (2023)<br>National Invention and Entrepreneurship Award Innovation First Prize<br>Guangdong Provincial Science and Technology Award, Natural Science Second Prize and other honorary awards<br>Elsevier China Highly Cited Scholar for 7 consecutive years</li>
+<li><i class="fas fa-award"></i>Asia Pacific Academy of Materials Fellow<br>Fellow of the International Core Academy of Humanities and Sciences<br>Fellow of the Asia-Pacific Academy of Materials Science<br>Distinguished Lecturer of IEEE<br>First SID Fellow of Chinese mainland<br>Founder and Vice Chairman of Singapore China Association for the Promotion of Science and Technology<br>Founder and President of the International Society for Energy Photonics</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="site-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h6>Sun Lab</h6>
+<p>Southern University of Science and Technology<br>Shenzhen, China</p>
+<p class="mt-2">sunxiaowei@sustech.edu.cn</p>
+</div>
+<div class="col-md-4">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="research.html">Research</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h6>Follow</h6>
+<div class="d-flex gap-3">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">&copy; 2026 Sun Lab, SUSTech. All rights reserved.</div>
+</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="news-data.js"></script>
+<script>
+(function(){
+  var container=document.getElementById('breakthrough-cards');
+  if(!container||typeof NEWS_DATA==='undefined') return;
+  var items=NEWS_DATA.slice(0,3);
+  var html='';
+  items.forEach(function(n){
+    var mediaHtml='';
+    if(n.media.type==='video'){
+      mediaHtml='<video src="'+n.media.src+'" preload="metadata" playsinline></video>';
+    }else{
+      mediaHtml='<img src="'+n.media.src+'" alt="'+n.media.alt+'">';
+    }
+    html+='<div class="col-md-6 col-lg-4">'
+      +'<a href="news/detail.html?id='+n.id+'" class="text-decoration-none">'
+      +'<div class="bt-card">'
+      +'<div class="bt-card-media">'+mediaHtml+'</div>'
+      +'<div class="bt-card-body">'
+      +'<div class="bt-meta"><span class="bt-date">'+n.date+'</span><span class="bt-journal">'+n.category+'</span></div>'
+      +'<h4>'+n.title+'</h4>'
+      +'<p>'+n.summary+'</p>'
+      +'<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>'
+      +'</div></div></a></div>';
+  });
+  container.innerHTML=html;
+})();
+</script>
+</body>
+</html>
