@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting…</title>
+<script>
+(function(){
+  var search=window.location.search;
+  var hash=window.location.hash;
+  var dest='/newsdetail.html';
+  if(search){dest+=search;}
+  if(hash){dest+=hash;}
+  window.location.replace(dest);
+})();
+</script>
+</head>
+<body>
+<p>Redirecting to news detail…</p>
+</body>
+</html>
