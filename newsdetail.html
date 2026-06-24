@@ -147,12 +147,37 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     return null;
   }
 
+  function sanitizeHtml(html){
+    var template=document.createElement('template');
+    template.innerHTML=String(html);
+    var blocked=template.content.querySelectorAll('script,iframe,object,embed,link,meta,style');
+    for(var i=0;i<blocked.length;i++){
+      blocked[i].remove();
+    }
+    var nodes=template.content.querySelectorAll('*');
+    for(var j=0;j<nodes.length;j++){
+      var attrs=nodes[j].attributes;
+      for(var k=attrs.length-1;k>=0;k--){
+        var name=attrs[k].name;
+        var value=attrs[k].value;
+        if(/^on/i.test(name)||((name==='href'||name==='src'||name==='xlink:href')&&/^\s*javascript:/i.test(value))){
+          nodes[j].removeAttribute(name);
+        }
+      }
+    }
+    return template.innerHTML;
+  }
+
   function showMessage(title,message){
     var header=document.querySelector('.page-header');
     var section=document.querySelector('.article-section');
     if(header) header.style.display='none';
     if(section){
-      section.innerHTML='<div class="container"><div class="not-found"><h2>'+esc(title)+'</h2><p>'+esc(message)+'</p><a href="news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a></div></div>';
+      section.innerHTML=[
+        '<div class="container"><div class="not-found"><h2>',esc(title),
+        '</h2><p>',esc(message),
+        '</p><a href="news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a></div></div>'
+      ].join('');
     }
     document.title=title+' - Sun Lab, SUSTech';
   }
@@ -184,7 +209,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   var mediaHtml='<div class="d-flex align-items-center justify-content-center h-100"><p class="m-0 text-muted">Media unavailable</p></div>';
   if(media.src){
     if(media.type==='video'){
-      mediaHtml='<video src="'+esc(media.src)+'" title="'+esc(media.alt||title)+'" aria-label="'+esc(media.alt||title)+'" controls preload="metadata" playsinline></video>';
+      mediaHtml='<video src="'+esc(media.src)+'" aria-label="'+esc(media.alt||title)+'" controls preload="metadata" playsinline></video>';
     }else{
       mediaHtml='<img src="'+esc(media.src)+'" alt="'+esc(media.alt||title)+'">';
     }
@@ -197,7 +222,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     return;
   }
   if(/<[^>]+>/.test(body)){
-    document.getElementById('detail-body').innerHTML=body;
+    document.getElementById('detail-body').innerHTML=sanitizeHtml(body);
   }else{
     document.getElementById('detail-body').innerHTML='<p>'+esc(body)+'</p>';
   }
