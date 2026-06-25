@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Redirecting…</title>
@@ -25,5 +26,19 @@
   window.location.replace('/newsdetail.html');
 })();
 </script>
+=======
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0;url=../news.html">
+<title>Redirecting...</title>
+<script>
+(function(){
+  var loc=window.location;
+  window.location.replace('../newsdetail.html'+loc.search+loc.hash);
+})();
+</script>
+</head>
+<body>
+<p>JavaScript is required to view this article. <a href="../news.html">Return to News</a>.</p>
+>>>>>>> origin/main
 </body>
 </html>
