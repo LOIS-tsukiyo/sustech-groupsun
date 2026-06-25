@@ -106,10 +106,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="col-md-4">
 <h6>Quick Links</h6>
 <ul>
-<li><a href="../research.html">Research</a></li>
-<li><a href="../publications.html">Publications</a></li>
-<li><a href="../news.html">News</a></li>
-<li><a href="../contact.html">Contact</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="contact.html">Contact</a></li>
 </ul>
 </div>
 <div class="col-md-4">
@@ -130,12 +130,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 /* NOTE: item.content/body/summary may contain trusted HTML authored in news-data.js.
    Do not pass user-supplied strings to innerHTML in production without sanitisation. */
 (function(){
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+
   /* Resolve id from ?id=NN (query param) or #NN (hash), whichever is present */
   function getNewsId(){
-    var queryString=window.location.search;
-    var hashValue=window.location.hash.slice(1);
-    var idFromQuery=new URLSearchParams(queryString).get('id');
-    var rawId=idFromQuery||hashValue;
+    var idFromQuery=new URLSearchParams(window.location.search).get('id');
+    var rawId=idFromQuery||window.location.hash.slice(1);
     var n=parseInt(rawId,10);
     return isNaN(n)?null:n;
   }
@@ -164,8 +164,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     wrap.className='container';
     wrap.appendChild(notFound);
     document.querySelector('.page-header').style.display='none';
-    var section=document.querySelector('.article-section');
-    section.replaceChildren(wrap);
+    document.querySelector('.article-section').replaceChildren(wrap);
   }
 
   if(typeof NEWS_DATA==='undefined'){
@@ -214,8 +213,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
     mediaEl.style.display='none';
   }
 
-  /* Body content — prefer content (future field), then body (legacy), then summary (short fallback) */
-  var content=item.content||item.body||item.summary||'<p>No content available.</p>';
+  /* content and body fields contain trusted HTML authored in news-data.js;
+     summary is plain text and is escaped before wrapping in <p> */
+  var content=item.content||item.body||(item.summary?'<p>'+esc(item.summary)+'</p>':'<p>No content available.</p>');
   document.getElementById('detail-body').innerHTML=content;
 })();
 </script>
