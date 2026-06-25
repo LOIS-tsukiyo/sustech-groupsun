@@ -106,10 +106,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="col-md-4">
 <h6>Quick Links</h6>
 <ul>
-<li><a href="../research.html">Research</a></li>
-<li><a href="../publications.html">Publications</a></li>
-<li><a href="../news.html">News</a></li>
-<li><a href="../contact.html">Contact</a></li>
+<li><a href="research.html">Research</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="contact.html">Contact</a></li>
 </ul>
 </div>
 <div class="col-md-4">
@@ -129,9 +129,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <script>
 (function(){
   if(typeof NEWS_DATA==='undefined'){return}
-  var params=new URLSearchParams(window.location.search);
-  var id=parseInt(params.get('id'));
-  var item=NEWS_DATA.find(function(n){return n.id===id});
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
+  var rawId=new URLSearchParams(window.location.search).get('id');
+  if(!rawId&&window.location.hash){
+    var m=window.location.hash.match(/id=(\d+)/);
+    if(m)rawId=m[1];
+  }
+  var id=parseInt(rawId,10);
+  var item=isNaN(id)?null:NEWS_DATA.find(function(n){return n.id===id});
   if(!item){
     document.querySelector('.page-header').style.display='none';
     document.querySelector('.article-section').innerHTML='<div class="container"><div class="not-found"><h2>News not found</h2><p>The article you are looking for does not exist.</p><a href="news.html" class="back-link"><i class="fas fa-arrow-left" style="font-size:.7rem"></i> Back to News</a></div></div>';
@@ -140,14 +145,18 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   }
   document.title=item.title+' - Sun Lab, SUSTech';
   document.getElementById('detail-title').textContent=item.title;
-  document.getElementById('detail-date').textContent=item.date;
-  document.getElementById('detail-cat').textContent=item.category;
-  var mp=item.media.src;
-  var mf=item.media.type==='video'
-    ?'<video src="'+mp+'" controls preload="metadata" playsinline></video>'
-    :'<img src="'+mp+'" alt="'+item.media.alt+'">';
-  document.getElementById('detail-media').innerHTML=mf;
-  document.getElementById('detail-body').innerHTML=item.body;
+  document.getElementById('detail-date').textContent=item.date||'';
+  document.getElementById('detail-cat').textContent=item.category||'';
+  if(item.media&&item.media.src){
+    var mf=item.media.type==='video'
+      ?'<video src="'+esc(item.media.src)+'" controls preload="metadata" playsinline></video>'
+      :'<img src="'+esc(item.media.src)+'" alt="'+esc(item.media.alt||'')+'">';
+    document.getElementById('detail-media').innerHTML=mf;
+  }
+  /* content and body fields contain trusted HTML authored in news-data.js;
+     summary is plain text and is escaped before wrapping in <p> */
+  var bodyText=item.content||item.body||(item.summary?'<p>'+esc(item.summary)+'</p>':'');
+  document.getElementById('detail-body').innerHTML=bodyText;
 })();
 </script>
 </body>
