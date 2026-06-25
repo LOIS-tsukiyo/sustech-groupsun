@@ -3,19 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="refresh" content="0;url=../newsdetail.html">
 <title>Redirecting…</title>
 <script>
 (function(){
-  var search=window.location.search;
-  var hash=window.location.hash;
-  var dest='/newsdetail.html';
-  if(search){dest+=search;}
-  if(hash){dest+=hash;}
-  window.location.replace(dest);
+  var loc=window.location;
+  window.location.replace('../newsdetail.html'+loc.search+loc.hash);
 })();
 </script>
 </head>
 <body>
-<p>Redirecting to news detail…</p>
+<p>JavaScript is required to view this article. <a href="../news.html">Return to News</a>.</p>
 </body>
 </html>
