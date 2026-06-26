@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications - Sun Lab, SUSTech</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#1B3A4B;--sky:#5B8FA8;--pale:#A8C5D8;--bloom:#C4949A;--bloom-soft:#E0B8BA;--stamen:#B5A060;--text-dark:#1A2A3A;--text-mid:#4D6275;--text-light:#8A9AAD;--bg-white:#FAFBFC;--bg-light:#F2F5F8;--border:#DDE3E9;--shadow-blue:rgba(91,143,168,.08)}
+*{box-sizing:border-box}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
+
+/* ©¤©¤ Navbar ©¤©¤ */
+.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100}
+.navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
+.navbar-brand{font-weight:600;font-size:1.15rem;color:#1a1a1a!important;letter-spacing:-.3px}
+.navbar-brand span{color:#1a1a1a!important;font-weight:700}
+.nav-link{font-size:.9rem;font-weight:450;color:#5a5f66!important;padding:8px 14px!important;transition:color .2s}
+.nav-link:hover,.nav-link.active{color:#1a1a1a!important}
+
+/* ©¤©¤ Page Header ©¤©¤ */
+.page-header{padding:116px 0 96px;text-align:center;position:relative;background:linear-gradient(160deg,var(--deep) 0%,#234E5E 35%,var(--sky) 70%,var(--pale) 100%);overflow:hidden}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 25% 50%,rgba(168,197,216,.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(196,148,154,.1) 0%,transparent 50%);pointer-events:none;z-index:0}
+.page-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,var(--bg-white) 0%,transparent 100%);z-index:1;pointer-events:none}
+.page-header .container{position:relative;z-index:2}
+.page-header h1{font-size:2.6rem;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.4px}
+.page-header p{font-size:1rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto}
+
+/* ©¤©¤ Data Source Note ©¤©¤ */
+.data-note{font-size:.72rem;color:var(--text-light);padding:4px 0 0;margin-bottom:0;font-style:italic}
+
+/* ©¤©¤ Toolbar ©¤©¤ */
+.toolbar{background:#fff;border-bottom:1px solid var(--border);padding:18px 0;position:sticky;top:56px;z-index:50;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.search-box{position:relative}
+.search-box input{width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 14px 9px 38px;font-size:.86rem;color:var(--text-dark);background:var(--bg-white);transition:border-color .2s,box-shadow .2s}
+.search-box input:focus{border-color:var(--pale);box-shadow:0 0 0 3px rgba(168,197,216,.15);outline:none}
+.search-box input::placeholder{color:var(--text-light)}
+.search-box .search-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-light);font-size:.82rem}
+.filter-pills{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filter-pill{font-size:.76rem;font-weight:500;padding:5px 14px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--text-mid);cursor:pointer;transition:all .2s;user-select:none}
+.filter-pill:hover{border-color:var(--pale);color:var(--text-dark)}
+.filter-pill.active{background:var(--deep);color:#fff;border-color:var(--deep)}
+.sort-group{display:flex;align-items:center;gap:6px}
+.sort-group .sort-label{font-size:.74rem;font-weight:500;color:var(--text-light);margin-right:2px}
+.sort-btn{font-size:.74rem;font-weight:500;padding:4px 12px;border-radius:6px;border:1px solid var(--border);background:#fff;color:var(--text-mid);cursor:pointer;transition:all .2s;user-select:none;white-space:nowrap}
+.sort-btn:hover{border-color:var(--pale);color:var(--text-dark)}
+.sort-btn.active{background:var(--sky);color:#fff;border-color:var(--sky)}
+
+/* ©¤©¤ Results Info ©¤©¤ */
+.results-info{font-size:.78rem;color:var(--text-light);padding:18px 0 4px}
+
+/* ©¤©¤ Year Group ©¤©¤ */
+.year-group{margin-bottom:12px}
+.year-label{font-size:.7rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--bloom);padding:20px 0 10px;border-bottom:1px solid var(--border);margin-bottom:0}
+
+/* ©¤©¤ Pub Entry ©¤©¤ */
+.pub-entry{padding:16px 0;border-bottom:1px solid rgba(221,227,233,.5);display:flex;gap:14px;align-items:flex-start;transition:background .15s}
+.pub-entry:hover{background:rgba(242,245,248,.5);border-radius:6px}
+.pub-num{font-size:.72rem;font-weight:500;color:var(--text-light);min-width:28px;text-align:right;padding-top:3px;flex-shrink:0}
+.pub-content{flex:1;min-width:0}
+.pub-content .pub-authors{font-size:.8rem;color:var(--text-mid);line-height:1.5;margin-bottom:3px}
+.pub-content .pub-authors .hl{font-weight:600;color:var(--text-dark)}
+.pub-content .pub-title{font-size:.9rem;font-weight:550;color:var(--text-dark);line-height:1.45;margin-bottom:3px}
+.pub-content .pub-title a{color:inherit;text-decoration:none;transition:color .2s}
+.pub-content .pub-title a:hover{color:var(--sky)}
+.pub-content .pub-journal{font-size:.78rem;color:var(--text-light);font-style:italic}
+.pub-meta{display:flex;align-items:center;gap:10px;margin-top:6px;flex-wrap:wrap}
+.pub-meta .badge-citations{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--bg-light);color:var(--text-mid);letter-spacing:.3px}
+.pub-meta .badge-citations.hot{background:rgba(196,148,154,.1);color:var(--bloom)}
+.pub-meta .badge-tag{font-size:.62rem;font-weight:500;padding:2px 7px;border-radius:8px;letter-spacing:.5px;text-transform:uppercase}
+.pub-meta .badge-tag.recent{background:rgba(91,143,168,.08);color:var(--sky)}
+.pub-meta .badge-tag.top-journal{background:rgba(181,160,96,.08);color:var(--stamen)}
+.pub-meta .badge-tag.highly-cited{background:rgba(196,148,154,.08);color:var(--bloom)}
+.pub-meta .pub-link{font-size:.72rem;font-weight:500;color:var(--text-light);text-decoration:none;display:inline-flex;align-items:center;gap:3px;transition:color .2s}
+.pub-meta .pub-link:hover{color:var(--sky)}
+
+/* ©¤©¤ No Results ©¤©¤ */
+.no-results{text-align:center;padding:60px 20px}
+.no-results i{font-size:2rem;color:var(--text-light);margin-bottom:16px;display:block}
+.no-results p{font-size:.92rem;color:var(--text-light)}
+
+/* ©¤©¤ Footer ©¤©¤ */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
+.site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
+.site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.site-footer p,.site-footer a{font-size:.85rem;color:rgba(255,255,255,.5);text-decoration:none}
+.site-footer a:hover{color:var(--pale)}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer ul li{margin-bottom:8px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
+
+/* ©¤©¤ Responsive ©¤©¤ */
+@media(max-width:991px){
+.page-header h1{font-size:2rem}
+}
+@media(max-width:767px){
+.page-header{padding:52px 0 40px}
+.page-header h1{font-size:1.7rem}
+.toolbar{padding:14px 0}
+.filter-pills{gap:6px}
+.sort-group{margin-top:8px}
+.pub-entry{gap:10px}
+.pub-num{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg sticky-top">
+<div class="container">
+<a class="navbar-brand" href="index.html"><span>Sun Lab</span> . SUSTech</a>
+<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarNav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+<li class="nav-item"><a class="nav-link active" href="publications.html">Publications</a></li>
+<li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
+<li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
+<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<section class="page-header">
+<div class="container">
+<h1>Publications</h1>
+<p>Selected research outputs from Sun Lab at SUSTech.</p>
+</div>
+</section>
+
+<section class="toolbar">
+<div class="container">
+<div class="row g-3 align-items-center">
+<div class="col-lg-4 col-md-5">
+<div class="search-box">
+<i class="fas fa-search search-icon"></i>
+<input type="text" id="searchInput" placeholder="Search by title, author, or journal...">
+</div>
+</div>
+<div class="col-lg-5 col-md-4">
+<div class="filter-pills">
+<span class="filter-pill active" data-filter="all">All</span>
+<span class="filter-pill" data-filter="recent">Recent</span>
+<span class="filter-pill" data-filter="highly-cited">Highly Cited</span>
+<span class="filter-pill" data-filter="top-journal">Featured Journals</span>
+</div>
+</div>
+<div class="col-lg-3 col-md-3">
+<div class="sort-group">
+<span class="sort-label">Sort:</span>
+<button class="sort-btn active" data-sort="year">Year ¡ý</button>
+<button class="sort-btn" data-sort="citations">Citations ¡ý</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding:0 0 72px;background:var(--bg-white)">
+<div class="container">
+<div class="results-info" id="resultsInfo"></div>
+<p class="data-note">Citation counts sourced from Crossref; Google Scholar counts are typically higher.</p>
+<div id="pubList"></div>
+</div>
+</section>
+
+<footer class="site-footer">
+<div class="container">
+<div class="row g-4">
+<div class="col-md-4">
+<h6>Sun Lab</h6>
+<p>Southern University of Science and Technology<br>Shenzhen, China</p>
+<p class="mt-2">sunxiaowei@sustech.edu.cn</p>
+</div>
+<div class="col-md-4">
+<h6>Quick Links</h6>
+<ul>
+<li><a href="research.html">Research</a></li>
+<li><a href="publications.html">Publications</a></li>
+<li><a href="news.html">News</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h6>Follow</h6>
+<div class="d-flex gap-3">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+</div>
+</div>
+<div class="footer-bottom">&copy; 2026 Sun Lab, SUSTech. All rights reserved.</div>
+</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+var PUBLICATIONS_DATA=[
+  {title:"Glasses-free display switches between 2D and 3D",
+   authors:"<span class='hl'>Xiao Wei Sun</span>, Zhongtao Tian",
+   journal:"Nature",year:2026,
+   doi:"https://doi.org/10.1038/d41586-026-01148-w",citations:0,
+   tags:["recent","top-journal"]},
+  {title:"Electrophoretic deposition",
+   authors:"Jinyang Zhao, Wenbo Liu, Rezvan Azari, ..., <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Nature Reviews Methods Primers",year:2026,
+   doi:"https://doi.org/10.1038/s43586-025-00462-3",citations:2,
+   tags:["recent","top-journal"]},
+  {title:"An achromatic metasurface waveguide for augmented reality displays",
+   authors:"Zhongtao Tian, Xiuling Zhu, Philip A. Surman, Zhidong Chen, <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Light: Science & Applications",year:2025,
+   doi:"https://doi.org/10.1038/s41377-025-01761-w",citations:40,
+   tags:["recent","top-journal"]},
+  {title:"High-Performance Colloidal Quantum-Dot VCSEL with Quality Factor Above 2000",
+   authors:"Yangzhi Tan, Zhulu Song, Guanding Mei, ..., <span class='hl'>Xiao Wei Sun</span>, ..., Kai Wang",
+   journal:"Laser & Photonics Reviews",year:2025,
+   doi:"https://doi.org/10.1002/lpor.202401316",citations:2,
+   tags:["recent","top-journal"]},
+  {title:"Efficient ZnSeTe-Based Blue Quantum-Dot Light-Emitting Diodes via Phosphine Oxide Dual Passivation",
+   authors:"Shanshan Liang, Zhaobing Tang, Shang Li, ..., <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Advanced Optical Materials",year:2025,
+   doi:"https://doi.org/10.1002/adom.202500034",citations:8,
+   tags:["recent"]},
+  {title:"Competing light extraction strategies in perovskite light-emitting diodes",
+   authors:"Guanding Mei, Kai Wang, <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Nature Nanotechnology",year:2024,
+   doi:"https://doi.org/10.1038/s41565-024-01709-y",citations:11,
+   tags:["recent","top-journal"]},
+  {title:"Impedance spectroscopy for quantum dot light-emitting diodes",
+   authors:"Xiangwei Qu, <span class='hl'>Xiaowei Sun</span>",
+   journal:"Journal of Semiconductors",year:2023,
+   doi:"https://doi.org/10.1088/1674-4926/44/9/091603",citations:39,
+   tags:[]},
+  {title:"Large-area patterning of full-color quantum dot arrays beyond 1000 ppi by selective electrophoretic deposition",
+   authors:"Jinyang Zhao, Lixuan Chen, Dongze Li, ..., <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Nature Communications",year:2021,
+   doi:"https://doi.org/10.1038/s41467-021-24931-x",citations:142,
+   tags:["highly-cited","top-journal"]},
+  {title:"High Performance Inkjet-Printed Quantum-Dot Light-Emitting Diodes with High Operational Stability",
+   authors:"Siqi Jia, Haodong Tang, Jingrui Ma, ..., <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Advanced Optical Materials",year:2021,
+   doi:"https://doi.org/10.1002/adom.202101069",citations:73,
+   tags:[]},
+  {title:"Hybrid Perovskite Light-Emitting Diodes Based on Perovskite Nanocrystals with Organic-Inorganic Mixed Cations",
+   authors:"Xiaoli Zhang, He Liu, Weigao Wang, ..., <span class='hl'>Xiao Wei Sun</span>",
+   journal:"Advanced Materials",year:2017,
+   doi:"https://doi.org/10.1002/adma.201702815",citations:6,
+   tags:["top-journal"]},
+  {title:"Room Temperature Excitonic Whispering Gallery Mode Lasing from High-Quality Hexagonal ZnO Microdisks",
+   authors:"Rui Chen, Bo Ling, <span class='hl'>Xiao Wei Sun</span>, Han Dong Sun",
+   journal:"Advanced Materials",year:2011,
+   doi:"https://doi.org/10.1002/adma.201190068",citations:11,
+   tags:["top-journal"]},
+  {title:"A ZnO Nanorod Inorganic/Organic Heterostructure Light-Emitting Diode Emitting at 342 nm",
+   authors:"<span class='hl'>X. W. Sun</span>, J. Z. Huang, J. X. Wang, Z. Xu",
+   journal:"Nano Letters",year:2008,
+   doi:"https://doi.org/10.1021/nl080340z",citations:283,
+   tags:["highly-cited"]},
+  {title:"A p-n homojunction ZnO nanorod light-emitting diode formed by As ion implantation",
+   authors:"Y. Yang, <span class='hl'>X. W. Sun</span>, B. K. Tay, G. F. You, S. T. Tan, K. L. Teo",
+   journal:"Applied Physics Letters",year:2008,
+   doi:"https://doi.org/10.1063/1.3054639",citations:80,
+   tags:[]},
+  {title:"Zinc oxide nanocomb biosensor for glucose detection",
+   authors:"J. X. Wang, <span class='hl'>X. W. Sun</span>, A. Wei, ..., Z. L. Dong",
+   journal:"Applied Physics Letters",year:2006,
+   doi:"https://doi.org/10.1063/1.2210078",citations:522,
+   tags:["highly-cited"]},
+  {title:"Hydrothermally grown oriented ZnO nanorod arrays for gas sensing applications",
+   authors:"J X Wang, <span class='hl'>X W Sun</span>, Y Yang, ..., L Vayssieres",
+   journal:"Nanotechnology",year:2006,
+   doi:"https://doi.org/10.1088/0957-4484/17/19/037",citations:637,
+   tags:["highly-cited"]},
+  {title:"Field emission from gallium-doped zinc oxide nanofiber array",
+   authors:"C. X. Xu, <span class='hl'>X. W. Sun</span>, B. J. Chen",
+   journal:"Applied Physics Letters",year:2004,
+   doi:"https://doi.org/10.1063/1.1651328",citations:246,
+   tags:["highly-cited"]},
+  {title:"Optical properties of epitaxially grown zinc oxide films on sapphire by pulsed laser deposition",
+   authors:"<span class='hl'>X. W. Sun</span>, H. S. Kwok",
+   journal:"Journal of Applied Physics",year:1999,
+   doi:"https://doi.org/10.1063/1.370744",citations:485,
+   tags:["highly-cited"]}
+];
+
+/* ©¤©¤ State ©¤©¤ */
+var currentFilter="all";
+var currentSort="year";
+var searchQuery="";
+
+/* ©¤©¤ Filter Pills ©¤©¤ */
+document.querySelectorAll(".filter-pill").forEach(function(pill){
+  pill.addEventListener("click",function(){
+    document.querySelectorAll(".filter-pill").forEach(function(p){p.classList.remove("active")});
+    pill.classList.add("active");
+    currentFilter=pill.getAttribute("data-filter");
+    render();
+  });
+});
+
+/* ©¤©¤ Sort Buttons ©¤©¤ */
+document.querySelectorAll(".sort-btn").forEach(function(btn){
+  btn.addEventListener("click",function(){
+    document.querySelectorAll(".sort-btn").forEach(function(b){b.classList.remove("active")});
+    btn.classList.add("active");
+    currentSort=btn.getAttribute("data-sort");
+    render();
+  });
+});
+
+/* ©¤©¤ Search ©¤©¤ */
+var searchTimer=null;
+document.getElementById("searchInput").addEventListener("input",function(e){
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(function(){
+    searchQuery=e.target.value.trim().toLowerCase();
+    render();
+  },200);
+});
+
+/* ©¤©¤ Render ©¤©¤ */
+function render(){
+  var data=PUBLICATIONS_DATA.slice();
+
+  /* filter */
+  if(currentFilter!=="all"){
+    data=data.filter(function(p){return p.tags.indexOf(currentFilter)!==-1});
+  }
+
+  /* search */
+  if(searchQuery){
+    data=data.filter(function(p){
+      var t=p.title.toLowerCase();
+      var a=p.authors.replace(/<[^>]*>/g,"").toLowerCase();
+      var j=p.journal.toLowerCase();
+      return t.indexOf(searchQuery)!==-1||a.indexOf(searchQuery)!==-1||j.indexOf(searchQuery)!==-1;
+    });
+  }
+
+  /* sort */
+  if(currentSort==="year"){
+    data.sort(function(a,b){return b.year-a.year||b.citations-a.citations});
+  }else{
+    data.sort(function(a,b){return b.citations-a.citations||b.year-a.year});
+  }
+
+  /* results info */
+  document.getElementById("resultsInfo").textContent=data.length+" publication"+(data.length!==1?"s":"");
+
+  /* build html */
+  var container=document.getElementById("pubList");
+  if(data.length===0){
+    container.innerHTML='<div class="no-results"><i class="fas fa-search"></i><p>No publications match your search.</p></div>';
+    return;
+  }
+
+  var html="";
+  var lastYear=0;
+  for(var i=0;i<data.length;i++){
+    var p=data[i];
+
+    /* year separator (only when sorted by year) */
+    if(currentSort==="year"&&p.year!==lastYear){
+      html+='<div class="year-group"><div class="year-label">'+p.year+'</div></div>';
+      lastYear=p.year;
+    }
+
+    var num=i+1;
+    var hotThreshold=100;
+    var citeClass=p.citations>=hotThreshold?"hot":"";
+
+    var tagBadges="";
+    for(var t=0;t<p.tags.length;t++){
+      tagBadges+='<span class="badge-tag '+p.tags[t]+'">'+p.tags[t].replace("-"," ")+'</span>';
+    }
+
+    html+='<div class="pub-entry">'
+      +'<span class="pub-num">'+num+'</span>'
+      +'<div class="pub-content">'
+      +'<div class="pub-authors">'+p.authors+'</div>'
+      +'<div class="pub-title"><a href="'+p.doi+'" target="_blank" rel="noopener">'+p.title+'</a></div>'
+      +'<div class="pub-journal">'+p.journal+', '+p.year+'</div>'
+      +'<div class="pub-meta">'
+      +'<span class="badge-citations '+citeClass+'"><i class="fas fa-quote-left" style="font-size:.55rem;margin-right:3px"></i>'+p.citations+'</span>'
+      +tagBadges
+      +'<a href="'+p.doi+'" class="pub-link" target="_blank" rel="noopener">DOI <i class="fas fa-external-link-alt" style="font-size:.55rem"></i></a>'
+      +'</div>'
+      +'</div></div>';
+  }
+  container.innerHTML=html;
+}
+
+render();
+</script>
+</body>
+</html>
