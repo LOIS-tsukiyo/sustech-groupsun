@@ -340,7 +340,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="news-data.js"></script>
-<script>
+<script>   
 (function () {
   function esc(str) {
     return String(str)
@@ -352,7 +352,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
   }
   var container = document.getElementById('breakthrough-cards');
   if (!container || typeof NEWS_DATA === 'undefined') return;
-  var items = NEWS_DATA.slice(0, 3);
+  var sorted = NEWS_DATA.slice().sort(function(a,b){ return b.id - a.id; });
+ var items = sorted.slice(0, 3);
   var html = '';
   items.forEach(function (item) {
     var media = item.media.type === 'video'
