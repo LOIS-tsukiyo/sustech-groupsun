@@ -10,7 +10,7 @@ var RESEARCH_DATA = [
     description: "Fundamental concepts of colloidal quantum dots: quantum confinement effect, energy level engineering, and their significance in next-generation display technologies. The 2023 Nobel Prize in Chemistry was awarded for the discovery and synthesis of quantum dots.",
     tags: [],
     doi: ""
-  },
+  }
   {
     id: 2, category: "cq",
     title: "Core-shell Structures & Surface Modification",
