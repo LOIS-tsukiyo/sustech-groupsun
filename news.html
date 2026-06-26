@@ -11,26 +11,26 @@
 :root{--deep:#1B3A4B;--sky:#5B8FA8;--pale:#A8C5D8;--bloom:#C4949A;--bloom-soft:#E0B8BA;--stamen:#B5A060;--text-dark:#1A2A3A;--text-mid:#4D6275;--text-light:#8A9AAD;--bg-white:#FAFBFC;--bg-light:#F2F5F8;--border:#DDE3E9;--shadow-pink:rgba(196,148,154,.06);--shadow-blue:rgba(91,143,168,.08)}
 *{box-sizing:border-box}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
-/* ���� Navbar ���� */
+/*      Navbar      */
 .navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:relative;z-index:100}
 .navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
 .navbar-brand{font-weight:600;font-size:1.15rem;color:#1a1a1a!important;letter-spacing:-.3px}
 .navbar-brand span{color:#1a1a1a;font-weight:700}
 .nav-link{font-size:.9rem;font-weight:450;color:#5a5f66!important;padding:8px 14px!important;transition:color .2s}
 .nav-link:hover,.nav-link.active{color:#1a1a1a!important}
-/* ���� Page Header ���� */
+/*      Page Header      */
 .page-header{padding:116px 0 96px;text-align:center;position:relative;background:linear-gradient(160deg,var(--deep) 0%,#234E5E 35%,var(--sky) 70%,var(--pale) 100%);overflow:hidden}
 .page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 25% 50%,rgba(168,197,216,.15) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 60%,rgba(196,148,154,.1) 0%,transparent 50%);pointer-events:none;z-index:0}
 .page-header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to top,var(--bg-white) 0%,transparent 100%);z-index:1;pointer-events:none}
 .page-header .container{position:relative;z-index:2}
 .page-header h1{font-size:2.6rem;font-weight:700;color:#fff;margin-bottom:12px;letter-spacing:-.4px}
 .page-header p{font-size:1rem;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto}
-/* ���� News Content ���� */
+/*      News Content      */
 .news-section{padding:72px 0 80px;position:relative;overflow:hidden;background:var(--bg-white)}
 .news-section::before{content:'';position:absolute;top:0;left:0;bottom:0;width:280px;background:linear-gradient(90deg,rgba(91,143,168,.04) 0%,rgba(91,143,168,.015) 60%,transparent 100%);pointer-events:none;z-index:0}
 .news-section::after{content:'';position:absolute;top:0;right:0;bottom:0;width:200px;background:linear-gradient(270deg,rgba(196,148,154,.03) 0%,transparent 100%);pointer-events:none;z-index:0}
 .news-section .container{position:relative;z-index:1}
-/* ���� Featured ���� */
+/*      Featured      */
 .featured-news{display:flex;gap:40px;align-items:flex-start;margin-bottom:56px;padding-bottom:48px;border-bottom:1px solid var(--border)}
 .featured-media{flex:0 0 48%;border-radius:12px;overflow:hidden;aspect-ratio:16/9;background:var(--bg-light)}
 .featured-media img,.featured-media video{width:100%;height:100%;object-fit:cover;display:block}
@@ -44,14 +44,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .featured-content .news-body p:last-child{margin-bottom:0}
 .featured-content .read-more{font-size:.85rem;font-weight:500;color:var(--sky);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s,color .2s}
 .featured-content .read-more:hover{color:var(--deep);gap:10px}
-/* ���� News List ���� */
+/*      News List      */
 .news-list-title{font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:24px;letter-spacing:-.1px}
 .news-item{display:flex;gap:24px;padding:18px 0;border-bottom:1px solid var(--border);text-decoration:none;transition:background .15s}
 .news-item:last-child{border-bottom:none}
 .news-item-date{flex-shrink:0;width:110px;font-size:.82rem;font-weight:500;color:var(--text-light);padding-top:2px}
 .news-item-title{font-size:.95rem;font-weight:500;color:var(--text-dark);line-height:1.5;transition:color .2s}
 .news-item:hover .news-item-title{color:var(--deep)}
-/* ���� Footer ���� */
+/*      Footer      */
 .site-footer{background:var(--deep);color:rgba(255,255,255,.7);padding:48px 0 32px;position:relative;overflow:hidden}
 .site-footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--bloom-soft),var(--stamen),var(--pale),transparent);opacity:.35}
 .site-footer h6{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
@@ -60,7 +60,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer ul li{margin-bottom:8px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
-/* ���� Responsive ���� */
+/*      Responsive      */
 @media(max-width:991px){
 .featured-news{flex-direction:column;gap:24px}
 .featured-media{flex:none;width:100%}
@@ -137,10 +137,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="news-data.js"></script>
 <script>
+
 (function(){
   if(typeof NEWS_DATA==='undefined'||!NEWS_DATA.length)return;
-  /* Featured �� ����һ�� */
-  var f=NEWS_DATA[0];
+  var sorted = NEWS_DATA.slice().sort(function(a,b){ return b.id - a.id; });   
+  var f=sorted[0];
   var mf=f.media.type==='video'
     ?'<video src="'+f.media.src+'" controls preload="metadata" playsinline></video>'
     :'<img src="'+f.media.src+'" alt="'+f.media.alt+'">';
@@ -154,10 +155,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
         '<a href="newsdetail.html?id='+f.id+'" class="read-more">Read full article <i class="fas fa-arrow-right" style="font-size:.65rem"></i></a>'+
       '</div>'+
     '</div>';
-  /* List �� ȫ������ */
-  var listHtml='';
-  for(var i=0;i<NEWS_DATA.length;i++){
-    var n=NEWS_DATA[i];
+    var listHtml='';
+  for(var i=0;i<sorted.length;i++){
+    var n=sorted[i];
     listHtml+=
       '<a href="newsdetail.html?id='+n.id+'" class="news-item">'+
         '<span class="news-item-date">'+n.date+'</span>'+
