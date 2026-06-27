@@ -315,8 +315,18 @@ function renderCards(){
 }
 
 /* ── Init ── */
-updateSection();
-renderCards();
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var tab = params.get("tab");
+  if(tab && CATEGORY_INFO[tab]){
+    currentCategory = tab;
+    document.querySelectorAll(".tab-btn").forEach(function(b){
+      b.classList.toggle("active", b.getAttribute("data-category") === tab);
+    });
+    updateSection();
+  }
+  renderCards();
+})();
 </script>
 </body>
 </html>
