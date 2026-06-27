@@ -53,6 +53,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .card-body-custom .card-meta .badge-journal{font-size:.66rem;font-weight:500;padding:2px 8px;border-radius:8px;background:rgba(91,143,168,.08);color:var(--sky);letter-spacing:.3px}
 .card-body-custom .card-meta .badge-year{font-size:.66rem;font-weight:500;color:var(--text-light)}
 
+/* ── Coming Soon Card ── */
+.card-coming-soon{cursor:default;background:var(--bg-light)}
+.card-coming-soon:hover{transform:none;box-shadow:none}
+
 /* ── Modal ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(26,42,58,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px;opacity:0;transition:opacity .25s}
 .modal-overlay.show{display:flex;opacity:1}
@@ -129,9 +133,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="container">
 <div class="tab-group">
 <button class="tab-btn active" data-category="all">All</button>
-<button class="tab-btn" data-category="cq">CQD</button>
-<button class="tab-btn" data-category="display">QD Display</button>
-<button class="tab-btn" data-category="simulation">QLED Simulation</button>
+<button class="tab-btn" data-category="materials">Quantum Dot Materials</button>
+<button class="tab-btn" data-category="devices">Quantum Dot Devices</button>
+<button class="tab-btn" data-category="optics">QD's Optical Properties</button>
+<button class="tab-btn" data-category="waveguide">AR Waveguide</button>
 </div>
 </div>
 </div>
@@ -140,7 +145,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="container">
 <div class="section-intro" id="sectionIntro">
 <h2 id="sectionTitle">All Research</h2>
-<p id="sectionDesc">Explore our research spanning colloidal quantum dot synthesis, display technologies, and device simulation.</p>
+<p id="sectionDesc">Explore our research spanning quantum dot materials, devices, optical properties, and AR waveguide technologies.</p>
 </div>
 <div class="card-grid" id="cardGrid"></div>
 </div>
@@ -195,10 +200,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <script src="research-data.js"></script>
 <script>
 var CATEGORY_INFO = {
-  all: { title: "All Research", desc: "Explore our research spanning colloidal quantum dot synthesis, display technologies, and device simulation." },
-  cq: { title: "Colloidal Quantum Dots", desc: "From core-shell synthesis to single-dot spectroscopy — engineering nanoscale light emitters with atomic precision." },
-  display: { title: "QD Display Technologies", desc: "Translating quantum dot innovation into real-world displays: from inkjet-printed QLEDs to ultra-high-resolution microdisplays." },
-  simulation: { title: "QLED Simulation", desc: "Optical modeling and simulation tools for understanding and optimizing light extraction in quantum dot displays." }
+  all: { title: "All Research", desc: "Explore our research spanning quantum dot materials, devices, optical properties, and AR waveguide technologies." },
+  materials: { title: "Quantum Dot Materials", desc: "From core-shell synthesis to single-dot spectroscopy — engineering nanoscale light emitters with atomic precision." },
+  optics: { title: "QD's Optical Properties", desc: "Probing the fundamental photophysics and optical behavior of quantum dots through single-particle spectroscopy and advanced simulation." },
+  devices: { title: "Quantum Dot Devices", desc: "Translating quantum dot innovation into real-world displays: from inkjet-printed QLEDs to ultra-high-resolution microdisplays." },
+  waveguide: { title: "AR Waveguide", desc: "Next-generation AR waveguide technologies for augmented reality displays." }
 };
 
 var currentCategory = "all";
@@ -228,7 +234,7 @@ function openModal(item){
   document.getElementById("modalDesc").textContent = item.description;
 
   var tagsHtml = "";
-  var catLabels = { cq: "CQD", display: "QD Display", simulation: "QLED Simulation" };
+  var catLabels = { materials: "QD Materials", optics: "Optical Properties", devices: "QD Devices", waveguide: "AR Waveguide" };
   if(catLabels[item.category]) tagsHtml += '<span class="tag tag-cat">' + catLabels[item.category] + '</span>';
   if(item.journal) tagsHtml += '<span class="tag tag-journal">' + item.journal.split("/")[0].trim() + '</span>';
   document.getElementById("modalTags").innerHTML = tagsHtml;
@@ -260,6 +266,20 @@ function renderCards(){
     : RESEARCH_DATA.filter(function(r){ return r.category === currentCategory; });
 
   var grid = document.getElementById("cardGrid");
+
+  /* handle coming-soon only */
+  var hasRealItems = items.some(function(r){ return !(r.tags && r.tags.indexOf("coming-soon") !== -1); });
+  var hasComingSoon = items.some(function(r){ return r.tags && r.tags.indexOf("coming-soon") !== -1; });
+
+  if(!hasRealItems && hasComingSoon){
+    grid.innerHTML = '<div class="card-item card-coming-soon">'
+      + '<div class="card-body-custom" style="display:flex;align-items:center;justify-content:center;min-height:200px;text-align:center;">'
+      + '<div><div class="card-title" style="font-size:1rem;color:var(--text-light);margin-bottom:8px;">Coming Soon</div>'
+      + '<div style="font-size:.82rem;color:var(--text-light);">Our research in this area is underway.</div></div>'
+      + '</div></div>';
+    return;
+  }
+
   if(items.length === 0){
     grid.innerHTML = '<p style="text-align:center;color:var(--text-light);grid-column:1/-1;padding:48px 0;">No research items in this category.</p>';
     return;
@@ -268,6 +288,7 @@ function renderCards(){
   var html = "";
   for(var i = 0; i < items.length; i++){
     var r = items[i];
+    if(r.tags && r.tags.indexOf("coming-soon") !== -1) continue;
     var metaParts = [];
     if(r.journal) metaParts.push('<span class="badge-journal">' + r.journal.split("/")[0].trim() + '</span>');
     if(r.year) metaParts.push('<span class="badge-year">' + r.year + '</span>');
@@ -288,7 +309,7 @@ function renderCards(){
     cards[j].addEventListener("click", function(){
       var id = parseInt(this.getAttribute("data-id"));
       var item = RESEARCH_DATA.filter(function(r){ return r.id === id; })[0];
-      if(item) openModal(item);
+      if(item && !(item.tags && item.tags.indexOf("coming-soon") !== -1)) openModal(item);
     });
   }
 }
