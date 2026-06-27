@@ -3,13 +3,11 @@ var RESEARCH_DATA = [
     id: 1, category: "materials",
     title: "CQDs Introduction",
     authors: "",
-    journal: "Nature. Mater.",
-    journal: "Chem. Rev.",
-    journal: "Adv. Mater.",
+    journal: "Chem. Rev. / Adv. Mater.",
     year: "",
     image: "research/product1.png",
     description: "Fundamental concepts of colloidal quantum dots: quantum confinement effect, energy level engineering, and their significance in next-generation display technologies. The 2023 Nobel Prize in Chemistry was awarded for the discovery and synthesis of quantum dots.",
-    tags: [top-journal],
+    tags: ["top-journal"],
     doi: ""
   },
   {
@@ -20,7 +18,7 @@ var RESEARCH_DATA = [
     year: "2024",
     image: "research/product2.png",
     description: "Advanced core-shell nanostructure design including gradient alloy shells and lattice contraction engineering. Surface modification strategies with tailored ligand chemistry (oleic acid, zinc acetate, TGA) to achieve quantum yield up to 85%.",
-    tags: [top-journal],
+    tags: ["top-journal"],
     doi: ""
   },
   {
@@ -100,17 +98,6 @@ var RESEARCH_DATA = [
     tags: ["top-journal"],
     doi: ""
   },
-   {
-    id: 15, category: "optics",
-    title: "QLED Analysis & LEDA Software",
-    authors: "Dr. Guanding Mei",
-    journal: "Nature.Nanotechnology",
-    year: "",
-    image: "research/product10.png",
-    description: "Advanced optical simulation framework for QLED light extraction analysis. Development of LEDA (LED Analysis) software for modeling and optimizing light outcoupling efficiency in quantum dot display architectures.",
-    tags: ["top-journal"],
-    doi: ""
-  },
   {
     id: 10, category: "devices",
     title: "QDs for Display",
@@ -164,6 +151,17 @@ var RESEARCH_DATA = [
     image: "research/product15.png",
     description: "Transparent quantum dot light-emitting diodes with high visible transmittance (>70%). Enables novel applications in see-through displays, smart windows, and augmented reality interfaces.",
     tags: [],
+    doi: ""
+  },
+  {
+    id: 15, category: "optics",
+    title: "QLED Analysis & LEDA Software",
+    authors: "Dr. Guanding Mei",
+    journal: "Nature.Nanotechnology",
+    year: "",
+    image: "research/product10.png",
+    description: "Advanced optical simulation framework for QLED light extraction analysis. Development of LEDA (LED Analysis) software for modeling and optimizing light outcoupling efficiency in quantum dot display architectures.",
+    tags: ["top-journal"],
     doi: ""
   },
   {
