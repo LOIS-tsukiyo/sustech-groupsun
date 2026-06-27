@@ -230,7 +230,7 @@ def determine_tags(paper, year, cited):
     
     if year >= current_year - 1:
         tags.append('recent')
-    if cited >= 100:
+    if cited >= 300:
         tags.append('highly-cited')
     
     loc = paper.get('primary_location') or {}
@@ -290,7 +290,7 @@ def generate_js(papers, output_path):
     seen_titles = set()
     current_year = datetime.now().year
     recent_threshold = current_year - 2  # Last 3 years (inclusive)
-    min_citations_old = 100  # Minimum citations for papers before recent period
+    min_citations_old = 300  # Minimum citations for papers before recent period
     
     for paper in papers:
         title = paper.get('title', '')
