@@ -85,7 +85,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .research-card-body{padding:24px;display:flex;flex-direction:column;flex:1}
 .research-card-body h4{font-size:1.05rem;font-weight:600;color:var(--text-dark);margin-bottom:10px}
 .research-card-body p{font-size:.88rem;color:var(--text-light);line-height:1.65;margin-bottom:16px;flex:1}
-.research-card-body .btn-link{font-size:.82rem;font-weight:500;color:var(--text-mid) !important;text-decoration:none;padding:0}
+.research-card-body .btn-link{font-size:.82rem;font-weight:500;color:var(--text-mid)!important;text-decoration:none!important;padding:0}
+.research-card-body .btn-link:hover{color:var(--deep)!important}
 /* ── Stats ── */
 .stats-section{background:linear-gradient(135deg,var(--deep) 0%,#2A5A6E 40%,var(--sky) 100%);padding:36px 0;position:relative;overflow:hidden}
 .stats-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 50% 50%,rgba(168,197,216,.12) 0%,transparent 70%);pointer-events:none}
@@ -151,11 +152,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <body>
 <nav class="navbar navbar-expand-lg sticky-top">
 <div class="container">
-<a class="navbar-brand" href="index.html"><span>Sun Lab</span> · SUSTech</a>
+<a class="navbar-brand" href="index.html"><span>Sun Lab</span> . SUSTech</a>
 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
 <div class="collapse navbar-collapse" id="navbarNav">
 <ul class="navbar-nav ms-auto">
 <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
 <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
 <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
 <li class="nav-item"><a class="nav-link" href="members.html">Members</a></li>
@@ -214,7 +216,53 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <p class="section-desc">Highlighting our latest research progress and major events.</p>
 </div>
 </div>
-<div class="row g-4" id="breakthrough-cards"></div>
+<div class="row g-4">
+<div class="col-md-6 col-lg-4">
+<a href="publications.html" class="text-decoration-none">
+<div class="bt-card">
+<div class="bt-card-media">
+<img src="10.jpg" alt="Xiamen University Visit">
+</div>
+<div class="bt-card-body">
+<div class="bt-meta"><span class="bt-date">June,2026</span><span class="bt-journal">Xiamen University</span></div>
+<h4>Academician Xiao Wei Sun visits Academician Hu Wenping, President of Xiamen University</h4>
+<p>Recently, Xiao Wei Sun, foreign academician of the Russian Academy of Sciences, the executive dean of the Institute of Nanoscience and Application of the SUST, and the chair professor of the Department of EEE, visited Hu Wenping, an academician of the CAS Member and the president of Xiamen University.</p>
+<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
+</div>
+</div>
+</a>
+</div>
+<div class="col-md-6 col-lg-4">
+<a href="publications.html" class="text-decoration-none">
+<div class="bt-card">
+<div class="bt-card-media">
+<img src="9.jpg" alt="Nature Review">
+</div>
+<div class="bt-card-body">
+<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Nature</span></div>
+<h4>Academician Xiao Wei Sun's team was invited to publish a research review article in Nature</h4>
+<p>Recently, at the invitation of the top academic journal Nature, Xiao Wei Sun published a research review article titled "Glasses free display switches between 2D and 3D" in the Nature News&Views column.</p>
+<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
+</div>
+</div>
+</a>
+</div>
+<div class="col-md-6 col-lg-4">
+<a href="publications.html" class="text-decoration-none">
+<div class="bt-card">
+<div class="bt-card-media">
+<video src="1.mp4" controls preload="metadata" playsinline></video>
+</div>
+<div class="bt-card-body">
+<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Shenzhen News</span></div>
+<h4>Exclusive interview on Huawei's "Tao Law"</h4>
+<p>Shenzhen News conducted an exclusive interview with Xiao Wei Sun, Executive Dean of the Institute of Nano Science and Applications at the Southern University of Science and Technology.</p>
+<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
+</div>
+</div>
+</a>
+</div>
+</div>
 </div>
 </section>
 <section class="section-padding research-section">
@@ -223,7 +271,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="col-lg-6">
 <div class="section-title">Research</div>
 <h2 class="section-heading">Core Research Areas</h2>
-<p class="section-desc">Innovations in nanocrystal materials, quantum dots technologies and near-eye display technology.</p>
+<p class="section-desc">Innovations in nanocrystal materials, quantum dots materials and near-eye display technology.</p>
 </div>
 </div>
 <div class="row g-4">
@@ -233,7 +281,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="research-card-body">
 <h4>Quantum Dot Materials</h4>
 <p>High-quality and eco-friendly quantum dot materials with enhanced luminescence and stability.</p>
-<a href="research.html?tab=materials" ...>Learn more →</a>
+<a href="research.html?tab=materials" class="btn-link">Learn more →</a>
 </div>
 </div>
 </div>
@@ -243,7 +291,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="research-card-body">
 <h4>Quantum Dot Devices</h4>
 <p>QLEDs, Micro-LEDs, and quantum dot devices with superior color purity and power efficiency and superior chemistry character.</p>
-<a href="research.html?tab=devices" ...>Learn more →</a>
+<a href="research.html?tab=devices" class="btn-link">Learn more →</a>
 </div>
 </div>
 </div>
@@ -253,7 +301,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="research-card-body">
 <h4>AR Waveguide</h4>
 <p>Metasurface waveguides for full-color AR displays with achromatic coupling and wide FOV.</p>
-<a href="research.html?tab=waveguide" ...>Learn more →</a>
+<a href="research.html?tab=waveguide" class="btn-link">Learn more →</a>
 </div>
 </div>
 </div>
@@ -263,7 +311,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="research-card-body">
 <h4>QD's Optical Properties</h4>
 <p>Fluorescence, absorption, tunable bandgap, photostability and single photon property of quantum dot materials for advanced applications.</p>
-<a href="research.html?tab=optics" ...>Learn more →</a>
+<a href="research.html?tab=optics" class="btn-link">Learn more →</a>
 </div>
 </div>
 </div>
@@ -318,6 +366,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <div class="col-md-4">
 <h6>Quick Links</h6>
 <ul>
+<li><a href="about.html">About</a></li>
 <li><a href="research.html">Research</a></li>
 <li><a href="publications.html">Publications</a></li>
 <li><a href="contact.html">Contact</a></li>
@@ -336,43 +385,5 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="news-data.js"></script>
-<script>   
-(function () {
-  function esc(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-  var container = document.getElementById('breakthrough-cards');
-  if (!container || typeof NEWS_DATA === 'undefined') return;
-  var sorted = NEWS_DATA.slice().sort(function(a,b){ return b.id - a.id; });
- var items = sorted.slice(0, 3);
-  var html = '';
-  items.forEach(function (item) {
-    var media = item.media.type === 'video'
-      ? '<video src="' + esc(item.media.src) + '" title="' + esc(item.media.alt) + '" aria-label="' + esc(item.media.alt) + '" controls preload="metadata" playsinline></video>'
-      : '<img src="' + esc(item.media.src) + '" alt="' + esc(item.media.alt) + '">';
-    html +=
-      '<div class="col-md-6 col-lg-4">' +
-        '<a href="newsdetail.html?id=' + esc(item.id) + '" class="text-decoration-none">' +
-          '<div class="bt-card">' +
-            '<div class="bt-card-media">' + media + '</div>' +
-            '<div class="bt-card-body">' +
-              '<div class="bt-meta"><span class="bt-date">' + esc(item.date) + '</span><span class="bt-journal">' + esc(item.category) + '</span></div>' +
-              '<h4>' + esc(item.title) + '</h4>' +
-              '<p>' + esc(item.summary) + '</p>' +
-              '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>' +
-            '</div>' +
-          '</div>' +
-        '</a>' +
-      '</div>';
-  });
-  container.innerHTML = html;
-})();
-</script>
 </body>
 </html>
