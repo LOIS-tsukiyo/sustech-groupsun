@@ -2,7 +2,7 @@
  * News Data File
  * 这个文件包含所有的新闻数据
  * 可以随时更新，最新的三条新闻会自动显示在首页的 "Recent Breakthroughs" 区
- */
+ */ 
 const NEWS_DATA = [
 {
 id: 1,
