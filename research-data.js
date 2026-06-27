@@ -25,7 +25,7 @@ var RESEARCH_DATA = [
   {
     id: 3, category: "materials",
     title: "Core-shell Synthesis",
-    authors: "Xijian Duan",
+    authors: "Dr. Xijian Duan",
     journal: "Adv. Mater.",
     year: "2024",
     image: "research/product3.png",
@@ -82,7 +82,7 @@ var RESEARCH_DATA = [
   {
     id: 8, category: "optics",
     title: "Exploring CQDs at Single-Dot Level",
-    authors: "Mi Gu",
+    authors: "Dr. Mi Gu",
     journal: "",
     year: "",
     image: "research/product8.png",
