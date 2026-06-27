@@ -86,7 +86,19 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .site-footer ul{list-style:none;padding:0;margin:0}
 .site-footer ul li{margin-bottom:8px}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:32px;padding-top:20px;text-align:center;font-size:.78rem;color:rgba(255,255,255,.3)}
-/* ── Responsive ── */
+/* ── Partner Carousel ── */
+.partner-carousel-frame{width:100%;aspect-ratio:16/10;position:relative;overflow:hidden;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.partner-carousel-frame .carousel-inner,.partner-carousel-frame .carousel-item{height:100%}
+.partner-carousel-frame .carousel-item img{width:100%;height:100%;object-fit:cover;display:block}
+.partner-carousel-frame .carousel-control-prev,.partner-carousel-frame .carousel-control-next{width:32px;height:32px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(4px);border-radius:50%;border:none;opacity:0;transition:opacity .3s}
+.partner-carousel-frame:hover .carousel-control-prev,.partner-carousel-frame:hover .carousel-control-next,.partner-carousel-frame:hover .carousel-indicators{opacity:1}
+.partner-carousel-frame .carousel-control-prev{left:10px}
+.partner-carousel-frame .carousel-control-next{right:10px}
+.partner-carousel-frame .carousel-indicators{bottom:12px!important;margin:0!important;gap:6px;justify-content:center;opacity:0;transition:opacity .3s}
+.partner-carousel-frame:hover .carousel-indicators{opacity:1}
+.partner-carousel-frame .carousel-indicators [data-bs-slide-to]{width:7px!important;height:7px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.5)!important;background:rgba(255,255,255,.2)!important;padding:0!important;opacity:1!important;transition:all .3s!important}
+.partner-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.85)!important;border-color:rgba(255,255,255,.85)!important;transform:scale(1.15)}
+  /* ── Responsive ── */
 @media(max-width:991px){
 .partner-row,.partner-row.reverse{flex-direction:column;gap:24px}
 .spinoff-grid{grid-template-columns:1fr 1fr}
@@ -142,9 +154,28 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <!-- Partner 1: 华为 -->
 <div class="partner-row">
 <div class="partner-media">
-<div class="media-frame">
-<div class="placeholder-img"><i class="fas fa-image"></i></div>
-<!-- <img src="15.jpg" alt="Huawei Collaboration"> -->
+<div class="partner-carousel-frame" id="huaweiCarousel" data-bs-ride="carousel" data-bs-interval="3000">
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#huaweiCarousel" data-bs-slide-to="0" class="active"></button>
+<button type="button" data-bs-target="#huaweiCarousel" data-bs-slide-to="1"></button>
+<button type="button" data-bs-target="#huaweiCarousel" data-bs-slide-to="2"></button>
+</div>
+<div class="carousel-inner">
+<div class="carousel-item active">
+<div class="placeholder-img" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--deep) 0%,var(--sky) 100%);color:rgba(255,255,255,.3);font-size:2.5rem"><i class="fas fa-image"></i></div>
+<!-- <img src="industry/huawei-1.jpg" alt="Huawei 1"> -->
+</div>
+<div class="carousel-item">
+<div class="placeholder-img" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--sky) 0%,var(--pale) 100%);color:rgba(255,255,255,.3);font-size:2.5rem"><i class="fas fa-image"></i></div>
+<!-- <img src="industry/huawei-2.jpg" alt="Huawei 2"> -->
+</div>
+<div class="carousel-item">
+<div class="placeholder-img" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--deep) 0%,var(--bloom-soft) 100%);color:rgba(255,255,255,.3);font-size:2.5rem"><i class="fas fa-image"></i></div>
+<!-- <img src="industry/huawei-3.jpg" alt="Huawei 3"> -->
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#huaweiCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+<button class="carousel-control-next" type="button" data-bs-target="#huaweiCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
 </div>
 </div>
 <div class="partner-info">
