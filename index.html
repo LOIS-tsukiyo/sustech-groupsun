@@ -147,6 +147,34 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .hero-carousel-frame .carousel-caption h2{font-size:1rem}
 .stats-section{padding:24px 0}
 }
+/* ── Video Gallery ── */
+.video-section{background:var(--bg-light);position:relative;overflow:hidden}
+.video-section::before{content:'';position:absolute;top:0;left:0;right:0;height:100%;background:radial-gradient(ellipse 70% 50% at 20% 20%,rgba(91,143,168,.04) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 85% 80%,rgba(196,148,154,.035) 0%,transparent 50%);pointer-events:none;z-index:0}
+.video-section .container{position:relative;z-index:1}
+.video-carousel-wrapper{max-width:900px;margin:0 auto}
+.video-carousel-frame{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 8px 40px rgba(27,58,75,.12);background:#000}
+.video-carousel-frame .carousel-inner{width:100%;aspect-ratio:16/9}
+.video-carousel-frame .carousel-item{height:100%}
+.video-carousel-frame .carousel-item video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
+.video-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,75,.25) 0%,transparent 15%,transparent 85%,rgba(27,58,75,.15) 100%);z-index:1;pointer-events:none}
+.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:44px;height:44px;top:50%;bottom:auto;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;border:1px solid rgba(255,255,255,.15);opacity:0;transition:opacity .3s,background .2s;z-index:3}
+.video-carousel-frame:hover .carousel-control-prev,.video-carousel-frame:hover .carousel-control-next,.video-carousel-frame:hover .carousel-indicators{opacity:1}
+.video-carousel-frame .carousel-control-prev{left:14px}
+.video-carousel-frame .carousel-control-next{right:14px}
+.video-carousel-frame .carousel-control-prev:hover,.video-carousel-frame .carousel-control-next:hover{background:rgba(255,255,255,.3)}
+.video-carousel-frame .carousel-control-prev-icon,.video-carousel-frame .carousel-control-next-icon{width:18px;height:18px;filter:brightness(0) invert(1)}
+.video-carousel-frame .carousel-indicators{bottom:14px!important;top:auto!important;margin:0!important;gap:8px;justify-content:center;opacity:0;transition:opacity .3s;z-index:3}
+.video-carousel-frame .carousel-indicators [data-bs-slide-to]{width:8px!important;height:8px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.5)!important;background:rgba(255,255,255,.2)!important;padding:0!important;margin:0!important;opacity:1!important;transition:all .3s!important}
+.video-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.9)!important;border-color:rgba(255,255,255,.9)!important;transform:scale(1.2)}
+.video-caption-bar{background:linear-gradient(to top,rgba(27,58,75,.65) 0%,rgba(27,58,75,.2) 70%,transparent 100%);position:absolute;bottom:0;left:0;right:0;padding:40px 24px 18px;text-align:left;z-index:2;pointer-events:none}
+.video-caption-bar .video-tag{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;display:block}
+.video-caption-bar h3{font-size:1.1rem;font-weight:600;color:#fff;margin:0;text-shadow:0 1px 8px rgba(27,58,75,.4);letter-spacing:-.2px}
+.video-decoration-line{width:60px;height:2px;background:linear-gradient(90deg,var(--bloom),var(--stamen));border-radius:1px;margin:16px auto 0;opacity:.6}
+@media(max-width:767px){
+.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:36px;height:36px;opacity:.7}
+.video-carousel-frame .carousel-indicators{opacity:.7}
+.video-caption-bar h3{font-size:.95rem}
+}
 </style>
 </head>
 <body>
@@ -351,6 +379,51 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </ul>
 </div>
 </div>
+</div>
+</div>
+</section>
+  <!-- Video Gallery -->
+<section class="section-padding video-section">
+<div class="container">
+<div class="text-center">
+<div class="section-title">Videos</div>
+<h2 class="section-heading" style="text-align:center">Lab Highlights</h2>
+<p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Selected videos from our research, events, and media coverage.</p>
+</div>
+<div class="video-carousel-wrapper">
+<div class="video-carousel-frame" id="videoCarousel" data-bs-ride="carousel" data-bs-interval="false">
+<div class="carousel-indicators">
+<button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="0" class="active"></button>
+<button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="1"></button>
+<button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="2"></button>
+</div>
+<div class="carousel-inner">
+<div class="carousel-item active">
+<video src="1.mp4" controls preload="metadata" playsinline></video>
+<div class="video-caption-bar">
+<span class="video-tag">Media Coverage</span>
+<h3>Exclusive Interview on Huawei's "Tao Law"</h3>
+</div>
+</div>
+<div class="carousel-item">
+<video src="2.mp4" controls preload="metadata" playsinline></video>
+<div class="video-caption-bar">
+<span class="video-tag">Research</span>
+<h3>Quantum Dot Display Technology</h3>
+</div>
+</div>
+<div class="carousel-item">
+<video src="3.mp4" controls preload="metadata" playsinline></video>
+<div class="video-caption-bar">
+<span class="video-tag">Event</span>
+<h3>Lab Open Day &amp; Academic Exchange</h3>
+</div>
+</div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+<button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+</div>
+<div class="video-decoration-line"></div>
 </div>
 </div>
 </section>
