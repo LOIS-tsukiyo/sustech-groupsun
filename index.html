@@ -157,8 +157,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .video-carousel-frame .carousel-item{height:100%}
 .video-carousel-frame .carousel-item video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
 .video-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,75,.25) 0%,transparent 15%,transparent 85%,rgba(27,58,75,.15) 100%);z-index:1;pointer-events:none}
-.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:44px;height:44px;top:50%;bottom:auto;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;border:1px solid rgba(255,255,255,.15);opacity:0;transition:opacity .3s,background .2s;z-index:3}
-.video-carousel-frame:hover .carousel-control-prev,.video-carousel-frame:hover .carousel-control-next,.video-carousel-frame:hover .carousel-indicators{opacity:1}
+.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:44px;height:44px;top:50%;bottom:auto;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;border:1px solid rgba(255,255,255,.15);opacity:7;transition:opacity .3s,background .2s;z-index:3}
 .video-carousel-frame .carousel-control-prev{left:14px}
 .video-carousel-frame .carousel-control-next{right:14px}
 .video-carousel-frame .carousel-control-prev:hover,.video-carousel-frame .carousel-control-next:hover{background:rgba(255,255,255,.3)}
@@ -457,5 +456,31 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var carousel = document.getElementById('videoCarousel');
+  if (!carousel) return;
+  var bsCarousel = new bootstrap.Carousel(carousel);
+  var videos = carousel.querySelectorAll('video');
+
+  videos.forEach(function(video) {
+    video.addEventListener('play', function() {
+      bsCarousel.pause();
+    });
+    video.addEventListener('pause', function() {
+      var activeVideo = carousel.querySelector('.carousel-item.active video');
+      if (activeVideo && activeVideo.paused) {
+        bsCarousel.cycle();
+      }
+    });
+  });
+
+  carousel.addEventListener('slide.bs.carousel', function() {
+    videos.forEach(function(v) { if (!v.paused) v.pause(); });
+  });
+});
+</script>
+</body>
 </body>
 </html>
