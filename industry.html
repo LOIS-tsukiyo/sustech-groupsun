@@ -14,7 +14,7 @@
 *{box-sizing:border-box}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-dark);background:var(--bg-white);-webkit-font-smoothing:antialiased}
 /* ── Navbar ── */
-.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:fixed;top:0;left:0;right:0;z-index:100}
+.navbar{background:rgba(250,251,252,.92)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:14px 0;position:relative;top:0;left:0;right:0;z-index:100}
 .navbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--bloom-soft) 25%,var(--pale) 50%,var(--bloom-soft) 75%,transparent 95%);opacity:.3}
 .navbar-brand{font-weight:600;font-size:1.15rem;color:#1a1a1a!important;letter-spacing:-.3px}
 .navbar-brand span{color:#1a1a1a!important;font-weight:700}
@@ -427,7 +427,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <li><a href="contact.html">Contact</a></li>
 </ul>
 </div>
-<div class="col-md-3 offset-md-3 col-6 mb-4">
+<div class="col-md-4">
 <h6>Follow</h6>
 <div class="d-flex gap-3">
 <a href="#"><i class="fab fa-twitter"></i></a>
