@@ -1,6 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-<head> 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sun Lab - SUSTech | Quantum Dots & AR Waveguide Display Technology</title>
@@ -157,26 +157,29 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .video-carousel-frame .carousel-item{height:100%}
 .video-carousel-frame .carousel-item video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
 .video-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,75,.25) 0%,transparent 15%,transparent 85%,rgba(27,58,75,.15) 100%);z-index:1;pointer-events:none}
-.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:44px;height:44px;top:50%;bottom:auto;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;border:1px solid rgba(255,255,255,.15);opacity:.7;transition:opacity .3s,background .2s;z-index:3}
+.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:44px;height:44px;top:50%;bottom:auto;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;border:1px solid rgba(255,255,255,.15);opacity:0;transition:opacity .3s,background .2s;z-index:5;cursor:pointer}
+.video-carousel-wrapper:hover .carousel-control-prev,.video-carousel-wrapper:hover .carousel-control-next,.video-carousel-wrapper:hover .carousel-indicators{opacity:1}
 .video-carousel-frame .carousel-control-prev{left:14px}
 .video-carousel-frame .carousel-control-next{right:14px}
 .video-carousel-frame .carousel-control-prev:hover,.video-carousel-frame .carousel-control-next:hover{background:rgba(255,255,255,.3)}
 .video-carousel-frame .carousel-control-prev-icon,.video-carousel-frame .carousel-control-next-icon{width:18px;height:18px;filter:brightness(0) invert(1)}
-.video-carousel-frame .carousel-indicators{bottom:14px!important;top:auto!important;margin:0!important;gap:8px;justify-content:center;opacity:0;transition:opacity .3s;z-index:3}
+.video-carousel-frame .carousel-indicators{bottom:14px!important;top:auto!important;margin:0!important;gap:8px;justify-content:center;opacity:0;transition:opacity .3s;z-index:5}
 .video-carousel-frame .carousel-indicators [data-bs-slide-to]{width:8px!important;height:8px!important;border-radius:50%!important;border:1.5px solid rgba(255,255,255,.5)!important;background:rgba(255,255,255,.2)!important;padding:0!important;margin:0!important;opacity:1!important;transition:all .3s!important}
 .video-carousel-frame .carousel-indicators [data-bs-slide-to].active{background:rgba(255,255,255,.9)!important;border-color:rgba(255,255,255,.9)!important;transform:scale(1.2)}
-.video-caption-bar{background:linear-gradient(to top,rgba(27,58,75,.65) 0%,rgba(27,58,75,.2) 70%,transparent 100%);position:absolute;bottom:0;left:0;right:0;padding:40px 24px 18px;text-align:left;z-index:2;pointer-events:none}
+.video-caption-bar{background:linear-gradient(to bottom,rgba(27,58,75,.55) 0%,rgba(27,58,75,.2) 60%,transparent 100%);position:absolute;top:0;left:0;right:0;padding:16px 24px 32px;text-align:left;z-index:2;pointer-events:none}
 .video-caption-bar .video-tag{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:4px;display:block}
 .video-caption-bar h3{font-size:1.1rem;font-weight:600;color:#fff;margin:0;text-shadow:0 1px 8px rgba(27,58,75,.4);letter-spacing:-.2px}
 .video-decoration-line{width:60px;height:2px;background:linear-gradient(90deg,var(--bloom),var(--stamen));border-radius:1px;margin:16px auto 0;opacity:.6}
 @media(max-width:767px){
-.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:36px;height:36px;opacity:.7}
-.video-carousel-frame .carousel-indicators{opacity:.7}
+.video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:36px;height:36px;opacity:1}
+.video-carousel-frame .carousel-indicators{opacity:1}
 .video-caption-bar h3{font-size:.95rem}
 }
 </style>
 </head>
 <body>
+
+<!-- ── Navbar ── -->
 <nav class="navbar navbar-expand-lg sticky-top">
 <div class="container">
 <a class="navbar-brand" href="index.html"><span>Sun Lab</span> · SUSTech</a>
@@ -193,6 +196,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </nav>
+
+<!-- ── Hero ── -->
 <section class="hero-split">
 <div class="hero-image-side">
 <div class="hero-carousel-frame">
@@ -233,6 +238,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
+
+<!-- ── Breakthrough ── -->
 <section class="section-padding breakthrough-section">
 <div class="container">
 <div class="row mb-5">
@@ -291,6 +298,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
+
+<!-- ── Research ── -->
 <section class="section-padding research-section">
 <div class="container">
 <div class="row mb-5">
@@ -344,6 +353,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
+
+<!-- ── Stats ── -->
 <section class="stats-section">
 <div class="container">
 <div class="row">
@@ -354,6 +365,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
+
+<!-- ── Professor ── -->
 <section class="section-padding professor-section">
 <div class="container">
 <div class="row align-items-center g-5">
@@ -381,20 +394,23 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-  <!-- Video Gallery -->
+
+<!-- ── Video Gallery ── -->
 <section class="section-padding video-section">
 <div class="container">
-<div class="text-center">
+<div class="text-center mb-4">
 <div class="section-title">Videos</div>
 <h2 class="section-heading" style="text-align:center">Lab Highlights</h2>
 <p class="section-desc" style="margin-left:auto;margin-right:auto;text-align:center">Selected videos from our research, events, and media coverage.</p>
+<div class="video-decoration-line"></div>
 </div>
 <div class="video-carousel-wrapper">
-<div class="video-carousel-frame carousel" id="videoCarousel" data-bs-ride="carousel" data-bs-interval="false">
+<div class="video-carousel-frame carousel" id="videoCarousel">
 <div class="carousel-indicators">
 <button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="0" class="active"></button>
 <button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="1"></button>
 <button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="2"></button>
+<button type="button" data-bs-target="#videoCarousel" data-bs-slide-to="3"></button>
 </div>
 <div class="carousel-inner">
 <div class="carousel-item active">
@@ -403,6 +419,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <span class="video-tag">Concept</span>
 <h3>Laboratory Construction Concept</h3>
 </div>
+</div>
+<div class="carousel-item">
 <video src="3.mp4" controls preload="metadata" playsinline></video>
 <div class="video-caption-bar">
 <span class="video-tag">Ceremony</span>
@@ -427,10 +445,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
 <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
 </div>
-<div class="video-decoration-line"></div>
 </div>
 </div>
 </section>
+
+<!-- ── Footer ── -->
 <footer class="site-footer">
 <div class="container">
 <div class="row g-4">
@@ -448,37 +467,25 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <li><a href="contact.html">Contact</a></li>
 </ul>
 </div>
-<div class="col-md-4">
-<h6>Follow</h6>
-<div class="d-flex gap-3">
-<a href="#"><i class="fab fa-twitter"></i></a>
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fab fa-github"></i></a>
 </div>
+<div class="footer-bottom">
+<p>© 2026 Sun Lab, SUSTech. All rights reserved.</p>
 </div>
-</div>
-<div class="footer-bottom">&copy; 2026 Sun Lab, SUSTech. All rights reserved.</div>
 </div>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var carousel = document.getElementById('videoCarousel');
-  if (!carousel) return;
-  var bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel);
-  var videos = carousel.querySelectorAll('video');
-  videos.forEach(function(video) {
-    video.addEventListener('play', function() {
-      bsCarousel.pause();
-    });
-    video.addEventListener('pause', function() {
-      var activeVideo = carousel.querySelector('.carousel-item.active video');
-      if (activeVideo && activeVideo.paused) {
-        bsCarousel.cycle();
-      }
-    });
+  var carouselEl = document.getElementById('videoCarousel');
+  if (!carouselEl) return;
+  var bsCarousel = new bootstrap.Carousel(carouselEl, {
+    interval: false,
+    wrap: true,
+    keyboard: true
   });
-  carousel.addEventListener('slide.bs.carousel', function() {
+  var videos = carouselEl.querySelectorAll('video');
+  carouselEl.addEventListener('slide.bs.carousel', function() {
     videos.forEach(function(v) { if (!v.paused) v.pause(); });
   });
 });
