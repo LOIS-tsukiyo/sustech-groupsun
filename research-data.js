@@ -168,5 +168,28 @@ var RESEARCH_DATA = [
     description: "Transparent quantum dot light-emitting diodes with high visible transmittance (>70%). Enables novel applications in see-through displays, smart windows, and augmented reality interfaces.",
     tags: [],
     doi: ""
-  }
+  },
+    // ══════ AR waveguide ══════
+  {
+    id: 16, category: "ar",
+    title: " AR display",
+    authors: "",
+    journal: "",
+    year: "",
+    image: "5.png",
+    description: "Achromatic metasurface waveguide for AR display.",
+    tags: [],
+    doi: ""
+  },
+    {
+    id: 17, category: "ar",
+    title: " Eye Tracking 3D",
+    authors: "",
+    journal: " Opt. Continuum",
+    year: "2023",
+    image: "6.png",
+    description: " Repetitive viewing area of 3D display,the viewpoint changes with theuser's position",
+    tags: ["top-journal"],
+    doi: ""
+  },
 ];
