@@ -188,7 +188,18 @@ var RESEARCH_DATA = [
     journal: " Opt. Continuum",
     year: "2023",
     image: "6.png",
-    description: " Repetitive viewing area of 3D display,the viewpoint changes with theuser's position",
+    description: "Repetitive viewing area of 3D display,the viewpoint changes with theuser's position",
+    tags: ["top-journal"],
+    doi: ""
+  },
+  {
+    id: 17, category: "ar",
+    title: " Radial optical 3D display",
+    authors: "",
+    journal: " Opt. Expresses",
+    year: "2025",
+    image: "7.png",
+    description: "The use of radial optical structures can tilt the optimal viewing plane at any angle.",
     tags: ["top-journal"],
     doi: ""
   },
