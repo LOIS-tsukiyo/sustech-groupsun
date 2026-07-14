@@ -156,7 +156,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 .video-carousel-frame .carousel-inner{width:100%;aspect-ratio:16/9}
 .video-carousel-frame .carousel-item{height:100%}
 .video-carousel-frame .carousel-item video{width:100%;height:100%;object-fit:contain;display:block;background:#000}
-.video-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,75,.25) 0%,transparent 15%,transparent 85%,rgba(27,58,75,.15) 100%);z-index:1;pointer-events:none}
+.video-carousel-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(27,58,75,.25) 0%,
+transparent 15%,transparent 85%,rgba(27,58,75,.15) 100%);z-index:1;pointer-events:none}
 .video-carousel-frame .carousel-control-prev,.video-carousel-frame .carousel-control-next{width:44px;height:44px;top:50%;bottom:auto;transform:translateY(-50%);background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;border:1px solid rgba(255,255,255,.15);opacity:0;transition:opacity .3s,background .2s;z-index:5;cursor:pointer}
 .video-carousel-wrapper:hover .carousel-control-prev,.video-carousel-wrapper:hover .carousel-control-next,.video-carousel-wrapper:hover .carousel-indicators{opacity:1}
 .video-carousel-frame .carousel-control-prev{left:14px}
@@ -178,7 +179,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </style>
 </head>
 <body>
-
 <!-- ── Navbar ── -->
 <nav class="navbar navbar-expand-lg sticky-top">
 <div class="container">
@@ -196,7 +196,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </nav>
-
 <!-- ── Hero ── -->
 <section class="hero-split">
 <div class="hero-image-side">
@@ -242,7 +241,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-
 <!-- ── Breakthrough ── -->
 <section class="section-padding breakthrough-section">
 <div class="container">
@@ -253,56 +251,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 <p class="section-desc">Highlighting our latest research progress and major events.</p>
 </div>
 </div>
-<div class="row g-4">
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<img src="10.jpg" alt="Xiamen University Visit">
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">June,2026</span><span class="bt-journal">Xiamen University</span></div>
-<h4>Academician Xiao Wei Sun visits Academician Hu Wenping, President of Xiamen University</h4>
-<p>Recently, Xiao Wei Sun, foreign academician of the Russian Academy of Sciences, the executive dean of the Institute of Nanoscience and Application of the SUST, and the chair professor of the Department of EEE, visited Hu Wenping, an academician of the CAS Member and the president of Xiamen University.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<img src="9.jpg" alt="Nature Review">
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Nature</span></div>
-<h4>Academician Xiao Wei Sun's team was invited to publish a research review article in Nature</h4>
-<p>Recently, at the invitation of the top academic journal Nature, Xiao Wei Sun published a research review article titled "Glasses free display switches between 2D and 3D" in the Nature News&Views column.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
-<div class="col-md-6 col-lg-4">
-<a href="publications.html" class="text-decoration-none">
-<div class="bt-card">
-<div class="bt-card-media">
-<video src="1.mp4" controls preload="metadata" playsinline></video>
-</div>
-<div class="bt-card-body">
-<div class="bt-meta"><span class="bt-date">May,2026</span><span class="bt-journal">Shenzhen News</span></div>
-<h4>Exclusive interview on Huawei's "Tao Law"</h4>
-<p>Shenzhen News conducted an exclusive interview with Xiao Wei Sun, Executive Dean of the Institute of Nano Science and Applications at the Southern University of Science and Technology.</p>
-<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>
-</div>
-</div>
-</a>
-</div>
+<div class="row g-4" id="news-cards">
+<!-- Dynamically rendered from news-data.js -->
 </div>
 </div>
 </section>
-
 <!-- ── Research ── -->
 <section class="section-padding research-section">
 <div class="container">
@@ -357,7 +310,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-
 <!-- ── Stats ── -->
 <section class="stats-section">
 <div class="container">
@@ -369,7 +321,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-
 <!-- ── Professor ── -->
 <section class="section-padding professor-section">
 <div class="container">
@@ -398,7 +349,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-
 <!-- ── Video Gallery ── -->
 <section class="section-padding video-section">
 <div class="container">
@@ -452,7 +402,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </section>
-
 <!-- ── Footer ── -->
 <footer class="site-footer">
 <div class="container">
@@ -485,8 +434,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(-
 </div>
 </div>
 </footer>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="news-data.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var carouselEl = document.getElementById('videoCarousel');
@@ -501,6 +450,37 @@ document.addEventListener('DOMContentLoaded', function() {
     videos.forEach(function(v) { if (!v.paused) v.pause(); });
   });
 });
+</script>
+<script>
+(function() {
+  if (typeof NEWS_DATA === 'undefined' || !NEWS_DATA.length) return;
+  var sorted = NEWS_DATA.slice().sort(function(a, b) { return b.id - a.id; });
+  var latest = sorted.slice(0, 3);
+  var container = document.getElementById('news-cards');
+  if (!container) return;
+  var html = '';
+  latest.forEach(function(item) {
+    var mediaHtml = '';
+    if (item.media) {
+      if (item.media.type === 'video') {
+        mediaHtml = '<video src="' + item.media.src + '" controls preload="metadata" playsinline></video>';
+      } else {
+        mediaHtml = '<img src="' + item.media.src + '" alt="' + (item.media.alt || '') + '">';
+      }
+    }
+    html += '<div class="col-md-6 col-lg-4">' +
+      '<a href="newsdetail.html?id=' + item.id + '" class="text-decoration-none">' +
+      '<div class="bt-card">' +
+      '<div class="bt-card-media">' + mediaHtml + '</div>' +
+      '<div class="bt-card-body">' +
+      '<div class="bt-meta"><span class="bt-date">' + item.date + '</span><span class="bt-journal">' + item.category + '</span></div>' +
+      '<h4>' + item.title + '</h4>' +
+      '<p>' + item.summary + '</p>' +
+      '<span class="bt-link">Read more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></span>' +
+      '</div></div></a></div>';
+  });
+  container.innerHTML = html;
+})();
 </script>
 </body>
 </html>
